@@ -1,11 +1,13 @@
-﻿@page
-@model OwlOProjectA.Pages.VoucherCreateModel
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+﻿@page "{id}"
+@model OwlOProjectA.Pages.VoucherEditModel
 @{
+    ViewData["Title"] = "Edit Voucher";
 }
 
-<script type="text/javascript">
 
+
+<script type="text/javascript">
+        
     function scanDoc() {
         $.get("/home/scanDoc", function (data) {
             $("p").html(data);
@@ -80,6 +82,10 @@
             <input asp-for="voucher.Voucher_CompanyPhoto" type="file" />
             <span asp-validation-for="voucher.Voucher_CompanyPhoto" class="text-danger"></span>
         </div>*@
+                                            <div class="form-group" style="display:none">
+                                                <input asp-for="voucher.Vouchers_ID" style="display:none"/>
+                                                <span asp-validation-for="voucher.Vouchers_ID" class="text-danger"></span>
+                                            </div>
                                             <div class="form-group">
                                                 <input asp-for="voucher.Voucher_Name" placeholder="Voucher Name" />
                                                 <span asp-validation-for="voucher.Voucher_Name" class="text-danger"></span>
@@ -128,13 +134,28 @@
                                                         <label class="form-check-label" for="superCB"><span>Super Deal?</span></label>
                                                     </div>
                                                 </div>
+                                                <span asp-validation-for="voucher.Super_Deal" class="text-danger"></span>
+                                            </div>
+                                            @{ if (Model.voucher.Super_Deal == true)
+                                                {
+                                                    <div class="form-group">
+                                                        <input asp-for="voucher.DiscountDeal_Percentage" placeholder="Discount Percentage" id="discount" />
+                                                        <span asp-validation-for="voucher.DiscountDeal_Percentage" class="text-danger"></span>
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="form-group">
+                                                        <input asp-for="voucher.DiscountDeal_Percentage" placeholder="Discount Percentage" id="discount" style="display:none" />
+                                                        <span asp-validation-for="voucher.DiscountDeal_Percentage" class="text-danger"></span>
+                                                    </div>
+                                                }
 
-                                                <span asp-validation-for="voucher.Super_Deal"  class="text-danger"></span>
-                                            </div>
-                                            <div class="form-group">
-                                                <input asp-for="voucher.DiscountDeal_Percentage"  placeholder="Discount Percentage" id="discount" style="display:none"/>
-                                                <span asp-validation-for="voucher.DiscountDeal_Percentage" class="text-danger"></span>
-                                            </div>
+
+                                            }
+
+
+
 
 
                                             <!-- <div class="login_footer form-group mb-50">
@@ -148,7 +169,7 @@
     </div> -->
 
                                             <div class="form-group mb-30">
-                                                <button type="submit" id="create" class="btn btn-fill-out btn-block hover-up font-weight-bold" name="login">Create Voucher</button>
+                                                <button type="submit" id="create" class="btn btn-fill-out btn-block hover-up font-weight-bold" name="login">Edit Voucher</button>
                                             </div>
                                         </form>
                                     </div>

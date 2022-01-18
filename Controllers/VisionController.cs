@@ -10,21 +10,33 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using Google.Cloud.Language.V1;
-
-
+using System.Text.RegularExpressions;
 
 namespace OwlOProjectA.Controllers
 {
     public class VisionController : Controller
     {
+        public class Details
+        {
+            public string NRIC { get; set; }
+            public string Gender { get; set; }
+            public string Name { get; set; }
+            public string Address { get; set;  }
+            public string DOB { get; set; }
+            public string Citizenship { get; set; }
+            public string Email { get; set; }
 
+        }
 
         [HttpPost]
-        public string capture(string fileName)
+        public JsonResult capture(string fileName)
         {
+           
+            var details = new Details();
             string credential_path = @"./credentials/owlprojectchatbot.json";
-            System.Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", credential_path);
-
+            System.Environment.SetEnvironmentVariable("google_application_credentials", credential_path);
+            Regex NRIC = new Regex(@"^[STFG]\d{7}[A-Z]$");
+            Regex Email = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
             string image_path = @"./wwwroot/Documents/" + fileName;
             string fileExtension = fileName[fileName.IndexOf(".")..];
             Console.WriteLine(fileExtension);
@@ -32,44 +44,23 @@ namespace OwlOProjectA.Controllers
             Console.WriteLine(image_path);
 
 
-            //switch (fileExtension)
-            //{
-            //    case ".png" :
-            //        break;
-            //    case ".jpg":
-            //        break;
-            //    case ".doc":
-            //        break;
-            //    case ".docx":
-            //        break;
-            //    case ".pdf":
-            //        break;
-
-            //}
-
-            string text = "NAME YU JIMIN DATE OF BIRTH 12-05-2000 HOUGANG AVE 9";
-            var client = LanguageServiceClient.Create();
-            var response = client.AnalyzeEntities(Document.FromPlainText(text));
+            //var text = "ABOUT ME\nDate of Birth: November 1, 1997\nAge: 23\n\nGender: Male\nBirth Place: Hougang\nCONTACT\nBlk 999B Buangkok Crescent,\n#10-757 S (532999)\n9114 6919\nmdanish.ashari@gmail.com\nS9738512B";
             
-            Console.WriteLine(response);
-            foreach (var entity in response.Entities)
-            {
-                Console.WriteLine($"Entity: \"{entity.Name}\" ({entity.Type})");
-                Console.WriteLine(entity.Metadata);
-                
-            }
+
+
+            
+
+
+            var image = Image.FromFile(image_path);
+            ImageAnnotatorClient client = ImageAnnotatorClient.Create();
+            TextAnnotation text = client.DetectDocumentText(image);
+            Console.WriteLine($"Text: {text.Text}");
 
 
 
 
 
 
-
-
-            //var image = Image.FromFile(image_path);
-            //ImageAnnotatorClient client = ImageAnnotatorClient.Create();
-            //TextAnnotation text = client.DetectDocumentText(image);
-            //Console.WriteLine($"Text: {text.Text}");
             //foreach (var page in text.Pages)
             //{
             //    foreach (var block in page.Blocks)
@@ -87,10 +78,79 @@ namespace OwlOProjectA.Controllers
             //        }
             //    }
             //}
+
+
+            var nlp_client = LanguageServiceClient.Create();
+            var response = nlp_client.AnalyzeEntities(Document.FromPlainText(text.Text));
+
+            Console.WriteLine(response);
+            Double address_salience = 0;
+            Double date_salience = 0;
+            Double person_salience = 0;
+            foreach (var entity in response.Entities)
+            {
+                Console.WriteLine($"Entity: \"{entity.Name}\" ({entity.Type})");
+                Console.WriteLine(entity.Metadata);
+                switch (entity.Type.ToString())
+                {
+                    case "Address":
+                        if (entity.Metadata["country"] == "SG" || entity.Metadata["locality"] == "Singapore")
+                        {
+                            if (address_salience <= Convert.ToDouble(entity.Salience))
+                            {
+                                details.Address = entity.Metadata["street_name"] + " " + entity.Metadata["street_number"];
+                                address_salience = Convert.ToDouble(entity.Salience);
+                            }
+                        }
+                        break;
+                    case "Date":
+                        if (date_salience <= Convert.ToDouble(entity.Salience))
+                        {
+                            details.DOB = entity.Name;
+                            date_salience = Convert.ToDouble(entity.Salience);
+                        }
+                        break;
+                    case "Person":
+                        if (person_salience <= Convert.ToDouble(entity.Salience))
+                        {
+                            details.Name = entity.Name;
+                            person_salience = Convert.ToDouble(entity.Salience);
+                        }
+                        break;
+                }
+
+
+            }
+
             //return text.Text;
-            return "YES";
+            string[] words = text.Text.Split("\n");
+            for (int i = 0; i < words.Length; i++)
+            {
+                Console.WriteLine($"Array Number : {i} Array : {words[i]}");
+                if (words[i].Contains("Male"))
+                {
+                    details.Gender = "M";
+                }
+                else if (words[i].Contains("Female"))
+                {
+                    details.Gender = "F";
+                }
+                if (Email.Match(words[i]).Success)
+                {
+                    details.Email = words[i];
+                }
+                if (NRIC.Match(words[i]).Success)
+                {
+                    details.NRIC = words[i];
+                }
 
-
+            }
+            Console.WriteLine($"Gender: {details.Gender}");
+            Console.WriteLine($"Email: {details.Email}");
+            Console.WriteLine($"NRIC: {details.NRIC}");
+            Console.WriteLine($"Name: {details.Name}");
+            Console.WriteLine($"Address: {details.Address}");
+            return Json(details);
 
         }
         

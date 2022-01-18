@@ -1,10 +1,8 @@
 $("#docUpload").on("change", function () {
-  console.log("This is where you show the image lol");
-  let image = $("#docUpload")[0].files[0];
-  console.log("This is where you show the image lol");
-  console.log(image);
+  let doc = $("#docUpload")[0].files[0];
+  console.log(doc);
   let formdata = new FormData();
-  formdata.append("file",image);
+  formdata.append("file",doc);
   $.ajax({
     url: "/vision/upload",
     type: "POST",
@@ -17,10 +15,18 @@ $("#docUpload").on("change", function () {
         url: "/vision/capture",
         type: "POST",
         data: {"fileName" : data},
-        'success': (OCRdata) => {
-          $("#docErr").html("OCR working for " + OCRdata);
+        'success': (details) => {
+          $("#docErr").html("OCR working for " + details);
+          for (var detail in details){
+            console.log(detail);
+          }
           $("#exampleModal").modal("show");
-          $('#exampleModal .modal-body').html("OCR working for " + OCRdata);
+          document.getElementById('MyOwlee_Email').value = details["email"];
+          document.getElementById('MyOwlee_NRIC').value = details["nric"];
+          document.getElementById('MyOwlee_Bio').value = details["address"];
+          document.getElementById('MyOwlee_Name').value = details["name"];
+
+          $('#exampleModal .modal-body').html(details["email"]);
           if (data.err) {
             $("#docErr").show();
             $("#docErr").text(data.err.message);
