@@ -10,6 +10,11 @@
             $("p").html(data);
         });
     }
+    function readCSV() {
+        $.get("/home", function (data) {
+            $("p").html(data);
+        });
+    }
 
 
 
@@ -60,6 +65,26 @@
                                             <br />
                                         </div>
                                         <form method="post">
+                                            <div class="col-lg-6 pr-30 d-none d-lg-block">
+                                                <div class="card-login mt-115">
+                                                    <button type="button" name="button" onclick="upload(test)" class="social-login facebook-login">
+                                                        <img src="~/nest_assets/imgs/theme/icons/logo-facebook.svg" alt="" />
+                                                        <span>Scan Document</span>
+                                                    </button>
+                                                    <a href="#" class="social-login google-login">
+                                                        <img src="~/nest_assets/imgs/theme/icons/logo-google.svg" alt="" />
+                                                        <span>Continue with Google</span>
+                                                    </a>
+                                                    <a href="#" class="social-login apple-login">
+                                                        <img src="~/nest_assets/imgs/theme/icons/logo-apple.svg" alt="" />
+                                                        <span>Continue with SingPass</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            @*<div class="form-group">
+                                                <input asp-for="voucher.Voucher_CompanyPhoto" type="file" />
+                                                <span asp-validation-for="voucher.Voucher_CompanyPhoto" class="text-danger"></span>
+                                            </div>*@
                                             <div class="form-group">
                                                 <input asp-for="voucher.Voucher_Name" placeholder="Voucher Name" />
                                                 <span asp-validation-for="voucher.Voucher_Name" class="text-danger"></span>
@@ -103,7 +128,7 @@
                                                 <div class="chek-form">
                                                     <div class="custome-checkbox">
                                                         <input asp-for="voucher.Super_Deal" class="form-check-input" id="superCB" />
-                                                        
+
                                                         <label class="form-check-label" for="superCB"><span>Super Deal?</span></label>
                                                     </div>
                                                 </div>

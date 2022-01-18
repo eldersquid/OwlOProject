@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using IronOcr;
 using OwlOProjectA.Models;
+using System.IO;
+using Grpc.Core;
 
 namespace OwlOProjectA.Pages
 {
@@ -26,7 +28,9 @@ namespace OwlOProjectA.Pages
             
         }
 
-      
+        
+
+
 
 
 
@@ -34,6 +38,7 @@ namespace OwlOProjectA.Pages
         {
             MyOwlee.Owl_Points = 0;
             MyOwlee.Inventory_ID = Guid.NewGuid().ToString();
+
             if (_svc.AddOwlee(MyOwlee))
             {
                 return RedirectToPage("Index");

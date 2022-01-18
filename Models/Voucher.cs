@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -17,6 +18,8 @@ namespace OwlOProjectA.Models
 
         [Required, MaxLength(50)]
         public string Voucher_Company { get; set; }
+
+        
 
         [Required]
         public int Voucher_Cost { get; set; }
