@@ -5,8 +5,8 @@
 }
 
 *, html {
-    --primaryGradient: linear-gradient(93.12deg, rgb(141, 63, 56) 0.52%, rgb(251, 88, 73) 100%);
-    --secondaryGradient: linear-gradient(268.91deg, rgb(251, 88, 73) -2.14%, rgb(141, 63, 56) 99.69%);
+    --primaryGradient: linear-gradient(93.12deg, rgb(64,180,124) 0.52%, rgb(34, 95, 65) 100%);
+    --secondaryGradient: linear-gradient(268.91deg, rgb(64,180,124) -2.14%, rgb(34, 95, 65) 99.69%);
     --primaryBoxShadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
     --secondaryBoxShadow: 0px -10px 15px rgba(0, 0, 0, 0.1);
     --light: 300;
@@ -15,6 +15,7 @@
     --extraLight: 300;
     --italic: 300;
     --primary: rgb(251, 88, 73);
+
 }
 
 /* 300;0,400;0,600;1,300 */
@@ -123,4 +124,5 @@
     border-bottom-left-radius: 50px;
     box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
     cursor: pointer;
+    
 }

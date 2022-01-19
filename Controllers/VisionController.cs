@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Web;
 using Google.Cloud.Language.V1;
 using System.Text.RegularExpressions;
+using Google.Protobuf;
 
 namespace OwlOProjectA.Controllers
 {
@@ -45,16 +46,46 @@ namespace OwlOProjectA.Controllers
 
 
             //var text = "ABOUT ME\nDate of Birth: November 1, 1997\nAge: 23\n\nGender: Male\nBirth Place: Hougang\nCONTACT\nBlk 999B Buangkok Crescent,\n#10-757 S (532999)\n9114 6919\nmdanish.ashari@gmail.com\nS9738512B";
-            
 
 
-            
 
 
+
+            var text = "";
             var image = Image.FromFile(image_path);
             ImageAnnotatorClient client = ImageAnnotatorClient.Create();
-            TextAnnotation text = client.DetectDocumentText(image);
-            Console.WriteLine($"Text: {text.Text}");
+            if (fileExtension.ToLower() == ".png" || fileExtension.ToLower() == ".jpg" || fileExtension.ToLower() == ".jpeg")
+            {
+                TextAnnotation image_text = client.DetectDocumentText(image);
+                text = image_text.Text;
+                Console.WriteLine($"Text: {text}");
+            }
+            else
+            {
+                Byte[] bytes = System.IO.File.ReadAllBytes(image_path);
+                var content_byte = ByteString.CopyFrom(bytes);
+                var syncRequest = new AnnotateFileRequest
+                {
+                    InputConfig = new InputConfig
+                    {
+                        Content = content_byte,
+                        MimeType = "application/pdf"
+                    }
+                };
+                syncRequest.Features.Add(new Feature
+                {
+                    Type = Feature.Types.Type.DocumentTextDetection
+                });
+
+                List<AnnotateFileRequest> requests =
+                    new List<AnnotateFileRequest>();
+                requests.Add(syncRequest);
+
+                var document_text = client.BatchAnnotateFiles(requests);
+                Console.WriteLine(document_text.Responses[0].Responses[0].FullTextAnnotation.Text);
+                text = document_text.Responses[0].Responses[0].FullTextAnnotation.Text;
+            }
+
 
 
 
@@ -81,7 +112,7 @@ namespace OwlOProjectA.Controllers
 
 
             var nlp_client = LanguageServiceClient.Create();
-            var response = nlp_client.AnalyzeEntities(Document.FromPlainText(text.Text));
+            var response = nlp_client.AnalyzeEntities(Document.FromPlainText(text));
 
             Console.WriteLine(response);
             Double address_salience = 0;
@@ -94,7 +125,8 @@ namespace OwlOProjectA.Controllers
                 switch (entity.Type.ToString())
                 {
                     case "Address":
-                        if (entity.Metadata["country"] == "SG" || entity.Metadata["locality"] == "Singapore")
+                        if (entity.Metadata.ContainsKey("country") || entity.Metadata.ContainsKey("locality"))
+                        
                         {
                             if (address_salience <= Convert.ToDouble(entity.Salience))
                             {
@@ -102,6 +134,7 @@ namespace OwlOProjectA.Controllers
                                 address_salience = Convert.ToDouble(entity.Salience);
                             }
                         }
+                        
                         break;
                     case "Date":
                         if (date_salience <= Convert.ToDouble(entity.Salience))
@@ -123,7 +156,7 @@ namespace OwlOProjectA.Controllers
             }
 
             //return text.Text;
-            string[] words = text.Text.Split("\n");
+            string[] words = text.Split("\n");
             for (int i = 0; i < words.Length; i++)
             {
                 Console.WriteLine($"Array Number : {i} Array : {words[i]}");

@@ -1,13 +1,11 @@
 /* CHATBOX
 =============== */
 .chatbox {
-    position:absolute;
-    bottom: 600px;
+    position: fixed;
+    bottom: 30px;
     right: 30px;
-    z-index:100;
-    overflow: scroll;
+    z-index: 100;
 }
-
 
 /* CONTENT IS CLOSE */
 .chatbox__support {
@@ -23,14 +21,12 @@
 
 /* CONTENT ISOPEN */
 .chatbox--active {
-    display:none;
+    display: none;
     overflow: scroll;
-    overflow-x : hidden;
+    overflow-x: hidden;
     transform: translateY(-40px);
     z-index: 100;
     opacity: 1;
-
-
 }
 
 /* BUTTON */
@@ -52,12 +48,12 @@
     display: flex;
     flex-direction: column;
     overflow-y: hidden;
-    overflow-x : hidden;
+    overflow-x: hidden;
     flex-direction: column-reverse;
 }
 
 .messages__item {
-    background: orange;
+    background: rgb(64,180,124);
     max-width: 60.6%;
     width: fit-content;
 }
@@ -74,5 +70,4 @@
 .chatbox__footer {
     position: sticky;
     bottom: 0;
-
 }
