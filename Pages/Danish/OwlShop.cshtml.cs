@@ -26,6 +26,7 @@ namespace OwlOProjectA.Pages
         public void OnGet()
         {
             allVouchers = _svc.GetAllVouchers();
+
         }
     }
 }

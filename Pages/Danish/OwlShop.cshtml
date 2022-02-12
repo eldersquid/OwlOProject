@@ -20,92 +20,84 @@
 
 <body>
     <main class="main">
-        <div class="section-title">
-            <h3 class="">Owl Shop</h3>
-            <ul class="nav nav-tabs links" id="myTab-2" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <a asp-page="/VoucherCreate" class="nav-link"  type="button" aria-selected="false">Create Voucher</a>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <a asp-page="/OwlShop" class="nav-link active"  type="button"  aria-selected="true">Shop</a>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="nav-tab-two-1" data-bs-toggle="tab" data-bs-target="#tab-two-1" type="button" role="tab" aria-controls="tab-two" aria-selected="false">Achievements</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="nav-tab-three-1" data-bs-toggle="tab" data-bs-target="#tab-three-1" type="button" role="tab" aria-controls="tab-three" aria-selected="false">Points : 10301</button>
-                </li>
-            </ul>
-        </div>
-        <section class="home-slider position-relative mb-30 m-4">
-            <div class="home-slide-cover">
-                <div class="hero-slider-1 style-4 dot-style-1 dot-style-1-position-1">
-                    <div class="single-hero-slider rectangle single-animation-wrap" style="background-image: url(nest_assets//imgs/slider/slider-5.png)">
-                        <div class="slider-content">
-                            <h1 class="display-2 mb-40">
-                                FEATURED<br />
-                                OWL DEALS
-                            </h1>
-                            <p class="mb-65">Sign up for the daily newsletter</p>
-                            <form class="form-subcriber d-flex">
-                                <input type="email" placeholder="Your emaill address" />
-                                <button class="btn" type="submit">Subscribe</button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="single-hero-slider rectangle single-animation-wrap" style="background-image: url(nest_assets//imgs/slider/slider-6.png)">
-                        <div class="slider-content">
-                            <h1 class="display-2 mb-40">
-                                Fresh Vegetables<br />
-                                Big discount
-                            </h1>
-                            <p class="mb-65">Save up to 50% off on your first order</p>
-                            <form class="form-subcriber d-flex">
-                                <input type="email" placeholder="Your emaill address" />
-                                <button class="btn" type="submit">Subscribe</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="slider-arrow hero-slider-1-arrow"></div>
-            </div>
-        </section>
-        <!--End hero-->
+        @*<div class="section-title">
+                <h3 class="">Owl Shop</h3>
+                <ul class="nav nav-tabs links" id="myTab-2" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a asp-page="/VoucherCreate" class="nav-link" type="button" aria-selected="false">Create Voucher</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a asp-page="/OwlShop" class="nav-link active" type="button" aria-selected="true">Shop</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="nav-tab-two-1" data-bs-toggle="tab" data-bs-target="#tab-two-1" type="button" role="tab" aria-controls="tab-two" aria-selected="false">Achievements</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="nav-tab-three-1" data-bs-toggle="tab" data-bs-target="#tab-three-1" type="button" role="tab" aria-controls="tab-three" aria-selected="false">Points : 10301</button>
+                    </li>
+                </ul>
+            </div>*@
 
-        <div class="page-header mt-30 mb-50">
+        <div class="page-header mb-50">
             <div class="container">
                 <div class="archive-header">
                     <div class="row align-items-center">
                         <div class="col-xl-3">
-                            <h1 class="mb-15">Snack</h1>
+                            <h1 class="mb-15">Owl Shop</h1>
                             <div class="breadcrumb">
                                 <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
-                                <span></span> Shop <span></span> Snack
+                                <span></span> Owl Shop
                             </div>
                         </div>
                         <div class="col-xl-9 text-end d-none d-xl-block">
                             <ul class="tags-list">
                                 <li class="hover-up">
-                                    <a href="blog-category-grid.html"><i class="fi-rs-cross mr-10"></i>Cabbage</a>
+                                    <a asp-page="/Danish/VoucherCreate">Create Voucher</a>
+                                </li>
+                                <li class="hover-up">
+                                    <a asp-page="/Danish/VoucherCreate">Create Lucky Draw Chance</a>
                                 </li>
                                 <li class="hover-up active">
-                                    <a href="blog-category-grid.html"><i class="fi-rs-cross mr-10"></i>Broccoli</a>
+                                    <a asp-page="/Danish/OwlShop">Shop</a>
                                 </li>
                                 <li class="hover-up">
-                                    <a href="blog-category-grid.html"><i class="fi-rs-cross mr-10"></i>Artichoke</a>
+                                    <a href="blog-category-grid.html">Achievements</a>
                                 </li>
                                 <li class="hover-up">
-                                    <a href="blog-category-grid.html"><i class="fi-rs-cross mr-10"></i>Celery</a>
+                                    <a href="blog-category-grid.html">Points : 10301</a>
                                 </li>
-                                <li class="hover-up mr-0">
-                                    <a href="blog-category-grid.html"><i class="fi-rs-cross mr-10"></i>Spinach</a>
-                                </li>
+
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <section class="home-slider position-relative mb-30 m-4">
+            <div class="home-slide-cover">
+                <div class="hero-slider-1 style-4 dot-style-1 dot-style-1-position-1">
+                    <div class="single-hero-slider rectangle single-animation-wrap" style="background-image: url(/nest_assets/imgs/slider/slider-5.png)">
+                        <div class="slider-content">
+                            <h1 class="display-2 mb-40">
+                                FEATURED<br />
+                                OWL DEALS
+                            </h1>
+                            <p class="mb-65">Redeem exciting rewards and vouchers!</p>
+                            <form class="form-subcriber d-flex">
+                                <input type="email" placeholder="Your emaill address" />
+                                <button class="btn" type="submit">Subscribe</button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="slider-arrow hero-slider-1-arrow"></div>
+            </div>
+        </section>
+        <!--End hero-->
+
+
 
         <section class="section-padding pb-5 m-4">
             <div class="section-title">
@@ -126,45 +118,45 @@
                                 if (voucher.Super_Deal == true)
                                 {
                                     Double new_price = voucher.Voucher_Cost * ((100 - voucher.DiscountDeal_Percentage) / 100);
-                    <div class="product-cart-wrap style-2">
-                        <div class="product-badges product-badges-position product-badges-mrg">
-                            <span class="hot">@voucher.DiscountDeal_Percentage % off</span>
-                        </div>
-                        <div class="product-img-action-wrap">
-                            <div class="product-img">
-                                <a href="shop-product-right.html">
-                                    <img src="nest_assets//imgs/banner/banner-5.png" alt="" />
-                                </a>
-                            </div>
-                        </div>
-                        <div class="product-content-wrap">
-                            <div class="deals-countdown-wrap">
-                                <div class="deals-countdown" data-countdown="2025/03/25 00:00:00"></div>
-                            </div>
-                            <div class="deals-content">
-                                <h2><a href="shop-product-right.html">@voucher.Voucher_Name</a></h2>
-                                <div class="product-rate-cover">
-                                    <div class="product-rate d-inline-block">
-                                        <div class="product-rating" style="width: 90%"></div>
-                                    </div>
-                                    <span class="font-small ml-5 text-muted"> (4.0)</span>
-                                </div>
-                                <div>
-                                    <span class="font-small text-muted">By <a href="vendor-details-1.html">@voucher.Voucher_Company</a></span>
-                                </div>
-                                <div class="product-card-bottom">
-                                    <div class="product-price">
-                                        <span>@new_price OP</span>
-                                        <span class="old-price">@voucher.Voucher_Cost OP</span>
-                                    </div>
-                                    <div class="add-cart">
-                                        <a class="add" href="shop-cart.html"><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
-                                    </div>
+                                    <div class="product-cart-wrap style-2">
+                                        <div class="product-badges product-badges-position product-badges-mrg">
+                                            <span class="hot">@voucher.DiscountDeal_Percentage % off</span>
+                                        </div>
+                                        <div class="product-img-action-wrap">
+                                            <div class="product-img">
+                                                <a href="shop-product-right.html">
+                                                    <img src="/nest_assets/imgs/banner/banner-5.png" alt="" />
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="product-content-wrap">
+                                            <div class="deals-countdown-wrap">
+                                                <div class="deals-countdown" data-countdown="2025/03/25 00:00:00"></div>
+                                            </div>
+                                            <div class="deals-content">
+                                                <h2><a href="shop-product-right.html">@voucher.Voucher_Name</a></h2>
+                                                <div class="product-rate-cover">
+                                                    <div class="product-rate d-inline-block">
+                                                        <div class="product-rating" style="width: 90%"></div>
+                                                    </div>
+                                                    <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                                </div>
+                                                <div>
+                                                    <span class="font-small text-muted">By <a href="vendor-details-1.html">@voucher.Voucher_Company</a></span>
+                                                </div>
+                                                <div class="product-card-bottom">
+                                                    <div class="product-price">
+                                                        <span>@new_price OP</span>
+                                                        <span class="old-price">@voucher.Voucher_Cost OP</span>
+                                                    </div>
+                                                    <div class="add-cart">
+                                                        <a class="add" href="shop-cart.html"><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
+                                                    </div>
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 }
 
 
@@ -173,19 +165,19 @@
 
                         }
                         else
-            {
-                <div class="banner-img wow fadeIn mb-lg-0 animated d-lg-block d-none">
-                    <img src="nest_assets/imgs/banner/banner-11.png" alt="" />
-                    <div class="banner-text">
-                        <span>Oganic</span>
-                        <h4>
-                            No <span class="text-brand">SUPER DEALS</span> found. Try agai <br />
-                            Come back later.<br />
+                        {
+                            <div class="banner-img wow fadeIn mb-lg-0 animated d-lg-block d-none">
+                                <img src="/nest_assets/imgs/banner/banner-11.png" alt="" />
+                                <div class="banner-text">
+                                    <span>Oganic</span>
+                                    <h4>
+                                        No <span class="text-brand">SUPER DEALS</span> found. Try again <br />
+                                        Come back later.<br />
 
-                        </h4>
-                    </div>
-                </div>
-            }
+                                    </h4>
+                                </div>
+                            </div>
+                        }
                     }
 
 
@@ -241,8 +233,8 @@
                                             <div class="product-img-action-wrap">
                                                 <div class="product-img product-img-zoom">
                                                     <a href="shop-product-right.html">
-                                                        <img class="default-img" src="nest_assets//imgs/shop/product-1-1.jpg" alt="" />
-                                                        <img class="hover-img" src="nest_assets//imgs/shop/product-1-2.jpg" alt="" />
+                                                        <img class="default-img" src="/nest_assets/imgs/shop/product-1-1.jpg" alt="" />
+                                                        <img class="hover-img" src="/nest_assets/imgs/shop/product-1-2.jpg" alt="" />
                                                     </a>
                                                 </div>
                                                 <div class="product-action-1">
@@ -292,8 +284,8 @@
                                             <div class="product-img-action-wrap">
                                                 <div class="product-img product-img-zoom">
                                                     <a href="shop-product-right.html">
-                                                        <img class="default-img" src="nest_assets//imgs/shop/product-10-1.jpg" alt="" />
-                                                        <img class="hover-img" src="nest_assets//imgs/shop/product-10-2.jpg" alt="" />
+                                                        <img class="default-img" src="/nest_assets/imgs/shop/product-10-1.jpg" alt="" />
+                                                        <img class="hover-img" src="/nest_assets/imgs/shop/product-10-2.jpg" alt="" />
                                                     </a>
                                                 </div>
                                                 <div class="product-action-1">
@@ -331,8 +323,8 @@
                                             <div class="product-img-action-wrap">
                                                 <div class="product-img product-img-zoom">
                                                     <a href="shop-product-right.html">
-                                                        <img class="default-img" src="nest_assets//imgs/shop/product-15-1.jpg" alt="" />
-                                                        <img class="hover-img" src="nest_assets//imgs/shop/product-15-2.jpg" alt="" />
+                                                        <img class="default-img" src="/nest_assets/imgs/shop/product-15-1.jpg" alt="" />
+                                                        <img class="hover-img" src="/nest_assets/imgs/shop/product-15-2.jpg" alt="" />
                                                     </a>
                                                 </div>
                                                 <div class="product-action-1">
@@ -370,8 +362,8 @@
                                             <div class="product-img-action-wrap">
                                                 <div class="product-img product-img-zoom">
                                                     <a href="shop-product-right.html">
-                                                        <img class="default-img" src="nest_assets//imgs/shop/product-12-1.jpg" alt="" />
-                                                        <img class="hover-img" src="nest_assets//imgs/shop/product-12-2.jpg" alt="" />
+                                                        <img class="default-img" src="/nest_assets/imgs/shop/product-12-1.jpg" alt="" />
+                                                        <img class="hover-img" src="/nest_assets/imgs/shop/product-12-2.jpg" alt="" />
                                                     </a>
                                                 </div>
                                                 <div class="product-action-1">
@@ -409,8 +401,8 @@
                                             <div class="product-img-action-wrap">
                                                 <div class="product-img product-img-zoom">
                                                     <a href="shop-product-right.html">
-                                                        <img class="default-img" src="nest_assets//imgs/shop/product-13-1.jpg" alt="" />
-                                                        <img class="hover-img" src="nest_assets//imgs/shop/product-13-2.jpg" alt="" />
+                                                        <img class="default-img" src="/nest_assets/imgs/shop/product-13-1.jpg" alt="" />
+                                                        <img class="hover-img" src="/nest_assets/imgs/shop/product-13-2.jpg" alt="" />
                                                     </a>
                                                 </div>
                                                 <div class="product-action-1">
@@ -448,8 +440,8 @@
                                             <div class="product-img-action-wrap">
                                                 <div class="product-img product-img-zoom">
                                                     <a href="shop-product-right.html">
-                                                        <img class="default-img" src="nest_assets//imgs/shop/product-14-1.jpg" alt="" />
-                                                        <img class="hover-img" src="nest_assets//imgs/shop/product-14-2.jpg" alt="" />
+                                                        <img class="default-img" src="/nest_assets/imgs/shop/product-14-1.jpg" alt="" />
+                                                        <img class="hover-img" src="/nest_assets/imgs/shop/product-14-2.jpg" alt="" />
                                                     </a>
                                                 </div>
                                                 <div class="product-action-1">
@@ -494,8 +486,8 @@
                                             <div class="product-img-action-wrap">
                                                 <div class="product-img product-img-zoom">
                                                     <a href="shop-product-right.html">
-                                                        <img class="default-img" src="nest_assets//imgs/shop/product-7-1.jpg" alt="" />
-                                                        <img class="hover-img" src="nest_assets//imgs/shop/product-7-2.jpg" alt="" />
+                                                        <img class="default-img" src="/nest_assets/imgs/shop/product-7-1.jpg" alt="" />
+                                                        <img class="hover-img" src="/nest_assets/imgs/shop/product-7-2.jpg" alt="" />
                                                     </a>
                                                 </div>
                                                 <div class="product-action-1">
@@ -533,8 +525,8 @@
                                             <div class="product-img-action-wrap">
                                                 <div class="product-img product-img-zoom">
                                                     <a href="shop-product-right.html">
-                                                        <img class="default-img" src="nest_assets//imgs/shop/product-8-1.jpg" alt="" />
-                                                        <img class="hover-img" src="nest_assets//imgs/shop/product-8-2.jpg" alt="" />
+                                                        <img class="default-img" src="/nest_assets/imgs/shop/product-8-1.jpg" alt="" />
+                                                        <img class="hover-img" src="/nest_assets/imgs/shop/product-8-2.jpg" alt="" />
                                                     </a>
                                                 </div>
                                                 <div class="product-action-1">
@@ -572,8 +564,8 @@
                                             <div class="product-img-action-wrap">
                                                 <div class="product-img product-img-zoom">
                                                     <a href="shop-product-right.html">
-                                                        <img class="default-img" src="nest_assets//imgs/shop/product-9-1.jpg" alt="" />
-                                                        <img class="hover-img" src="nest_assets//imgs/shop/product-9-2.jpg" alt="" />
+                                                        <img class="default-img" src="/nest_assets/imgs/shop/product-9-1.jpg" alt="" />
+                                                        <img class="hover-img" src="/nest_assets/imgs/shop/product-9-2.jpg" alt="" />
                                                     </a>
                                                 </div>
                                                 <div class="product-action-1">
@@ -611,8 +603,8 @@
                                             <div class="product-img-action-wrap">
                                                 <div class="product-img product-img-zoom">
                                                     <a href="shop-product-right.html">
-                                                        <img class="default-img" src="nest_assets//imgs/shop/product-13-1.jpg" alt="" />
-                                                        <img class="hover-img" src="nest_assets//imgs/shop/product-13-2.jpg" alt="" />
+                                                        <img class="default-img" src="/nest_assets/imgs/shop/product-13-1.jpg" alt="" />
+                                                        <img class="hover-img" src="/nest_assets/imgs/shop/product-13-2.jpg" alt="" />
                                                     </a>
                                                 </div>
                                                 <div class="product-action-1">
@@ -650,8 +642,8 @@
                                             <div class="product-img-action-wrap">
                                                 <div class="product-img product-img-zoom">
                                                     <a href="shop-product-right.html">
-                                                        <img class="default-img" src="nest_assets//imgs/shop/product-14-1.jpg" alt="" />
-                                                        <img class="hover-img" src="nest_assets//imgs/shop/product-14-2.jpg" alt="" />
+                                                        <img class="default-img" src="/nest_assets/imgs/shop/product-14-1.jpg" alt="" />
+                                                        <img class="hover-img" src="/nest_assets/imgs/shop/product-14-2.jpg" alt="" />
                                                     </a>
                                                 </div>
                                                 <div class="product-action-1">
@@ -841,23 +833,23 @@
                                                 <div class="product-img-action-wrap">
                                                     <div class="product-img product-img-zoom">
                                                         <a href="shop-product-right.html">
-                                                            <img class="default-img" src="nest_assets/imgs/shop/product-1-1.jpg" alt="" />
-                                                            <img class="hover-img" src="nest_assets/imgs/shop/product-1-2.jpg" alt="" />
+                                                            <img class="default-img" src="/nest_assets/imgs/shop/product-1-1.jpg" alt="" />
+                                                            <img class="hover-img" src="/nest_assets/imgs/shop/product-1-2.jpg" alt="" />
                                                         </a>
                                                     </div>
                                                     <div class="product-action-1">
-                                                        <a aria-label="Delete Voucher" class="action-btn" asp-route-id="@voucher.Vouchers_ID" asp-page="/VoucherDelete"><i class="fi-rs-heart"></i></a>
-                                                        <a aria-label="Compare" class="action-btn" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
-                                                        <a aria-label="Edit Voucher" asp-route-id="@voucher.Vouchers_ID" asp-page="/VoucherEdit" class="action-btn"><i class="fi-rs-eye"></i></a>
+                                                        <a aria-label="Delete" class="action-btn" asp-route-id="@voucher.Vouchers_ID" asp-page="/Danish/VoucherDelete"><i class="fi-rs-heart"></i></a>
+
+                                                        <a aria-label="Edit" asp-route-id="@voucher.Vouchers_ID" asp-page="/Danish/VoucherEdit" class="action-btn"><i class="fi-rs-eye"></i></a>
                                                     </div>
-                                                    
+
                                                     <div class="product-badges product-badges-position product-badges-mrg">
                                                         <span class="hot">@voucher.DiscountDeal_Percentage % off</span>
                                                     </div>
                                                 </div>
                                                 <div class="product-content-wrap">
                                                     <div class="product-category">
-                                                        <a href="shop-grid-right.html">Snack</a>
+                                                        <a href="shop-grid-right.html">Voucher</a>
                                                     </div>
                                                     <h2><a href="shop-product-right.html">@voucher.Voucher_Name</a></h2>
                                                     <div class="product-rate-cover">
@@ -868,6 +860,9 @@
                                                     </div>
                                                     <div>
                                                         <span class="font-small text-muted">By <a href="vendor-details-1.html">@voucher.Voucher_Company</a></span>
+                                                    </div>
+                                                    <div>
+                                                        <span class="font-small text-muted">@voucher.Voucher_Description</span>
                                                     </div>
                                                     <div class="product-card-bottom">
                                                         <div class="product-price">
@@ -890,14 +885,14 @@
                                                 <div class="product-img-action-wrap">
                                                     <div class="product-img product-img-zoom">
                                                         <a href="shop-product-right.html">
-                                                            <img class="default-img" src="nest_assets/imgs/shop/product-1-1.jpg" alt="" />
-                                                            <img class="hover-img" src="nest_assets/imgs/shop/product-1-2.jpg" alt="" />
+                                                            <img class="default-img" src="/nest_assets/imgs/shop/product-1-1.jpg" alt="" />
+                                                            <img class="hover-img" src="/nest_assets/imgs/shop/product-1-2.jpg" alt="" />
                                                         </a>
                                                     </div>
                                                     <div class="product-action-1">
-                                                        <a aria-label="Delete Voucher" class="action-btn" asp-route-id="@voucher.Vouchers_ID" asp-page="/VoucherDelete"><i class="fi-rs-heart"></i></a>
+                                                        <a aria-label="Delete" class="action-btn" asp-route-id="@voucher.Vouchers_ID" asp-page="/VoucherDelete"><i class="fi-rs-heart"></i></a>
                                                         <a aria-label="Compare" class="action-btn" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
-                                                        <a aria-label="Edit Voucher" asp-route-id="@voucher.Vouchers_ID" asp-page="/VoucherEdit" class="action-btn" ><i class="fi-rs-eye"></i></a>
+                                                        <a aria-label="Edit" asp-route-id="@voucher.Vouchers_ID" asp-page="/VoucherEdit" class="action-btn"><i class="fi-rs-eye"></i></a>
                                                     </div>
                                                     <div class="product-badges product-badges-position product-badges-mrg">
                                                         <span class="hot">Hot</span>
@@ -921,7 +916,7 @@
                                                     <div class="product-card-bottom">
                                                         <div class="product-price">
                                                             <span>@voucher.Voucher_Cost OP</span>
-                                                            
+
                                                         </div>
                                                         <div class="add-cart">
                                                             <a class="add" href="shop-cart.html"><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
@@ -938,7 +933,7 @@
                             else
                             {
                                 <div class="banner-img wow fadeIn mb-lg-0 animated d-lg-block d-none">
-                                    <img src="nest_assets/imgs/banner/banner-11.png" alt="" />
+                                    <img src="/nest_assets/imgs/banner/banner-11.png" alt="" />
                                     <div class="banner-text">
                                         <span>Oganic</span>
                                         <h4>
@@ -981,19 +976,19 @@
                         <h5 class="section-title style-1 mb-30">Category</h5>
                         <ul>
                             <li>
-                                <a href="shop-grid-right.html"> <img src="nest_assets//imgs/theme/icons/category-1.svg" alt="" />Milks & Dairies</a><span class="count">30</span>
+                                <a href="shop-grid-right.html"> <img src="/nest_assets/imgs/theme/icons/category-1.svg" alt="" />Milks & Dairies</a><span class="count">30</span>
                             </li>
                             <li>
-                                <a href="shop-grid-right.html"> <img src="nest_assets//imgs/theme/icons/category-2.svg" alt="" />Clothing</a><span class="count">35</span>
+                                <a href="shop-grid-right.html"> <img src="/nest_assets/imgs/theme/icons/category-2.svg" alt="" />Clothing</a><span class="count">35</span>
                             </li>
                             <li>
-                                <a href="shop-grid-right.html"> <img src="nest_assets//imgs/theme/icons/category-3.svg" alt="" />Pet Foods </a><span class="count">42</span>
+                                <a href="shop-grid-right.html"> <img src="/nest_assets/imgs/theme/icons/category-3.svg" alt="" />Pet Foods </a><span class="count">42</span>
                             </li>
                             <li>
-                                <a href="shop-grid-right.html"> <img src="nest_assets//imgs/theme/icons/category-4.svg" alt="" />Baking material</a><span class="count">68</span>
+                                <a href="shop-grid-right.html"> <img src="/nest_assets/imgs/theme/icons/category-4.svg" alt="" />Baking material</a><span class="count">68</span>
                             </li>
                             <li>
-                                <a href="shop-grid-right.html"> <img src="nest_assets//imgs/theme/icons/category-5.svg" alt="" />Fresh Fruit</a><span class="count">87</span>
+                                <a href="shop-grid-right.html"> <img src="/nest_assets/imgs/theme/icons/category-5.svg" alt="" />Fresh Fruit</a><span class="count">87</span>
                             </li>
                         </ul>
                     </div>
@@ -1049,3 +1044,6 @@
 
 </body>
 </html>
+
+
+

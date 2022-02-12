@@ -10,6 +10,7 @@ using System.Reflection;
 using Google.Apis.Dialogflow.v3beta1;
 using Newtonsoft.Json;
 using Google.Apis.Dialogflow.v3beta1.Data;
+using System.Collections;
 
 namespace OwlOProjectA.Controllers
 {
@@ -63,18 +64,24 @@ namespace OwlOProjectA.Controllers
             System.Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", credential_path);
             var project = "projects/owlprojectchatbot-smog/agent";
             var client = IntentsClient.Create();
+
+            
             
 
             var intent = new Intent();
-    
-            
-            intent.DisplayName = "Test";
-            var newIntent = client.CreateIntentAsync(project, intent);
-            var part = new Intent.Types.TrainingPhrase.Types.Part();
-            part.Text = "Test";
 
-            var phrase = new Intent.Types.TrainingPhrase();
-            phrase.Name = "TESTTT";
+            CreateIntentRequest createIntent = new CreateIntentRequest
+            {
+                Parent = project,
+                Intent = intent,
+                IntentView = IntentView.Full
+            };
+
+            intent.DisplayName = "Test";
+            var newIntent = client.CreateIntent(createIntent);
+
+            
+            
             
            
             
@@ -92,7 +99,61 @@ namespace OwlOProjectA.Controllers
             
         }
 
-        
+        public List<Intent> ViewIntents()
+        {
+            string credential_path = @"./credentials/owlprojectchatbot.json";
+            System.Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", credential_path);
+            var project = "projects/owlprojectchatbot-smog/agent";
+            var client = IntentsClient.Create();
+
+
+            ListIntentsRequest listIntent = new ListIntentsRequest
+            {
+                Parent = project,
+                IntentView = IntentView.Full
+            };
+
+            
+
+
+           
+            var intents = client.ListIntents(listIntent);
+
+            
+
+            List<Intent> intentList = new List<Intent>();
+
+
+
+            foreach (Intent item in intents)
+            {
+                
+                intentList.Add(item);
+                
+            }
+
+            return intentList;
+            
+
+
+        }
+
+        public void DeleteIntent(string name)
+        {
+            string credential_path = @"./credentials/owlprojectchatbot.json";
+            System.Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", credential_path);
+            var project = "projects/owlprojectchatbot-smog/agent/";
+            var client = IntentsClient.Create();
+            string path = project + "intents/" + name;
+            client.DeleteIntent(path);
+
+           
+
+
+
+        }
+
+
         public WebhookResponse PostWH([FromBody] string requestString)
         {
             var requestParser = new Google.Protobuf.JsonParser(

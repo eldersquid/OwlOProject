@@ -160,11 +160,11 @@ namespace OwlOProjectA.Controllers
             for (int i = 0; i < words.Length; i++)
             {
                 Console.WriteLine($"Array Number : {i} Array : {words[i]}");
-                if (words[i].Contains("Male"))
+                if (words[i].ToLower().Contains("male"))
                 {
                     details.Gender = "M";
                 }
-                else if (words[i].Contains("Female"))
+                else if (words[i].ToLower().Contains("female"))
                 {
                     details.Gender = "F";
                 }
@@ -176,6 +176,7 @@ namespace OwlOProjectA.Controllers
                 {
                     details.NRIC = words[i];
                 }
+                
 
             }
             Console.WriteLine($"Gender: {details.Gender}");
@@ -201,6 +202,7 @@ namespace OwlOProjectA.Controllers
                     {
                         file.CopyTo(stream);
                     }
+                    
                 }
 
             return filename;

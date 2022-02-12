@@ -1,9 +1,11 @@
 ﻿@page
-@model OwlOProjectA.Pages.OwleeRegisterModel
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model RegisterModel
 @{
+    ViewData["Title"] = "Register";
 }
 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
     function scanDoc() {
         $.get("/home/scanDoc", function (data) {
@@ -24,12 +26,11 @@
 
 
 </script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
 <!-- Favicon -->
-<link rel="shortcut icon" type="image/x-icon" href="~/nest_assets/imgs/theme/favicon.svg" />
+<link rel="shortcut icon" type="image/x-icon" href="/nest_assets/imgs/theme/favicon.svg" />
 <!-- Template CSS -->
-<link rel="stylesheet" href="~/nest_assets/css/main.css?v=4.0" />
+<link rel="stylesheet" href="/nest_assets/css/main.css?v=4.0" />
 <main class="main pages">
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -79,34 +80,38 @@
                                         <form method="post">
 
                                             <div class="form-group">
-                                                <input asp-for="MyOwlee.Email" placeholder="Email" />
-                                                <span asp-validation-for="MyOwlee.Email" class="text-danger"></span>
+
+                                                <label asp-for="Input.Email"></label>
+                                                <input asp-for="Input.Email" class="form-control" />
+                                                <span asp-validation-for="Input.Email" class="text-danger"></span>
                                             </div>
                                             <div class="form-group">
-                                                <input asp-for="MyOwlee.NRIC" placeholder="NRIC" />
-                                                <span asp-validation-for="MyOwlee.NRIC" class="text-danger"></span>
+                                                <input asp-for="Input.NRIC" placeholder="NRIC" />
+                                                <span asp-validation-for="Input.NRIC" class="text-danger"></span>
                                             </div>
                                             <div class="form-group">
-                                                <input asp-for="MyOwlee.Name" placeholder="Name" />
-                                                <span asp-validation-for="MyOwlee.Name" class="text-danger"></span>
+                                                <input asp-for="Input.Name" placeholder="Name" />
+                                                <span asp-validation-for="Input.Name" class="text-danger"></span>
                                             </div>
                                             <div class="form-group">
-                                                <input required="" type="password" name="MyOwlee.Password" placeholder="Password" />
-                                                <span asp-validation-for="MyOwlee.Password" class="text-danger"></span>
+                                                <label asp-for="Input.Password"></label>
+                                                <input asp-for="Input.Password" class="form-control" />
+                                                <span asp-validation-for="Input.Password" class="text-danger"></span>
                                             </div>
                                             <div class="form-group">
-                                                <input required="" type="password" name="MyOwlee.Password" placeholder="Confirm password" />
-                                                <span asp-validation-for="MyOwlee.Password" class="text-danger"></span>
+                                                <label asp-for="Input.ConfirmPassword"></label>
+                                                <input asp-for="Input.ConfirmPassword" class="form-control" />
+                                                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
                                             </div>
                                             <div class="form-group">
-                                                <input asp-for="MyOwlee.Bio" placeholder="Bio" />
-                                                <span asp-validation-for="MyOwlee.Bio" class="text-danger"></span>
+                                                <input asp-for="Input.Bio" placeholder="Bio" />
+                                                <span asp-validation-for="Input.Bio" class="text-danger"></span>
                                             </div>
 
                                             <div class="form-group">
                                                 <label class="form-label">Citizenship</label>
-                                                @Html.DropDownList("MyOwlee.Citizenship", new SelectList(Enum.GetValues(typeof(Models.Citizenship))))
-                                                <span asp-validation-for="MyOwlee.Citizenship" class="text-danger"></span>
+                                                @Html.DropDownList("Input.Citizenship", new SelectList(Enum.GetValues(typeof(OwlOProjectA.Models.Citizenship))))
+                                                <span asp-validation-for="Input.Citizenship" class="text-danger"></span>
                                             </div>
 
                                             <!-- For captcha -->
@@ -126,15 +131,15 @@
                                                 <label class="control-label">Gender</label>
                                                 <div class="custome-radio">
 
-                                                    <input class="form-check-input" required="" type="radio" name="MyOwlee.Gender" value="M" id="male" checked="" />
+                                                    <input class="form-check-input" required="" type="radio" name="Input.Gender" value="M" id="male" checked="" />
                                                     <label class="form-check-label" for="male">Male</label>
                                                 </div>
                                                 <div class="custome-radio">
 
-                                                    <input class="form-check-input" required="" type="radio" name="MyOwlee.Gender" value="F" id="female" checked="" />
+                                                    <input class="form-check-input" required="" type="radio" name="Input.Gender" value="F" id="female" checked="" />
                                                     <label class="form-check-label" for="female">Female</label>
                                                 </div>
-                                                <span asp-validation-for="MyOwlee.Gender" class="text-danger"></span>
+                                                <span asp-validation-for="Input.Gender" class="text-danger"></span>
                                             </div>
 
 
@@ -158,27 +163,13 @@
                             </div>
                             <div class="col-lg-6 pr-30 d-none d-lg-block">
                                 <div class="card-login mt-115">
-                                    <img id="hospital_image" src="~/images/winto.jpg" alt="Missing file" class="border img-thumbnail img-fluid" style="height:80%;width:90%">
+                                    @*<img id="hospital_image" src="~/images/winto.jpg" alt="Missing file" class="border img-thumbnail img-fluid" style="height:80%;width:90%">*@
                                     <input type="file" id="docUpload" class="social-login apple-login" name="docUpload" accept=".xlsx,.xls,image/*,.doc, .docx,.ppt, .pptx,.txt,.pdf">
-                                    <input id="photoURL" type="hidden" name="photoURL" value="~/images/winto.jpg">
+                                    <input id="photoURL" type="hidden" name="photoURL" value="">
                                     <div class="font-weight-bold text-danger small" id="docErr" style="display:none">Error occurred.</div>
 
                                 </div>
-                                <div class="card-login mt-50">
 
-                                    <button type="button" name="button" class="social-login facebook-login">
-                                        <img src="~/nest_assets/imgs/theme/icons/logo-facebook.svg" alt="" />
-                                        <span>Scan Document</span>
-                                    </button>
-                                    <a href="#" class="social-login google-login">
-                                        <img src="~/nest_assets/imgs/theme/icons/logo-google.svg" alt="" />
-                                        <span>Continue with Google</span>
-                                    </a>
-                                    <a href="#" class="social-login apple-login">
-                                        <img src="~/nest_assets/imgs/theme/icons/logo-apple.svg" alt="" />
-                                        <span>Continue with SingPass</span>
-                                    </a>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -190,13 +181,11 @@
 
 </main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 
-<script src="~/nest_assets/custom_js/docUpload.js"></script>
-
+<script src="/nest_assets/custom_js/docUpload.js"></script>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <partial name="_ValidationScriptsPartial" />
 }

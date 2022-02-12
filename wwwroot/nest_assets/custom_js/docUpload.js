@@ -21,10 +21,10 @@ $("#docUpload").on("change", function () {
             console.log(detail);
           }
           $("#exampleModal").modal("show");
-          document.getElementById('MyOwlee_Email').value = details["email"];
-          document.getElementById('MyOwlee_NRIC').value = details["nric"];
-          document.getElementById('MyOwlee_Bio').value = details["address"];
-          document.getElementById('MyOwlee_Name').value = details["name"];
+          document.getElementById('Input_Email').value = details["email"];
+          document.getElementById('Input_NRIC').value = details["nric"];
+          document.getElementById('Input_Bio').value = details["address"];
+          document.getElementById('Input_Name').value = details["name"];
 
           $('#exampleModal .modal-body').html(details["email"]);
           if (data.err) {

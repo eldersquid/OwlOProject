@@ -29,6 +29,7 @@ namespace OwlOProjectA
             services.AddTransient<OwleeService>();
             services.AddDbContext<OwloDBContext>();
             services.AddTransient<VoucherService>();
+            services.AddTransient<Controllers.IntentController>();
             services.Configure<IISServerOptions>(options =>
             {
                 options.AllowSynchronousIO = true;
@@ -49,12 +50,13 @@ namespace OwlOProjectA
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
+            app.UseAuthentication();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
 
+            
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

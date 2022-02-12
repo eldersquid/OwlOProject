@@ -1,0 +1,88 @@
+﻿@page
+@model OwlOProjectA.Pages.Danish.ViewIntentsModel 
+@{
+}
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+
+
+
+<body id="page-top">
+
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover" id="dataTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th scope="col">Question Type</th>
+                        <th scope="col">Answer</th>
+                        <th scope="col">Training Phrase</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var intent in Model.allIntents)
+                    {
+                    <tr>
+                        <td>@intent.Name.Substring(46)</td>
+                        @*<td><span class="badge rounded-pill alert-warning">Pending</span></td>*@
+                        <td>@intent.DisplayName</td>
+                        <td>@intent.Messages[0].Text.Text_[0]</td>
+                        <td>
+                            @if (intent.TrainingPhrases.Any())
+                            {
+                                @intent.TrainingPhrases[0].Parts[0].Text
+                            }
+                            else
+                {
+                    <p>No training phrase available</p>
+                }
+
+                            
+                        </td>
+                        <td class="text-end">
+                            <a href="#" class="btn btn-md rounded font-sm">Detail</a>
+                            <div class="dropdown">
+                                <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">View detail</a>
+                                    <a class="dropdown-item" href="#">Edit info</a>
+                                    <a class="dropdown-item text-danger" asp-route-id="@intent.Name.Substring(46)" asp-page="/Danish/IntentDelete">Delete</a>
+                                </div>
+                            </div>
+                            <!-- dropdown //end -->
+                        </td>
+                    </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+        <!-- table-responsive //end -->
+    </div>
+    <!-- card-body end// -->
+    </div>
+
+    <!-- End of Page Wrapper -->
+    <!-- Scroll to Top Button-->
+    <!-- Custom scripts for all pages-->
+    <script src="/datatables/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="/datatables/jquery.dataTables.min.js"></script>
+    <script src="/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="/datatables/datatables-demo.js"></script>
+    <script src="/nest_assets/js/main.js" type="text/javascript"></script>
+    <script src="/nest_assets/js/vendors/select2.min.js"></script>
+    <script src="/nest_assets/js/vendors/perfect-scrollbar.js"></script>
+    <script src="/nest_assets/js/vendors/jquery.fullscreen.min.js"></script>
+
+</body>
+
+

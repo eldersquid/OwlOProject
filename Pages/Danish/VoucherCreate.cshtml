@@ -3,7 +3,9 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
 }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" />
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 <script type="text/javascript">
 
     function scanDoc() {
@@ -27,6 +29,15 @@
             $("#discount").hide();
     }
 
+    $(document).ready(function () {
+        $('#voucher_Voucher_Expiry').datepicker({
+            format: "dd/mm/yyyy",
+            autoclose: true,
+            startDate: '+1d'
+        });
+    });
+
+
 </script>
 
 <!-- Favicon -->
@@ -38,12 +49,11 @@
 
 
         <div class="page-header breadcrumb-wrap">
-            <div class="container">
 
                 <div class="breadcrumb">
                     <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
                     <span></span> Pages <span></span> My Account
-                    
+
                 </div>
                 <ul class="nav nav-tabs links offset-8" id="myTab-2" role="tablist">
                     <li class="nav-item" role="presentation">
@@ -77,9 +87,9 @@
                                         <form method="post">
 
                                             @*<div class="form-group">
-            <input asp-for="voucher.Voucher_CompanyPhoto" type="file" />
-            <span asp-validation-for="voucher.Voucher_CompanyPhoto" class="text-danger"></span>
-        </div>*@
+                                                    <input asp-for="voucher.Voucher_CompanyPhoto" type="file" />
+                                                    <span asp-validation-for="voucher.Voucher_CompanyPhoto" class="text-danger"></span>
+                                                </div>*@
                                             <div class="form-group">
                                                 <input asp-for="voucher.Voucher_Name" placeholder="Voucher Name" />
                                                 <span asp-validation-for="voucher.Voucher_Name" class="text-danger"></span>
@@ -100,7 +110,7 @@
 
                                             <div class="form-group">
                                                 <label class="form-label">Expiry Date</label>
-                                                <input asp-for="voucher.Voucher_Expiry" />
+                                                <input data-provide="datepicker" asp-for="voucher.Voucher_Expiry" type="text" />
                                                 <span asp-validation-for="voucher.Voucher_Expiry" class="text-danger"></span>
                                             </div>
 
@@ -108,16 +118,16 @@
 
                                             <!-- For captcha -->
                                             <!-- <div class="login_footer form-group">
-        <div class="chek-form">
-            <input type="text" required="" name="email" placeholder="Security code *" />
-        </div>
-        <span class="security-code">
-            <b class="text-new">8</b>
-            <b class="text-hot">6</b>
-            <b class="text-sale">7</b>
-            <b class="text-best">5</b>
-        </span>
-    </div> -->
+                                                <div class="chek-form">
+                                                    <input type="text" required="" name="email" placeholder="Security code *" />
+                                                </div>
+                                                <span class="security-code">
+                                                    <b class="text-new">8</b>
+                                                    <b class="text-hot">6</b>
+                                                    <b class="text-sale">7</b>
+                                                    <b class="text-best">5</b>
+                                                </span>
+                                            </div> -->
                                             <!-- radio button -->
                                             <div class="payment_option mb-50">
 
@@ -129,23 +139,23 @@
                                                     </div>
                                                 </div>
 
-                                                <span asp-validation-for="voucher.Super_Deal"  class="text-danger"></span>
+                                                <span asp-validation-for="voucher.Super_Deal" class="text-danger"></span>
                                             </div>
                                             <div class="form-group">
-                                                <input asp-for="voucher.DiscountDeal_Percentage"  placeholder="Discount Percentage" id="discount" style="display:none"/>
+                                                <input asp-for="voucher.DiscountDeal_Percentage" placeholder="Discount Percentage" id="discount" style="display:none" />
                                                 <span asp-validation-for="voucher.DiscountDeal_Percentage" class="text-danger"></span>
                                             </div>
 
 
                                             <!-- <div class="login_footer form-group mb-50">
-        <div class="chek-form">
-            <div class="custome-checkbox">
-                <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox12" value="" />
-                <label class="form-check-label" for="exampleCheckbox12"><span>I agree to terms &amp; Policy.</span></label>
-            </div>
-        </div>
-        <a href="page-privacy-policy.html"><i class="fi-rs-book-alt mr-5 text-muted"></i>Lean more</a>
-    </div> -->
+                                                <div class="chek-form">
+                                                    <div class="custome-checkbox">
+                                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox12" value="" />
+                                                        <label class="form-check-label" for="exampleCheckbox12"><span>I agree to terms &amp; Policy.</span></label>
+                                                    </div>
+                                                </div>
+                                                <a href="page-privacy-policy.html"><i class="fi-rs-book-alt mr-5 text-muted"></i>Lean more</a>
+                                            </div> -->
 
                                             <div class="form-group mb-30">
                                                 <button type="submit" id="create" class="btn btn-fill-out btn-block hover-up font-weight-bold" name="login">Create Voucher</button>
@@ -156,7 +166,7 @@
                             </div>
                             <div class="col-lg-6 pr-30 d-none d-lg-block">
                                 <div class="card-login mt-115">
-                                    
+
                                 </div>
                             </div>
                         </div>
