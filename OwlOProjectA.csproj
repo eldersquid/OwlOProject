@@ -5,29 +5,33 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Models\VoucherDBContext.cs" />
+    <Compile Remove="Migrations\20220212143213_Inital-Create.cs" />
+    <Compile Remove="Migrations\20220212143213_Inital-Create.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Google.Apis.Slides.v1" Version="1.55.0.2423" />
+    <PackageReference Include="CsvHelper" Version="27.2.1" />
+    <PackageReference Include="Google.Apis.Dialogflow.v3beta1" Version="1.55.0.2556" />
     <PackageReference Include="Google.Cloud.Dialogflow.V2" Version="3.8.0" />
+    <PackageReference Include="Google.Cloud.Language.V1" Version="2.3.0" />
+    <PackageReference Include="Google.Cloud.Vision.V1" Version="2.4.0" />
     <PackageReference Include="IronOcr" Version="2021.12.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.11" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.11">
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.21" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.21" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.21" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.21" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.Core" Version="3.1.21" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.21" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.21">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.11" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.Core" Version="5.0.11" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.11" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.11">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\Workshop_Images\" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>
