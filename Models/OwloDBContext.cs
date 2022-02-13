@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using OwlOProjectA.Models;
 
 namespace OwlOProjectA.Models
 {
@@ -32,7 +33,5 @@ namespace OwlOProjectA.Models
         public DbSet<Owlee> Owlees { get; set; }
 
         public DbSet<Voucher> Vouchers { get; set; }
-        public DbSet<Workshop> Workshop { get; set; }
-        public DbSet<LuckyDraw> LuckyDraws { get; set; }
     }
 }
