@@ -32,7 +32,7 @@ namespace OwlOProjectA.Models
         public DbSet<Owlee> Owlees { get; set; }
 
         public DbSet<Voucher> Vouchers { get; set; }
-
+        public DbSet<Workshop> Workshop { get; set; }
         public DbSet<LuckyDraw> LuckyDraws { get; set; }
     }
 }
