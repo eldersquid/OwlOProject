@@ -35,5 +35,7 @@ namespace OwlOProjectA.Models
         public DbSet<Voucher> Vouchers { get; set; }
         public DbSet<Workshop> Workshop { get; set; }
         public DbSet<LuckyDraw> LuckyDraws { get; set; }
+
+        public DbSet<Venue> Venues { get; set; }
     }
 }

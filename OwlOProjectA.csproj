@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -11,7 +11,7 @@
 
   <ItemGroup>
     <PackageReference Include="CsvHelper" Version="27.2.1" />
-    <PackageReference Include="Google.Apis.Dialogflow.v3beta1" Version="1.55.0.2556" />
+    <PackageReference Include="Google.Apis.Dialogflow.v3beta1" Version="1.55.0.2575" />
     <PackageReference Include="Google.Cloud.Dialogflow.V2" Version="3.8.0" />
     <PackageReference Include="Google.Cloud.Language.V1" Version="2.3.0" />
     <PackageReference Include="Google.Cloud.Vision.V1" Version="2.4.0" />
@@ -32,6 +32,7 @@
 
   <ItemGroup>
     <Folder Include="Migrations\" />
+    <Folder Include="wwwroot\VenueImages\" />
   </ItemGroup>
 
 </Project>
