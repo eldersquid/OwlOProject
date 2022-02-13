@@ -31,10 +31,11 @@ namespace OwlOProjectA.Models
         [Required, DataType(DataType.Date)]
         public DateTime LuckyDraw_Expiry { get; set; }
 
-        
+        [Required]
+        public int LuckyDraw_OriginalQuantity { get; set; }
 
 
 
-        
+
     }
 }

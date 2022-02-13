@@ -80,7 +80,6 @@ function loading(){
     dots.classList.add("messages__dot");
     responseTimer.appendChild(dots);
     chatContainer.appendChild(responseTimer);
-    setTimeout(() => { responseTimer.remove() }, 1000)
 
 
 }
@@ -125,16 +124,14 @@ function chuuResponse(responseJson){
         ChatContain.innerHTML = "<span>" + responseMessage + "</span>"
 
     }
-    setTimeout(() => { loading() }, 1000)
-    setTimeout(() => {
-        ChatContain.animate([{easing:"ease-in",opacity:0.0},{opacity:1}],{duration:500})
+        ChatContain.animate([{easing:"ease-in",opacity:0.0},{opacity:1}],{duration:100})
         chatContainer.appendChild(ChatContain);
         if (link !=""){
             chatContainer.appendChild(chatLink);
 
         }
         document.getElementById("ChatBot_Footer").scrollIntoView();
-    }, 2000)
+
 
 
 

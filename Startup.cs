@@ -29,6 +29,8 @@ namespace OwlOProjectA
             services.AddTransient<OwleeService>();
             services.AddDbContext<OwloDBContext>();
             services.AddTransient<VoucherService>();
+            services.AddTransient<LuckyDrawService>();
+            services.AddTransient<FAQService>();
             services.AddTransient<Controllers.IntentController>();
             services.Configure<IISServerOptions>(options =>
             {

@@ -1,0 +1,166 @@
+﻿@page
+@model OwlOProjectA.Pages.Danish.FAQHomeModel
+@{
+}
+@using Microsoft.AspNetCore.Identity
+@using OwlOProjectA.Areas.Identity.Data
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+
+        <main class="main">
+            <div class="page-header mt-30 mb-75">
+                <div class="container">
+                    <div class="archive-header">
+                        <div class="row align-items-center">
+                            <div class="col-xl-3">
+                                <h2 class="mb-15">FAQ Questions</h2>
+                                <div class="breadcrumb">
+                                    <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
+                                    <span></span> FAQ Home
+                                </div>
+                            </div>
+                            <div class="col-xl-9 text-end d-none d-xl-block">
+                                <ul class="tags-list">
+                                    <li class="hover-up">
+                                        <a asp-page="/Danish/FAQCreate"><i class="fi-rs-cross mr-10"></i>Create FAQ</a>
+                                    </li>
+                                    <li class="hover-up active">
+                                        <a href="blog-category-grid.html"><i class="fi-rs-cross mr-10"></i>Recips</a>
+                                    </li>
+                                    <li class="hover-up">
+                                        <a href="blog-category-grid.html"><i class="fi-rs-cross mr-10"></i>Kitchen</a>
+                                    </li>
+                                    <li class="hover-up">
+                                        <a href="blog-category-grid.html"><i class="fi-rs-cross mr-10"></i>News</a>
+                                    </li>
+                                    <li class="hover-up mr-0">
+                                        <a href="blog-category-grid.html"><i class="fi-rs-cross mr-10"></i>Food</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="page-content mb-50">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="shop-product-fillter mb-50">
+                                
+                                <div class="sort-by-product-area">
+                                    <div class="sort-by-cover mr-10">
+                                        <div class="sort-by-product-wrap">
+                                            <div class="sort-by">
+                                                <span><i class="fi-rs-apps"></i>Show:</span>
+                                            </div>
+                                            <div class="sort-by-dropdown-wrap">
+                                                <span> 50 <i class="fi-rs-angle-small-down"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="sort-by-dropdown">
+                                            <ul>
+                                                <li><a class="active" href="#">50</a></li>
+                                                <li><a href="#">100</a></li>
+                                                <li><a href="#">150</a></li>
+                                                <li><a href="#">200</a></li>
+                                                <li><a href="#">All</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="sort-by-cover">
+                                        <div class="sort-by-product-wrap">
+                                            <div class="sort-by">
+                                                <span><i class="fi-rs-apps-sort"></i>Sort:</span>
+                                            </div>
+                                            <div class="sort-by-dropdown-wrap">
+                                                <span>Featured <i class="fi-rs-angle-small-down"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="sort-by-dropdown">
+                                            <ul>
+                                                <li><a class="active" href="#">Featured</a></li>
+                                                <li><a href="#">Newest</a></li>
+                                                <li><a href="#">Most comments</a></li>
+                                                <li><a href="#">Release Date</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="loop-grid">
+                                <div class="row">
+
+                                    @if (Model.allFAQs != null && Model.allFAQs.Count() > 0)
+                                    {
+
+                                        @foreach (var article in Model.allFAQs)
+                                        {
+                                            int wordCount = article.FAQ_Content.Length;
+                                    <article class="col-xl-3 col-lg-4 col-md-6 text-center hover-up mb-30 animated">
+                                        <div class="post-thumb">
+                                            <a href="blog-post-right.html">
+                                                <img class="border-radius-15" src="assets/imgs/blog/blog-15.png" alt="" />
+                                            </a>
+                                        </div>
+                                        <div class="product-action-1">
+                                            <a aria-label="Delete" class="action-btn"  asp-page="/Danish/VoucherDelete/"><i class="fi-rs-heart"></i></a>
+
+                                            <a aria-label="Edit"  asp-route-id="@article.FAQ_ID" asp-page="/Danish/FAQArticle" class="action-btn"><i class="fi-rs-eye"></i></a>
+                                        </div>
+                                        <div class="entry-content-2">
+                                            <h6 class="mb-10 font-sm"><a class="entry-meta text-muted" href="blog-category-grid.html">@article.FAQ_Type</a></h6>
+                                            <h4 class="post-title mb-15">
+                                                <a asp-route-id="@article.FAQ_ID" asp-page="/Danish/FAQArticle">@article.FAQ_Title</a>
+                                            </h4>
+                                            <div class="entry-meta font-xs color-grey mt-10 pb-10">
+                                                <div>
+                                                    <span class="post-on mr-10">@article.FAQ_DatePublished.ToShortDateString()</span>
+
+                                                    <span class="hit-count has-dot">@wordCount words</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+                                        }
+
+                                    }
+                                    else
+                                    {
+                                        <div class="archive-header">
+                                            <div class="row align-items-center">
+                                                <div class="col-xl-3">
+                                                    <h2 class="mb-15">No FAQs found.</h2>
+                                                    
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    }
+
+                                </div>
+                            </div>
+                            <div class="pagination-area mt-15 mb-sm-5 mb-lg-0">
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination justify-content-start">
+                                        <li class="page-item">
+                                            <a class="page-link" href="#"><i class="fi-rs-arrow-small-left"></i></a>
+                                        </li>
+                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item"><a class="page-link dot" href="#">...</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">6</a></li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#"><i class="fi-rs-arrow-small-right"></i></a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
