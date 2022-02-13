@@ -101,7 +101,7 @@ namespace OwlOProjectA.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email, NRIC = Input.NRIC, Name = Input.Name, Bio = Input.Bio, Citizenship = Input.Citizenship, Gender=Input.Gender, Owl_Points = 0, Inventory_ID = Guid.NewGuid().ToString() };
+                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email, NRIC = Input.NRIC, Name = Input.Name, Bio = Input.Bio, Citizenship = Input.Citizenship, Gender=Input.Gender, Owl_Points = 10000, Inventory_ID = Guid.NewGuid().ToString() };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

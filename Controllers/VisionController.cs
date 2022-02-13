@@ -122,6 +122,7 @@ namespace OwlOProjectA.Controllers
             {
                 Console.WriteLine($"Entity: \"{entity.Name}\" ({entity.Type})");
                 Console.WriteLine(entity.Metadata);
+                
                 switch (entity.Type.ToString())
                 {
                     case "Address":
@@ -146,8 +147,15 @@ namespace OwlOProjectA.Controllers
                     case "Person":
                         if (person_salience <= Convert.ToDouble(entity.Salience))
                         {
-                            details.Name = entity.Name;
-                            person_salience = Convert.ToDouble(entity.Salience);
+                            foreach(var mention in entity.Mentions)
+                            {
+                                if (mention.Type.ToString().ToLower() == "proper")
+                                {
+                                    details.Name = entity.Name;
+                                    person_salience = Convert.ToDouble(entity.Salience);
+                                }
+                            }
+                            
                         }
                         break;
                 }

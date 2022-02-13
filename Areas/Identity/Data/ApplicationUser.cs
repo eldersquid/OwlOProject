@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Security.Claims;
+using System.Security.Principal;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 
@@ -57,5 +59,17 @@ namespace OwlOProjectA.Areas.Identity.Data
         [PersonalData]
         [Column(TypeName = "nvarchar(100)")]
         public string Mentor_Email { get; set; }
+
+
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
+        {
+            var authenticationType = "Put authentication type Here";
+            var userIdentity = new ClaimsIdentity(await manager.GetClaimsAsync(this), authenticationType);
+
+            // Add custom user claims here
+            return userIdentity;
+        }
+
+       
     }
 }
