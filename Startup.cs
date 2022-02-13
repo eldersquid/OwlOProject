@@ -26,7 +26,6 @@ namespace OwlOProjectA
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.AddTransient<WorkshopService>();
             services.AddTransient<OwleeService>();
             services.AddDbContext<OwloDBContext>();
             services.AddTransient<VoucherService>();
