@@ -1,0 +1,39 @@
+﻿@page
+@model OwlOProjectA.Pages.AdminCommunityModel
+@{
+}
+
+<div>
+    <p>
+        <a asp-page="CommunityRegister">Create New Community</a>
+    </p>
+
+    <h5>List of Owlees</h5>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.allCommunities[0].Id)</th>
+            <th>Community Name</th>
+            <th>@Html.DisplayNameFor(model => model.allCommunities[0].ComDescp)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ if (Model.allCommunities != null)
+            {
+
+@foreach (var item in Model.allCommunities)
+{
+<tr>
+    <td>@item.Id</td>
+    <td>@item.ComName</td>
+    <td>@item.ComDescp</td>
+    <td>
+        <a asp-page="/Community" asp-route-id="@item.Id">View</a>
+        <a asp-page="/CommunityEdit" asp-route-id="@item.Id">|Edit</a>
+        <a asp-page="/CommunityDelete" asp-route-id="@item.Id">|Delete</a>
+    </td>
+</tr>                } } }
+    </tbody>
+</table>
