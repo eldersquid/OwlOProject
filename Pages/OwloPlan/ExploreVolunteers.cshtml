@@ -1,0 +1,86 @@
+﻿@page
+@model owlo_plan.Pages.ExploreVolunteersModel
+@{
+    ViewData["Title"] = $"OWLO Plan - Explore Volunteers";
+    ViewData["Page"] = "Explore Volunteers";
+}
+
+@*search bar*@
+@*<div class="d-flex align-items-center flex-wrap search-job bg-white px-0 mb-4">
+    <div class="col-xl-2 col-xxl-3 col-lg-3 col-sm-6 col-12 search-dropdown d-flex align-items-center">
+        <select class="form-control border-0 default-select style-1 h-auto" style="display: none;">
+            <option>Choose Location</option>
+            <option>London</option>
+            <option>France</option>
+        </select><div class="nice-select form-control border-0 default-select style-1 h-auto" tabindex="0"><span class="current">Choose Location</span><ul class="list"><li data-value="Choose Location" class="option selected focus">Choose Location</li><li data-value="London" class="option">London</li><li data-value="France" class="option">France</li></ul></div>
+    </div>
+    <div class="col-xl-2 col-xxl-3 col-lg-3 col-sm-6 col-12 search-dropdown d-flex align-items-center">
+        <select class="form-control border-0 default-select style-1 h-auto" style="display: none;">
+            <option>Salary Range</option>
+            <option>London</option>
+            <option>France</option>
+        </select><div class="nice-select form-control border-0 default-select style-1 h-auto" tabindex="0"><span class="current">Salary Range</span><ul class="list"><li data-value="Salary Range" class="option selected focus">Salary Range</li><li data-value="London" class="option">London</li><li data-value="France" class="option">France</li></ul></div>
+    </div>
+    <div class="col-xl-8 col-xxl-6 col-lg-6 col-12 d-md-flex job-title-search pe-0">
+        <div class="input-group search-area">
+            <input type="text" class="form-control h-auto" placeholder="search job title here...">
+            <span class="input-group-text"><a href="javascript:void(0)" class="btn btn-primary btn-rounded">Search<i class="flaticon-381-search-2 ms-2"></i></a></span>
+        </div>
+    </div>
+</div>*@
+
+<div>
+    <div class="tab-content">
+        <div class="tab-pane fade show active" id="Boxed" role="tabpanel">
+            <div class="row">
+                @foreach (var task in Model.AllOwlers)
+                {
+                    <div class="col-xl-6">
+                        <a asp-page="/OwloPlan/ViewProfile" asp-route-id="@task.owler.Email">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="fs-20">@task.owler.username</h4>
+                                    <p class="mb-0">@task.owler.bio</p>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <h4 class="text-primary me-auto">Skills</h4>
+                                            @foreach (var com in task.userskills)
+                                            {
+                                                <a href="javascript:void();;" class="btn btn-primary light btn-xs mb-1">
+                                                    @com.userSkill
+
+                                                </a>
+                                            }
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <h4 class="text-primary me-auto">Interests</h4>
+
+                                            @foreach (var com in task.userInterests)
+                                            {
+                                                <a href="javascript:void();;" class="btn btn-primary light btn-xs mb-1">
+                                                    @com.interest
+
+                                                </a>
+                                            }
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="card-footer d-flex justify-content-between align-items-center flex-wrap">
+                                    <div class="mb-2">
+
+                                    </div>
+                                    <div class="mb-2">
+                                        <a asp-page="/OwloPlan/ViewProfile" asp-route-id="@task.owler.Email" class="btn btn-primary btn-md apply-job"><i class="far fa-check-circle me-2"></i>Invite</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                }
+               
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+﻿
+@page "{id}"
+@model owlo_plan.Pages.addSkillsModel
+@{
+    ViewData["Title"] = $"OWLO Plan - Add Skills";
+    ViewData["Page"] = "Add Skills";
+}
+
+
+
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">Add Skills</h4>
+    </div>
+    <div class="card-body">
+        <div class="basic-form">
+            <form method="post">
+                <input asp-for="skill.Project_ID" value="@Model.skill.Project_ID" type="hidden" />
+                <div class="mb-3 row">
+                    <div class="col-sm-9">
+                        <h2 class="text-danger col-sm-3 col-form-label">@Model.ErrorMessage</h2>
+                        <div asp-validation-summary="All"></div>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label class="col-sm-3 col-form-label">Skill needed</label>
+                    <div class="col-sm-9">
+                        <input type="text" asp-for="skill.Skill" class="form-control" placeholder="Type a skill the project needs">
+                        <span asp-validation-for="skill.Skill" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="d-flex align-items-end flex-column">
+                    <button type="submit" onkeydown="return event.key != 'Enter'" ; class="btn btn-primary">Add Task</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

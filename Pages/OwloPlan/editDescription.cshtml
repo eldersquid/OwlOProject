@@ -1,0 +1,42 @@
+﻿@page "{id}"
+@model owlo_plan.Pages.editDescriptionModel
+@{
+    ViewData["Title"] = $"OWLO Plan - Edit Description";
+    ViewData["Page"] = "Edit Description";
+}
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">Change Description</h4>
+    </div>
+    <div class="card-body">
+        <div class="basic-form">
+            <form method="post">
+                <div class="mb-3 row">
+                    <div class="col-sm-9">
+                        <h2 class="text-danger col-sm-3 col-form-label">@Model.ErrorMessage</h2>
+                        <div asp-validation-summary="All"></div>
+                    </div>
+                </div>
+                <input asp-for="project.Project_ID" value="@Model.project.Project_ID" type="hidden" />
+                <input asp-for="project.Title" value="@Model.project.Title" type="hidden" />
+                <input asp-for="project.Published" value="@Model.project.Published" type="hidden" />
+                <input asp-for="project.Owner" value="@Model.project.Owner" type="hidden" />
+                <input asp-for="project.Image" value="@Model.project.Image" type="hidden" />
+
+
+                <div class="mb-3 row">
+                    <label class="col-sm-3 col-form-label">Project Description</label>
+                    <div class="col-sm-9">
+                        <textarea type="text" asp-for="project.Description" class="form-control" placeholder="Type a Description">@Model.project.Description</textarea>
+                        <span asp-validation-for="project.Description" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="d-flex align-items-end flex-column">
+                    <button type="submit" onkeydown="return event.key != 'Enter'" ; class="btn btn-primary">Add Task</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

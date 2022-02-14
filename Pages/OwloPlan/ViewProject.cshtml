@@ -1,0 +1,231 @@
+﻿@page "{id}"
+@model owlo_plan.Pages.ViewProjectModel
+@{
+    ViewData["Title"] = $"OWLO Plan - View Project";
+    ViewData["Page"] = "View Project";
+}
+@section Header{
+    <link href="~/vendor/jquery-nice-select/css/nice-select.css" rel="stylesheet">
+    <link href="~/vendor/owl-carousel/owl.carousel.css" rel="stylesheet">
+    <link href="~/vendor/fullcalendar/css/main.min.css" rel="stylesheet">
+
+}
+@if (Model.joinRequestExist == true)
+{
+    <form asp-page-handler="CancelInvitation" asp-route-projectid="@Model.MyProject.Project_ID" method="post">
+        <input asp-for="projectID" type="hidden" value="@Model.MyProject.Project_ID"/>
+        <div class="d-flex align-items-center mb-4 flex-wrap">
+            <h3 class="fs-20 font-w600  me-auto">@Model.MyProject.Title</h3>
+            <div>
+
+                <button type="submit" class="btn btn-danger me-3 btn-sm">
+                    Cancel Invitation
+                </button>
+            </div>
+        </div>
+    </form>
+}
+else
+{
+    <div class="d-flex align-items-center mb-4 flex-wrap">
+        <h3 class="fs-20 font-w600  me-auto">@Model.MyProject.Title</h3>
+        <div>
+
+            <a asp-page="/OwloPlan/JoinProject" asp-route-id="@Model.MyProject.Project_ID" class="btn btn-success me-3 btn-sm">
+               Join Project
+            </a>
+        </div>
+    </div>
+}
+
+
+<div class="row">
+    <div class="col-xl-8">
+        <div class="card">
+            <div class="card-body">
+                <div class="post-details">
+                    @*<h3 class="mb-2 text-black">@Model.MyProject.Title</h3>*@
+                    @*<br />*@
+                    <img src="/jobick_assets/images/profile/8.jpg" alt="" class="img-fluid mb-3 w-100 rounded">
+                    <div class="d-flex align-items-center mb-4 flex-wrap">
+                        <h4 class="text-primary me-auto">Description</h4>
+                    </div>
+                    <p>@Model.MyProject.Description</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="post-details">
+                    <h3 class="mb-2 text-black">Details</h3>
+                </div>
+                <div class="profile-skills mt-5 mb-5">
+                    <div class="d-flex align-items-center mb-4 flex-wrap">
+                        <h4 class="text-primary me-auto">Skills Needed</h4>
+
+                    </div>
+                    @if (Model.AllSkills.Count > 0)
+                    {
+
+                        @foreach (var resource in Model.AllSkills)
+                        {
+                            <a href="javascript:void();;" class="btn btn-primary light btn-xs mb-1">
+                                @resource.Skill
+
+                            </a>
+
+                        }
+
+                    }
+                    else
+                    {
+                        <p>The project team has not added the skills they need just yet, convince them that you have what they need!</p>
+                    }
+                </div>
+                <div class="profile-skills mt-5 mb-5">
+                    <div class="d-flex align-items-center mb-4 flex-wrap">
+                        <h4 class="text-primary me-auto">Causes</h4>
+                    </div>
+                    @if (Model.AllCauses.Count > 0)
+                    {
+
+                        @foreach (var resource in Model.AllCauses)
+                        {
+
+                            <a href="javascript:void();;" class="btn btn-primary light btn-xs mb-1">
+                                @resource.Cause
+                            </a>
+
+
+                        }
+
+                    }
+                    else
+                    {
+                <p>The project team is still deliberating on the project's cause</p>
+                    }
+                </div>
+                <div class="profile-skills mt-5 mb-5">
+                    <div class="d-flex align-items-center mb-4 flex-wrap">
+                        <h4 class="text-primary me-auto">Community Partners</h4>
+                    </div>
+                    @if (Model.AllCommunityPartners.Count > 0)
+                    {
+
+                        @foreach (var resource in Model.AllCommunityPartners)
+                        {
+                            <a href="javascript:void();;" class="btn btn-primary light btn-xs mb-1">
+                                @resource.CommunityPartner
+
+                            </a>
+                        }
+
+                    }
+                    else
+                    {
+                        <p>The project team has yet to decide on a community partner</p>
+                    }
+                </div>
+                @*meet the team*@
+                <h4 class="text-primary mb-2">Meet the team</h4>
+
+                <div class="owl-carousel owl-loaded front-view-slider owl-drag">
+                    <div class="owl-stage-outer">
+                        <div class="owl-stage" style="display:flex;transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 1310px;">
+                            @if (Model.AllTeamMembers.Count > 0)
+                            {
+
+                                @foreach (var resource in Model.AllTeamMembers)
+                                {
+                                    <div class="owl-item active" style="width: auto; margin-right: 30px;">
+                                        <div class="items">
+
+                                            <div class="jobs">
+                                                <div class="text-center">
+                                                    <h4 class="mb-0">@resource.UserName</h4>
+                                                    <p class="mb-0">@resource.role</p>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+                            }
+                            else
+                            {
+                                <p>There are currently no team members in this project, be the first!</p>
+                            }
+                        </div>
+                    </div><div class="owl-nav"><div class="owl-prev disabled"></div><div class="owl-next"></div></div><div class="owl-dots"><div class="owl-dot active"><span></span></div><div class="owl-dot"><span></span></div><div class="owl-dot"><span></span></div><div class="owl-dot"><span></span></div><div class="owl-dot"><span></span></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script src="~/jobick_assets/vendor/owl-carousel/owl.carousel.js"></script>
+    <!-- Required vendors -->
+
+    <script src="~/jobick_assetsvendor/fullcalendar/js/main.min.js"></script>
+    <script src="~/jobick_assetsjs/plugins-init/fullcalendar-init.js"></script>
+    <script type="text/javascript">
+        function deleteTask(id) {
+            var task = document.getElementById(id)
+            task.remove()
+            fetch("Task/DeleteTask", {
+                method: 'POST',
+                body: JSON.stringify({ taskid: id }),
+            }).then(res => res.json())
+                .then(response => console.log('Success:', JSON.stringify(response)))
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+    <script>
+        function JobickCarousel() {
+
+            /*  testimonial one function by = owl.carousel.js */
+            jQuery('.front-view-slider').owlCarousel({
+                loop: false,
+                margin: 30,
+                nav: true,
+                autoplaySpeed: 3000,
+                navSpeed: 3000,
+                autoWidth: true,
+                paginationSpeed: 3000,
+                slideSpeed: 3000,
+                smartSpeed: 3000,
+                autoplay: false,
+                animateOut: 'fadeOut',
+                dots: true,
+                navText: ['', ''],
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+
+                    480: {
+                        items: 1
+                    },
+
+                    767: {
+                        items: 3
+                    },
+                    1750: {
+                        items: 3
+                    }
+                }
+            })
+        }
+
+        jQuery(window).on('load', function () {
+            setTimeout(function () {
+                JobickCarousel();
+            }, 1000);
+        });
+
+
+    </script>
+}
