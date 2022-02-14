@@ -1,0 +1,31 @@
+﻿@page
+@model owlo_plan.Pages.addUserInterestsModel
+@{
+    ViewData["Title"] = $"OWLO Plan - Add Interests";
+    ViewData["Page"] = "Add interests";
+}
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">Add Interest</h4>
+    </div>
+    <div class="card-body">
+        <div class="basic-form">
+            <form method="post">
+                <input asp-for="userInterest.Project_ID" value="@Model.userInterest.Project_ID" type="hidden" />
+
+                <div class="mb-3 row">
+                    <label class="col-sm-3 col-form-label">Interest</label>
+                    <div class="col-sm-9">
+                        <input type="text" asp-for="userInterest.interest" class="form-control" placeholder="Type an interest">
+                        <span asp-validation-for="userInterest.interest" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="d-flex align-items-end flex-column">
+                    <button type="submit" onkeydown="return event.key != 'Enter'" ; class="btn btn-primary">Add interest</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

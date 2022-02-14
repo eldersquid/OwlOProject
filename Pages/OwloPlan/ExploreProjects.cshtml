@@ -1,0 +1,47 @@
+﻿@page "{cause}"
+@model owlo_plan.Pages.ExploreProjectsModel
+@{
+    ViewData["Title"] = $"OWLO Plan - Explore Projects";
+    ViewData["Page"] = "Explore Projects";
+
+
+}
+
+<div class="d-flex align-items-center mb-4 flex-wrap">
+    <h4 class="fs-20 font-w600  me-auto">@Model.causeChosen.ToUpper() </h4>
+</div>
+<div class="row">
+    <div class="col-xl-12">
+        <div class="row">
+            @foreach (var task in Model.AllMyProjects)
+            {
+            <div class="col-xl-6">
+                <a asp-page="/OwloPlan/ViewProject" asp-route-id="@task.Project.Project_ID">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="fs-20">@task.Project.Title</h4>
+                            <div class="listline-wrapper mb-4">
+                                @foreach (var com in task.CommunityPartners)
+                                {
+                                    <span class="item">
+                                        @com.CommunityPartner.Trim()
+                                    </span>
+                                }
+                            </div>
+                            <p class="mb-0">@task.Project.Description </p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between align-items-center flex-wrap">
+                            <div class="mb-2">
+
+                            </div>
+                            <div class="mb-2">
+                                <a asp-page="/OwloPlan/JoinProject" asp-route-id="@task.Project.Project_ID" class="btn btn-primary btn-md apply-job"><i class="far fa-check-circle me-2"></i>Join now</a>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            }
+        </div>
+    </div>
+</div>

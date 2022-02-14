@@ -179,7 +179,7 @@ namespace OwlOProjectA.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(100)")
+                        .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
 
                     b.Property<bool>("EmailConfirmed")
@@ -222,11 +222,6 @@ namespace OwlOProjectA.Migrations
 
                     b.Property<int>("Owl_Points")
                         .HasColumnType("int");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(100);
 
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");

@@ -5,9 +5,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using owlo_plan.Models;
+using owlo_plan.Services;
 using OwlOProjectA.Models;
 using OwlOProjectA.Services;
 
@@ -36,6 +39,13 @@ namespace OwlOProjectA
             {
                 options.AllowSynchronousIO = true;
             });
+
+            //nuzul
+            services.AddDbContext<OwloPlanDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MyConn")));
+            services.AddRazorPages();
+            services.AddTransient<ProjectService>();
+            services.AddTransient<ResourceService>();
+            services.AddTransient<MeetingService>();
 
         }
 

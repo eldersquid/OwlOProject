@@ -1,0 +1,44 @@
+﻿@page
+@model owlo_plan.Pages.AddResourceModel
+@{
+    ViewData["Title"] = $"OWLO Plan - Add Resources";
+    ViewData["Page"] = "Add Resource";
+}
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">Add Task</h4>
+    </div>
+    <div class="card-body">
+        <div class="basic-form">
+            <form method="post">
+                <input asp-for="resource.project_id" value="@Model.resource.project_id" type="hidden" />
+
+                <div class="mb-3 row">
+                    <div class="col-sm-9">
+                        <h2 class="text-danger col-sm-3 col-form-label">@Model.ErrorMessage</h2>
+                        <div asp-validation-summary="All"></div>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label class="col-sm-3 col-form-label">Title</label>
+                    <div class="col-sm-9">
+                        <input type="text" asp-for="resource.title" class="form-control" placeholder="Type a Title for the resource">
+                        <span asp-validation-for="resource.title" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label class="col-sm-3 col-form-label">Link</label>
+                    <div class="col-sm-9">
+                        <input type="text" asp-for="resource.link" class="form-control" placeholder="Enter the link to the resource">
+                        <span asp-validation-for="resource.link" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="d-flex align-items-end flex-column">
+                    <button type="submit" onkeydown="return event.key != 'Enter'" ; class="btn btn-primary">Add Resource</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
