@@ -38,6 +38,8 @@ namespace OwlOProjectA.Pages.Danish
                 return RedirectToPage("Error");
             }
 
+
+
             voucher = _svc.GetVoucherByID(id);
             if (voucher == null)
             {
@@ -57,18 +59,26 @@ namespace OwlOProjectA.Pages.Danish
 
                 var voucherDistribution = new VoucherDistribution();
                 currentUser = _userManager.GetUserAsync(User).GetAwaiter().GetResult();
-                voucherDistribution.VoucherDistribution_ID= Guid.NewGuid().ToString();
-                voucherDistribution.VoucherDistribution_OwnerEmail = currentUser.Email;
-                voucherDistribution.VoucherDistribution_VoucherID = voucher.Vouchers_ID;
-                voucherDistribution.VoucherDistribution_VoucherCompany = voucher.Voucher_Company;
-                voucherDistribution.VoucherDistribution_VoucherExpiry = voucher.Voucher_Expiry;
-                voucherDistribution.VoucherDistribution_VoucherSuperDeal = voucher.Super_Deal;
-                voucherDistribution.VoucherDistribution_VoucherName = voucher.Voucher_Name;
-                voucherDistribution.VoucherDistribution_VoucherCost = voucher.Voucher_Cost;
-                currentUser.Owl_Points = Convert.ToInt32(Convert.ToDouble(currentUser.Owl_Points) - voucher_price);
-                _userManager.UpdateAsync(currentUser).GetAwaiter().GetResult();
-                _svc2.AddVoucherDistribution(voucherDistribution);
-                return RedirectToPage("OwlShop");
+                if (currentUser.Owl_Points >= voucher_price)
+                {
+                    voucherDistribution.VoucherDistribution_ID = Guid.NewGuid().ToString();
+                    voucherDistribution.VoucherDistribution_OwnerEmail = currentUser.Email;
+                    voucherDistribution.VoucherDistribution_VoucherID = voucher.Vouchers_ID;
+                    voucherDistribution.VoucherDistribution_VoucherCompany = voucher.Voucher_Company;
+                    voucherDistribution.VoucherDistribution_VoucherExpiry = voucher.Voucher_Expiry;
+                    voucherDistribution.VoucherDistribution_VoucherSuperDeal = voucher.Super_Deal;
+                    voucherDistribution.VoucherDistribution_VoucherName = voucher.Voucher_Name;
+                    voucherDistribution.VoucherDistribution_VoucherCost = voucher.Voucher_Cost;
+                    currentUser.Owl_Points = Convert.ToInt32(Convert.ToDouble(currentUser.Owl_Points) - voucher_price);
+                    _userManager.UpdateAsync(currentUser).GetAwaiter().GetResult();
+                    _svc2.AddVoucherDistribution(voucherDistribution);
+                    return RedirectToPage("VouchersOwned");
+                }
+                else
+                {
+                    return RedirectToPage("OwlShop");
+                }
+                
             }
         }
     }

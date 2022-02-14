@@ -139,73 +139,75 @@
             <div class="row">
 
                 <!-- Special Discount Vouchers with expiry  -->
-                <div class="col-xl-3 col-lg-4 col-md-6">
+                
                     @{ if (Model.allVouchers != null)
                         {
                             @foreach (var voucher in Model.allVouchers)
                             {
+                                Double new_price = voucher.Voucher_Cost * ((100 - voucher.DiscountDeal_Percentage) / 100);
+                                string expire = voucher.Voucher_Expiry.ToString("yyyy/MM/dd") + " 00:00:00";
                                 if (voucher.Super_Deal == true)
-                                {
-                                    <div class="modal fade" id="purchaseModal@(voucher.Vouchers_ID)" tabindex="-1" aria-labelledby="#purchaseModal@(voucher.Vouchers_ID)" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Are you sure you want to buy this?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                    <a class="btn btn-primary"  asp-route-id="@voucher.Vouchers_ID" asp-page="/Danish/VoucherPurchase" >Buy</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                {<div class="col-xl-3 col-lg-4 col-md-6">
+    <div class="modal fade" id="purchaseModal@(voucher.Vouchers_ID)" tabindex="-1" aria-labelledby="#purchaseModal@(voucher.Vouchers_ID)" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to buy this?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a class="btn btn-primary" asp-route-id="@voucher.Vouchers_ID" asp-page="/Danish/VoucherPurchase">Buy</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                                    Double new_price = voucher.Voucher_Cost * ((100 - voucher.DiscountDeal_Percentage) / 100);
-                                    string expire = voucher.Voucher_Expiry.ToString("yyyy/MM/dd") + " 00:00:00";
-                                    <div class="product-cart-wrap style-2">
-                                        <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="hot">@voucher.DiscountDeal_Percentage % off</span>
-                                        </div>
-                                        <div class="product-img-action-wrap">
-                                            <div class="product-img">
-                                                <a href="shop-product-right.html">
-                                                    <img src="/nest_assets/imgs/banner/banner-5.png" alt="" />
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="product-content-wrap">
-                                            <div class="deals-countdown-wrap">
-                                                <div class="deals-countdown" data-countdown="@expire"></div>
-                                            </div>
-                                            <div class="deals-content">
-                                                <h2 class="shop-item-title"><a>@voucher.Voucher_Name</a></h2>
-                                                <div class="product-rate-cover">
-                                                    <div class="product-rate d-inline-block">
-                                                        <div class="product-rating" style="width: 90%"></div>
-                                                    </div>
-                                                    <span class="font-small ml-5 text-muted"> (4.0)</span>
-                                                </div>
-                                                <div>
-                                                    <span class="font-small text-muted">By <a href="vendor-details-1.html">@voucher.Voucher_Company</a></span>
-                                                </div>
-                                                <div class="product-card-bottom">
-                                                    <div class="product-price">
-                                                        <span class="shop-item-price">@new_price<span> OP</span></span>
-                                                        <span class="old-price">@voucher.Voucher_Cost OP</span>
-                                                    </div>
-                                                    <div class="add-cart">
-                                                        
-                                                        <a class="add" data-bs-toggle="modal" data-bs-target="#purchaseModal@(voucher.Vouchers_ID)"><i class="fi-rs-shopping-cart mr-5"></i>Redeem</a>
-                                                    </div>
+    
+    <div class="product-cart-wrap style-2">
+        <div class="product-badges product-badges-position product-badges-mrg">
+            <span class="hot">@voucher.DiscountDeal_Percentage % off</span>
+        </div>
+        <div class="product-img-action-wrap">
+            <div class="product-img">
+                <a>
+                    <img src="/nest_assets/imgs/banner/banner-5.png" alt="" />
+                </a>
+            </div>
+        </div>
+        <div class="product-content-wrap">
+            <div class="deals-countdown-wrap">
+                <div class="deals-countdown" data-countdown="@expire"></div>
+            </div>
+            <div class="deals-content">
+                <h2 class="shop-item-title"><a>@voucher.Voucher_Name</a></h2>
+                <div class="product-rate-cover">
+                    <div class="product-rate d-inline-block">
+                        <div class="product-rating" style="width: 90%"></div>
+                    </div>
+                    <span class="font-small ml-5 text-muted"> (4.0)</span>
+                </div>
+                <div>
+                    <span class="font-small text-muted">By <a href="vendor-details-1.html">@voucher.Voucher_Company</a></span>
+                </div>
+                <div class="product-card-bottom">
+                    <div class="product-price">
+                        <span class="shop-item-price">@new_price<span> OP</span></span>
+                        <span class="old-price">@voucher.Voucher_Cost OP</span>
+                    </div>
+                    <div class="add-cart">
 
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                        <a class="add" data-bs-toggle="modal" data-bs-target="#purchaseModal@(voucher.Vouchers_ID)"><i class="fi-rs-shopping-cart mr-5"></i>Redeem</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
                                 }
 
 
@@ -236,7 +238,7 @@
 
 
 
-
+      
             </div>
         </section>
         <!--End Deals-->

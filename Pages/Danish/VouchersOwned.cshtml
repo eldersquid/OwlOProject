@@ -22,8 +22,9 @@
                         <th scope="col">Voucher Unique Code</th>
                         <th scope="col">Voucher Expiry Date</th>
                         <th scope="col">Company</th>
+                        <th scope="col">Cost</th>
                         <th scope="col">Super Deal?</th>
-                        <th scope="col"></th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -31,27 +32,15 @@
                     {
                     <tr>
                         <td>@voucher.VoucherDistribution_VoucherName</td>
-                       
+
                         <td>@voucher.VoucherDistribution_ID</td>
                         <td>@voucher.VoucherDistribution_VoucherExpiry</td>
                         <td>@voucher.VoucherDistribution_VoucherCompany</td>
+                        <td>@voucher.VoucherDistribution_VoucherCost</td>
                         <td>
                             @voucher.VoucherDistribution_VoucherSuperDeal
-
-
                         </td>
-                        <td class="text-end">
-                            <a href="#" class="btn btn-md rounded font-sm">Detail</a>
-                            <div class="dropdown">
-                                <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">View detail</a>
-                                    <a class="dropdown-item" href="#">Edit info</a>
-                                    <a class="dropdown-item text-danger" >Delete</a>
-                                </div>
-                            </div>
-                            <!-- dropdown //end -->
-                        </td>
+
                     </tr>
                     }
 
