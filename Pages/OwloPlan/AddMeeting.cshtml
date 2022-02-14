@@ -1,0 +1,55 @@
+﻿@page
+@model owlo_plan.Pages.AddMeetingModel
+@{
+        ViewData["Title"] = $"OWLO Plan - Add Meeting";
+        ViewData["Page"] = "Add Meeting";
+}
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">Add Meeting</h4>
+    </div>
+    <div class="card-body">
+        <div class="basic-form">
+            <form id="form1" method="post">
+                <input asp-for="meeting.Project_ID" value="@Model.meeting.Project_ID" type="hidden" />
+
+                <div class="mb-3 row">
+                    <div class="col-sm-9">
+                        <h2 class="text-danger col-sm-3 col-form-label">@Model.ErrorMessage</h2>
+                        <div asp-validation-summary="All"></div>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label class="col-sm-3 col-form-label">Title</label>
+                    <div class="col-sm-9">
+                        <input type="text" asp-for="meeting.Title" value="@Model.meeting.Title" class="form-control" placeholder="Title of meeting?">
+                        <span asp-validation-for="meeting.Title" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label class="col-sm-3 col-form-label">Description</label>
+                    <div class="col-sm-9">
+                        <textarea type="text" asp-for="meeting.Description"class="form-control" placeholder="What is this meeting about"></textarea>
+                        <span asp-validation-for="meeting.Description" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label class="col-sm-3 col-form-label">Link</label>
+                    <div class="col-sm-9">
+                        <input type="text" asp-for="meeting.platform_link" value="@Model.meeting.platform_link" class="form-control" placeholder="A link so your members can see you">
+                        <span asp-validation-for="meeting.platform_link" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="d-flex align-items-end flex-column">
+                    <h4 class="fs-20 mb-3"></h4>
+                    <div>
+
+                        <button form="form1" type="submit" onkeydown="return event.key != 'Enter'" ; class="btn btn-primary">Add Meeting</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
