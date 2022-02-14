@@ -37,6 +37,8 @@ namespace OwlOProjectA.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string Inventory_ID { get; set; }
 
+        public string Voucher_ImagePath { get; set; }
+
         
     }
 }

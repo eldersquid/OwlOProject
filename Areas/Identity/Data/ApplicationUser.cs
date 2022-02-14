@@ -37,10 +37,6 @@ namespace OwlOProjectA.Areas.Identity.Data
         [PersonalData]
         public int Owl_Points { get; set; }
 
-        [Column(TypeName = "int")]
-        [PersonalData]
-        public int Age { get; set; }
-
         [MaxLength(3000)]
         [PersonalData]
         [Column(TypeName = "nvarchar(MAX)")]
@@ -51,14 +47,6 @@ namespace OwlOProjectA.Areas.Identity.Data
         [Column(TypeName = "nvarchar(100)")]
         public string Citizenship { get; set; }
 
-        [PersonalData]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column(TypeName = "nvarchar(MAX)")]
-        public string Inventory_ID { get; set; }
-
-        [PersonalData]
-        [Column(TypeName = "nvarchar(100)")]
-        public string Mentor_Email { get; set; }
 
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)

@@ -74,19 +74,12 @@ namespace OwlOProjectA.Areas.Identity.Pages.Account
 
             public int Owl_Points { get; set; }
 
-            public int Age { get; set; }
 
             [MaxLength(3000)]
             public string Bio { get; set; }
 
             [Required, MaxLength(100)]
             public string Citizenship { get; set; }
-
-
-            [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-            public string Inventory_ID { get; set; }
-
-            public string Mentor_Email { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -101,7 +94,7 @@ namespace OwlOProjectA.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email, NRIC = Input.NRIC, Name = Input.Name, Bio = Input.Bio, Citizenship = Input.Citizenship, Gender=Input.Gender, Owl_Points = 10000, Inventory_ID = Guid.NewGuid().ToString() };
+                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email, NRIC = Input.NRIC, Name = Input.Name, Bio = Input.Bio, Citizenship = Input.Citizenship, Gender=Input.Gender, Owl_Points = 10000 };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

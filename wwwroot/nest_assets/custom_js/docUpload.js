@@ -25,8 +25,16 @@ $("#docUpload").on("change", function () {
           document.getElementById('Input_NRIC').value = details["nric"];
           document.getElementById('Input_Bio').value = details["address"];
           document.getElementById('Input_Name').value = details["name"];
-
-          $('#exampleModal .modal-body').html(details["email"]);
+          if (details["gender"] == "M")
+          {
+            document.getElementById('male').checked = true;
+          }
+          else
+          {
+            document.getElementById('female').checked = true;
+          }
+          $('#exampleModal .modal-body').html("Document Scan Complete.");
+          $('#exampleModal .modal-body').html("Document Scan Complete.");
           if (data.err) {
             $("#docErr").show();
             $("#docErr").text(data.err.message);

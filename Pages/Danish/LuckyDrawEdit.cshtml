@@ -1,0 +1,165 @@
+﻿@page
+@model OwlOProjectA.Pages.LuckyDrawEditModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript">
+
+    function scanDoc() {
+        $.get("/home/scanDoc", function (data) {
+            $("p").html(data);
+        });
+    }
+    function readCSV() {
+        $.get("/home", function (data) {
+            $("p").html(data);
+        });
+    }
+
+    var superCB = document.querySelector("#superCB");
+    var discount = document.querySelector("#discount");
+
+    function changeVisible() {
+        if ($('#superCB').is(":checked"))
+            $("#discount").show();
+        else
+            $("#discount").hide();
+    }
+
+    $(document).ready(function () {
+        $('#luckydraw_LuckyDraw_Expiry').datepicker({
+            format: "dd/mm/yyyy",
+            autoclose: true,
+            startDate: '+1d'
+        });
+    });
+
+
+</script>
+
+<!-- Favicon -->
+<link rel="shortcut icon" type="image/x-icon" href="~/nest_assets/imgs/theme/favicon.svg" />
+<!-- Template CSS -->
+<link rel="stylesheet" href="~/nest_assets/css/main.css?v=4.0" />
+<main class="main pages">
+    <form method="post">
+
+
+        <div class="page-header breadcrumb-wrap">
+
+                <div class="breadcrumb">
+                    <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
+                    <span></span> Pages <span></span> My Account
+
+                </div>
+                <ul class="nav nav-tabs links offset-8" id="myTab-2" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a asp-page="/LuckyDrawCreate" class="nav-link active" type="button" aria-selected="false">Create LuckyDraw</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a asp-page="/OwlShop" class="nav-link" type="button" aria-selected="true">Shop</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="nav-tab-two-1" data-bs-toggle="tab" data-bs-target="#tab-two-1" type="button" role="tab" aria-controls="tab-two" aria-selected="false">Achievements</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="nav-tab-three-1" data-bs-toggle="tab" data-bs-target="#tab-three-1" type="button" role="tab" aria-controls="tab-three" aria-selected="false">Points : 10301</button>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="page-content pt-150 pb-150">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-8 col-lg-10 col-md-12 m-auto">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-8">
+                                <div class="login_wrap widget-taber-content background-white">
+                                    <div class="padding_eight_all bg-white">
+                                        <div class="heading_s1">
+                                            <h1 class="mb-5">Create a LuckyDraw</h1>
+                                            <br />
+                                        </div>
+                                        <form method="post">
+
+                                            @*<div class="form-group">
+            <input asp-for="luckydraw.LuckyDraw_CompanyPhoto" type="file" />
+            <span asp-validation-for="luckydraw.LuckyDraw_CompanyPhoto" class="text-danger"></span>
+        </div>*@
+                                            <div class="form-group">
+                                                <input asp-for="luckydraw.LuckyDraw_Name" placeholder="Lucky Draw Name" />
+                                                <span asp-validation-for="luckydraw.LuckyDraw_Name" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <input asp-for="luckydraw.LuckyDraw_Company" placeholder="Company issuing Lucky Draw" />
+                                                <span asp-validation-for="luckydraw.LuckyDraw_Company" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <input asp-for="luckydraw.LuckyDraw_Cost" placeholder="Lucky Draw Cost" />
+                                                <span asp-validation-for="luckydraw.LuckyDraw_Cost" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <input asp-for="luckydraw.LuckyDraw_Quantity" placeholder="Lucky Draw Quantity" />
+                                                <span asp-validation-for="luckydraw.LuckyDraw_Quantity" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <input asp-for="luckydraw.LuckyDraw_Description" placeholder="Lucky Draw Description" />
+                                                <span asp-validation-for="luckydraw.LuckyDraw_Description" class="text-danger"></span>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label class="form-label">Expiry Date</label>
+                                                <input data-provide="datepicker" asp-for="luckydraw.LuckyDraw_Expiry" type="text" />
+                                                <span asp-validation-for="luckydraw.LuckyDraw_Expiry" class="text-danger"></span>
+                                            </div>
+
+
+
+                                            <!-- For captcha -->
+                                            <!-- <div class="login_footer form-group">
+        <div class="chek-form">
+            <input type="text" required="" name="email" placeholder="Security code *" />
+        </div>
+        <span class="security-code">
+            <b class="text-new">8</b>
+            <b class="text-hot">6</b>
+            <b class="text-sale">7</b>
+            <b class="text-best">5</b>
+        </span>
+    </div> -->
+                                            <!-- radio button -->
+                                            <!-- <div class="login_footer form-group mb-50">
+        <div class="chek-form">
+            <div class="custome-checkbox">
+                <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox12" value="" />
+                <label class="form-check-label" for="exampleCheckbox12"><span>I agree to terms &amp; Policy.</span></label>
+            </div>
+        </div>
+        <a href="page-privacy-policy.html"><i class="fi-rs-book-alt mr-5 text-muted"></i>Lean more</a>
+    </div> -->
+
+                                            <div class="form-group mb-30">
+                                                <button type="submit" id="create" class="btn btn-fill-out btn-block hover-up font-weight-bold" name="login">Create LuckyDraw</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 pr-30 d-none d-lg-block">
+                                <div class="card-login mt-115">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</main>

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AuthSystem.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -31,7 +32,9 @@ namespace OwlOProjectA
             services.AddTransient<VoucherService>();
             services.AddTransient<LuckyDrawService>();
             services.AddTransient<FAQService>();
+            services.AddTransient<VoucherDistributionService>();
             services.AddTransient<Controllers.IntentController>();
+            services.AddTransient<Controllers.AdministrationController>();
             services.Configure<IISServerOptions>(options =>
             {
                 options.AllowSynchronousIO = true;

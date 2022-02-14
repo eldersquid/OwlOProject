@@ -23,22 +23,13 @@ namespace OwlOProjectA.Models
 
         public int Owl_Points { get; set; }
 
-        public int Age { get; set; }
+
 
         [MaxLength(3000)]
         public string Bio { get; set; }
 
         [Required, MaxLength(100)]
         public string Citizenship { get; set; }
-
-
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public string Inventory_ID { get; set; }
-
-        public string Mentor_Email { get; set; }
-
-        [Required, MaxLength(100)]
-        public string Password { get; set; }
 
     }
 }

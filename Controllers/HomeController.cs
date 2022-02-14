@@ -23,6 +23,12 @@ namespace OwlOProjectA.Controllers
             return "YEES";
         }
 
+        public string scanItem()
+        {
+
+            return "YEES";
+        }
+
         public void readCSV(string csvFile)
         {
             try

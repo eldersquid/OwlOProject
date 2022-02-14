@@ -20,6 +20,11 @@
     <meta property="og:type" content="" />
     <meta property="og:url" content="" />
     <meta property="og:image" content="" />
+    <script type="text/javascript">
+
+
+
+    </script>
 </head>
 
 <body>
@@ -41,6 +46,19 @@
                 </li>
             </ul>
         </div>*@
+
+
+        
+
+            
+
+
+
+      
+        
+
+
+
 
         <div class="page-header mb-50">
             <div class="container">
@@ -67,11 +85,9 @@
                                 </li>
                                 @if (Model.currentUser != null)
                                 {
+                                    
                                     <li class="hover-up">
-                                        <a href="blog-category-grid.html">Achievements</a>
-                                    </li>
-                                    <li class="hover-up">
-                                        <a href="blog-category-grid.html">Points : @Model.currentUser.Owl_Points</a>
+                                        <a>Points : @Model.currentUser.Owl_Points</a>
                                     </li>
                                 }
                                 else
@@ -130,6 +146,24 @@
                             {
                                 if (voucher.Super_Deal == true)
                                 {
+                                    <div class="modal fade" id="purchaseModal@(voucher.Vouchers_ID)" tabindex="-1" aria-labelledby="#purchaseModal@(voucher.Vouchers_ID)" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Are you sure you want to buy this?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    <a class="btn btn-primary"  asp-route-id="@voucher.Vouchers_ID" asp-page="/Danish/VoucherPurchase" >Buy</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     Double new_price = voucher.Voucher_Cost * ((100 - voucher.DiscountDeal_Percentage) / 100);
                                     string expire = voucher.Voucher_Expiry.ToString("yyyy/MM/dd") + " 00:00:00";
                                     <div class="product-cart-wrap style-2">
@@ -148,7 +182,7 @@
                                                 <div class="deals-countdown" data-countdown="@expire"></div>
                                             </div>
                                             <div class="deals-content">
-                                                <h2><a href="shop-product-right.html">@voucher.Voucher_Name</a></h2>
+                                                <h2 class="shop-item-title"><a>@voucher.Voucher_Name</a></h2>
                                                 <div class="product-rate-cover">
                                                     <div class="product-rate d-inline-block">
                                                         <div class="product-rating" style="width: 90%"></div>
@@ -160,11 +194,12 @@
                                                 </div>
                                                 <div class="product-card-bottom">
                                                     <div class="product-price">
-                                                        <span>@new_price OP</span>
+                                                        <span class="shop-item-price">@new_price<span> OP</span></span>
                                                         <span class="old-price">@voucher.Voucher_Cost OP</span>
                                                     </div>
                                                     <div class="add-cart">
-                                                        <a class="add" href="shop-cart.html"><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
+                                                        
+                                                        <a class="add" data-bs-toggle="modal" data-bs-target="#purchaseModal@(voucher.Vouchers_ID)"><i class="fi-rs-shopping-cart mr-5"></i>Redeem</a>
                                                     </div>
 
                                                 </div>
@@ -196,7 +231,7 @@
 
 
 
-                </div>
+              
 
 
 
@@ -230,7 +265,7 @@
                                 <h4>
                                     Lucky Draws<br />
                                     for <span class="text-brand">PURCHASE</span><br />
-                                    
+
                                 </h4>
                             </div>
                         </div>
@@ -247,7 +282,9 @@
 
                                             foreach (var luckyDraw in Model.allLuckyDraws)
                                             {
-                                                int quantity_percentage = (luckyDraw.LuckyDraw_Quantity/luckyDraw.LuckyDraw_OriginalQuantity)*100;
+
+
+                                                int quantity_percentage = (luckyDraw.LuckyDraw_Quantity / luckyDraw.LuckyDraw_OriginalQuantity) * 100;
 
                                                 <div class="product-cart-wrap">
                                                     <div class="product-img-action-wrap">
@@ -258,9 +295,9 @@
                                                             </a>
                                                         </div>
                                                         <div class="product-action-1">
-                                                            <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"> <i class="fi-rs-eye"></i></a>
-                                                            <a aria-label="Add To Wishlist" class="action-btn small hover-up" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
-                                                            <a aria-label="Compare" class="action-btn small hover-up" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
+                                                            <a aria-label="Edit" class="action-btn small hover-up" asp-route-id="@luckyDraw.LuckyDraw_ID" asp-page="/Danish/LuckyDrawEdit"> <i class="fi fi-rs-edit"></i></a>
+                                                            <a aria-label="Delete" class="action-btn small hover-up" asp-route-id="@luckyDraw.LuckyDraw_ID" asp-page="/Danish/LuckyDrawDelete"><i class="fi-rs-trash"></i></a>
+                                                            
                                                         </div>
                                                         <div class="product-badges product-badges-position product-badges-mrg">
                                                             <span class="hot">Save 15%</span>
@@ -270,25 +307,29 @@
                                                         <div class="product-category">
                                                             <a href="shop-grid-right.html">@luckyDraw.LuckyDraw_Company</a>
                                                         </div>
-                                                        <h2><a href="shop-product-right.html">@luckyDraw.LuckyDraw_Name</a></h2>
+                                                        <h2 class="shop-item-title"><a>@luckyDraw.LuckyDraw_Name</a></h2>
                                                         <div class="product-rate d-inline-block">
                                                             <div class="product-rating" style="width: 80%"></div>
                                                         </div>
                                                         <div class="product-price mt-10">
-                                                            <span>@luckyDraw.LuckyDraw_Cost OP</span>
-                                                            
+                                                            <span class="shop-item-price">@luckyDraw.LuckyDraw_Cost <span> OP</span></span>
+
                                                         </div>
+                                                        
+
                                                         <div class="sold mt-15 mb-15">
                                                             <div class="progress mb-5">
                                                                 <div class="progress-bar" role="progressbar" style="width:@quantity_percentage%" aria-valuemin="0" aria-valuemax="100"></div>
                                                             </div>
                                                             <span class="font-xs text-heading"> Left: @luckyDraw.LuckyDraw_Quantity / @luckyDraw.LuckyDraw_OriginalQuantity</span>
                                                         </div>
-                                                        <a href="shop-cart.html" class="btn w-100 hover-up"><i class="fi-rs-shopping-cart mr-5"></i>Add To Cart</a>
+
+                                                        <a class="btn w-100 hover-up" asp-route-id="@luckyDraw.LuckyDraw_ID" asp-page="/Danish/VoucherEdit"><i class="fi-rs-shopping-cart mr-5"></i>Redeem</a>
+
                                                     </div>
                                                 </div>
                                                 <!--End product Wrap-->
-
+                                    
 
 
 
@@ -302,30 +343,30 @@
 
 
                                         }
-                                        else 
+                                        else
                                         {
-                                    
-                                        
+
+
                                             <div class="banner-text">
 
                                                 <h4>
                                                     <span class="text-brand">NO </span>
                                                     Lucky Draws found
-                                                    
+
 
                                                 </h4>
                                             </div>
-                                        
-                                    
-                                        
-                                        
+
+
+
+
                                         }
 
                                     </div>
                                 </div>
                             </div>
-                            
-                            
+
+
                         </div>
                         <!--End tab-content-->
                     </div>
@@ -475,6 +516,23 @@
                                 {
                                     if (voucher.Super_Deal == true)
                                     {
+                                        <div class="modal fade" id="purchaseModal@(voucher.Vouchers_ID)" tabindex="-1" aria-labelledby="#purchaseModal@(voucher.Vouchers_ID)" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Are you sure you want to buy this?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        <a class="btn btn-primary" asp-route-id="@voucher.Vouchers_ID" asp-page="/Danish/VoucherEdit">Buy</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         Double new_price = voucher.Voucher_Cost * ((100 - voucher.DiscountDeal_Percentage) / 100);
                                         <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
                                             <div class="product-cart-wrap mb-30">
@@ -486,9 +544,9 @@
                                                         </a>
                                                     </div>
                                                     <div class="product-action-1">
-                                                        <a aria-label="Delete" class="action-btn" asp-route-id="@voucher.Vouchers_ID" asp-page="/Danish/VoucherDelete/"><i class="fi-rs-heart"></i></a>
+                                                        <a aria-label="Delete" class="action-btn" asp-route-id="@voucher.Vouchers_ID" asp-page="/Danish/VoucherDelete/"><i class="fi-rs-trash"></i></a>
 
-                                                        <a aria-label="Edit" asp-route-id="@voucher.Vouchers_ID" asp-page="/Danish/VoucherEdit" class="action-btn"><i class="fi-rs-eye"></i></a>
+                                                        <a aria-label="Edit" asp-route-id="@voucher.Vouchers_ID" asp-page="/Danish/VoucherEdit" class="action-btn"><i class="fi fi-rs-edit"></i></a>
                                                     </div>
 
                                                     <div class="product-badges product-badges-position product-badges-mrg">
@@ -499,7 +557,7 @@
                                                     <div class="product-category">
                                                         <a href="shop-grid-right.html">Voucher</a>
                                                     </div>
-                                                    <h2><a href="shop-product-right.html">@voucher.Voucher_Name</a></h2>
+                                                    <h2 class="shop-item-title"><a>@voucher.Voucher_Name</a></h2>
                                                     <div class="product-rate-cover">
                                                         <div class="product-rate d-inline-block">
                                                             <div class="product-rating" style="width: 90%"></div>
@@ -514,11 +572,11 @@
                                                     </div>
                                                     <div class="product-card-bottom">
                                                         <div class="product-price">
-                                                            <span>@new_price OP </span>
+                                                            <span class="shop-item-price">@new_price</span><span> OP</span>
                                                             <span class="old-price">@voucher.Voucher_Cost OP</span>
                                                         </div>
                                                         <div class="add-cart">
-                                                            <a class="add" href="shop-cart.html"><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
+                                                            <a class="add" data-bs-toggle="modal" data-bs-target="#purchaseModal@(voucher.Vouchers_ID)"><i class="fi-rs-shopping-cart mr-5"></i>Redeem</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -528,6 +586,23 @@
                                     }
                                     else
                                     {
+                                        <div class="modal fade" id="purchaseModal@(voucher.Vouchers_ID)" tabindex="-1" aria-labelledby="#purchaseModal@(voucher.Vouchers_ID)" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Are you sure you want to buy this?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        <a class="add" data-bs-toggle="modal" data-bs-target="#purchaseModal@(voucher.Vouchers_ID)"><i class="fi-rs-shopping-cart mr-5"></i>Redeem</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
                                             <div class="product-cart-wrap mb-30">
                                                 <div class="product-img-action-wrap">
@@ -538,9 +613,9 @@
                                                         </a>
                                                     </div>
                                                     <div class="product-action-1">
-                                                        <a aria-label="Delete" class="action-btn" asp-route-id="@voucher.Vouchers_ID" asp-page="/Danish/VoucherDelete"><i class="fi-rs-heart"></i></a>
+                                                        <a aria-label="Delete" class="action-btn" asp-route-id="@voucher.Vouchers_ID" asp-page="/Danish/VoucherDelete"><i class="fi-rs-trash"></i></a>
 
-                                                        <a aria-label="Edit" asp-route-id="@voucher.Vouchers_ID" asp-page="/Danish/VoucherEdit" class="action-btn"><i class="fi-rs-eye"></i></a>
+                                                        <a aria-label="Edit" asp-route-id="@voucher.Vouchers_ID" asp-page="/Danish/VoucherEdit" class="action-btn"><i class="fi fi-rs-edit"></i></a>
                                                     </div>
                                                     <div class="product-badges product-badges-position product-badges-mrg">
                                                         <span class="hot">Hot</span>
@@ -549,7 +624,7 @@
                                                 </div>
                                                 <div class="product-content-wrap">
                                                     <div class="product-category">
-                                                        <a href="shop-grid-right.html">Snack</a>
+                                                        <a href="shop-grid-right.html">Voucher</a>
                                                     </div>
                                                     <h2><a href="shop-product-right.html">@voucher.Voucher_Name</a></h2>
                                                     <div class="product-rate-cover">
@@ -557,6 +632,9 @@
                                                             <div class="product-rating" style="width: 90%"></div>
                                                         </div>
                                                         <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                                    </div>
+                                                    <div>
+                                                        <span class="font-small text-muted">@voucher.Voucher_Description</span>
                                                     </div>
                                                     <div>
                                                         <span class="font-small text-muted">By <a href="vendor-details-1.html">@voucher.Voucher_Company</a></span>
@@ -567,7 +645,7 @@
 
                                                         </div>
                                                         <div class="add-cart">
-                                                            <a class="add" href="shop-cart.html"><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
+                                                            <a class="add" data-bs-toggle="modal" data-bs-target="#purchaseModal@(voucher.Vouchers_ID)"><i class="fi-rs-shopping-cart mr-5"></i>Redeem</a>
                                                         </div>
                                                     </div>
                                                 </div>
