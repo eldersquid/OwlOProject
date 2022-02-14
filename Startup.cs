@@ -30,6 +30,7 @@ namespace OwlOProjectA
             services.AddDbContext<OwloDBContext>();
             services.AddTransient<VoucherService>();
             services.AddTransient<WorkshopService>();
+            services.AddTransient<VenueService>();
             services.AddTransient<Controllers.IntentController>();
             services.Configure<IISServerOptions>(options =>
             {

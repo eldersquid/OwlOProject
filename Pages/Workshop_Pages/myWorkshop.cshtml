@@ -16,7 +16,7 @@
         <div class="container">
             <div class="row">
 
-                @if (Model.allWorkshop != null)
+                @if (Model.allWorkshop != null && Model.allWorkshop.Count != 0)
                 {
                     <div class="col-lg-9">
                         <div class="shop-product-fillter mb-50 pr-30">
@@ -115,9 +115,9 @@
                     <div class="col-lg-3 primary-sidebar sticky-sidebar">
                         <div class="widget-area">
                             <div class="sidebar-widget-2 widget_search mb-50">
-                                <form method="post">
+                                
                                     <a asp-page="/Workshop_Pages/createWorkshop" class="nav-link btn btn-link mb-50 pr-30">Create Workshop</a>
-                                </form>
+                                
                             </div>
                         </div>
                     </div>
@@ -137,9 +137,8 @@
 
                         <div style="text-align:center">
                             <h2><strong>It looks like you don't have any workshops yet...</strong></h2>
-                            <form method="post">
-                                <button type="submit" formmethod="post" class="nav-link btn btn-link mb-50 pr-30">Create Now!</button>
-                            </form>
+                            <a asp-page="/Workshop_Pages/createWorkshop" class="nav-link btn btn-link mb-50 pr-30">Create Workshop</a>
+
 
                         </div>
                     </div>

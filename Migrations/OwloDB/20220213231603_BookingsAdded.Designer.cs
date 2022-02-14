@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OwlOProjectA.Models;
 
 namespace OwlOProjectA.Migrations.OwloDB
 {
     [DbContext(typeof(OwloDBContext))]
-    partial class OwloDBContextModelSnapshot : ModelSnapshot
+    [Migration("20220213231603_BookingsAdded")]
+    partial class BookingsAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -219,9 +221,6 @@ namespace OwlOProjectA.Migrations.OwloDB
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Published")
-                        .HasColumnType("int");
 
                     b.Property<string>("Summary")
                         .IsRequired()

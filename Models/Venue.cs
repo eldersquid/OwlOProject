@@ -18,30 +18,12 @@ namespace OwlOProjectA.Models
         public string Image { get; set; }
 
         [Required]
-        public string Description { get; set; }
-
-        [Required]
         public string Address { get; set; }
 
         [Required]
-        public string Mon { get; set; }
+        public string Weekdays { get; set; }
 
         [Required]
-        public string Tue { get; set; }
-
-        [Required]
-        public string Wed { get; set; }
-
-        [Required]
-        public string Thu { get; set; }
-
-        [Required]
-        public string Fri { get; set; }
-
-        [Required]
-        public string Sat { get; set; }
-
-        [Required]
-        public string Sun { get; set; }
+        public string Weekends { get; set; }
     }
 }

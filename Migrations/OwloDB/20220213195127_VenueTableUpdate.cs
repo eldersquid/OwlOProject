@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace OwlOProjectA.Migrations.OwloDB
 {
-    public partial class WorkshopAdded : Migration
+    public partial class VenueTableUpdate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -46,6 +46,24 @@ namespace OwlOProjectA.Migrations.OwloDB
                 });
 
             migrationBuilder.CreateTable(
+                name: "Venues",
+                columns: table => new
+                {
+                    Venue_ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: false),
+                    Image = table.Column<string>(nullable: false),
+                    Description = table.Column<string>(nullable: false),
+                    Address = table.Column<string>(nullable: false),
+                    Weekdays = table.Column<string>(nullable: false),
+                    Weekends = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Venues", x => x.Venue_ID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Vouchers",
                 columns: table => new
                 {
@@ -75,7 +93,8 @@ namespace OwlOProjectA.Migrations.OwloDB
                     Description = table.Column<string>(nullable: false),
                     Summary = table.Column<string>(nullable: false),
                     Date = table.Column<DateTime>(nullable: false),
-                    ownerEmail = table.Column<string>(nullable: false)
+                    ownerEmail = table.Column<string>(nullable: false),
+                    venueID = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -90,6 +109,9 @@ namespace OwlOProjectA.Migrations.OwloDB
 
             migrationBuilder.DropTable(
                 name: "Owlees");
+
+            migrationBuilder.DropTable(
+                name: "Venues");
 
             migrationBuilder.DropTable(
                 name: "Vouchers");

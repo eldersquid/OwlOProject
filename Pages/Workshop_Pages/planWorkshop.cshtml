@@ -65,9 +65,7 @@
                 </div>
                 <div style="text-align:center">
                     <h2><strong>Book a Venue</strong></h2>
-                    <form method="post">
-                        <button type="submit" formmethod="post" class="nav-link btn btn-link">Book Now!</button>
-                    </form>
+                    <a asp-page="/Workshop_Pages/browseVenues" asp-route-id="@Model.workshop.Workshop_ID" class="nav-link btn btn-link">Book Now!</a>
 
                 </div>
             </div>

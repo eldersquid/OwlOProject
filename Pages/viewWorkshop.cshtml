@@ -1,7 +1,6 @@
-﻿@page "{id}"
-@model OwlOProjectA.Pages.Workshop_Pages.viewWorkshopModel
+﻿@page
+@model OwlOProjectA.Pages.viewWorkshopModel
 @{
-    Layout = "_wsLayout";
 }
 <main class="main">
     <div class="page-header breadcrumb-wrap">
@@ -47,7 +46,7 @@
                                     </div>
                                 </div>
                                 <figure class="single-thumbnail">
-                                    <img src="@Model.workshop.Image" alt="" width="990px"/>
+                                    <img src="@Model.workshop.Image" alt="" width="990px" />
                                 </figure>
                                 <div class="single-content">
                                     <div class="row">
@@ -157,22 +156,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 primary-sidebar sticky-sidebar pt-50">
-                            <div>
-                                <a asp-page="/Workshop_Pages/editWorkshop" asp-route-id="@Model.workshop.Workshop_ID" class="nav-link btn btn-link">Edit Workshop</a>
-                            </div>
-                            @if (Model.workshop.venueID != 0)
-            {
-                        <div>
-                            <a asp-page="/Workshop_Pages/publishWorkshop" asp-route-id="@Model.workshop.Workshop_ID" class="nav-link btn btn-link">Publish Workshop</a>
-                        </div>
-            }
-                            
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </main>

@@ -17,6 +17,7 @@ namespace OwlOProjectA.Services
         public List<Workshop> GetAllWorkshops()
         {
             List<Workshop> AllWorkshops = new List<Workshop>();
+            //AllWorkshops = _context.Workshop.Where(e => e.Published == 1).ToList();
             AllWorkshops = _context.Workshop.ToList();
             return AllWorkshops;
         }
@@ -59,6 +60,15 @@ namespace OwlOProjectA.Services
 
             }
         }
+        
+        public void AddBooking(int wsid, int venid)
+        {
+            var currWorkshop = GetWorkshopByID(wsid);
+            currWorkshop.venueID = venid;
+            _context.Update(currWorkshop);
+            _context.SaveChanges();
+        }
+
 
         public bool UpdateWorkshop(Workshop workshop)
         {

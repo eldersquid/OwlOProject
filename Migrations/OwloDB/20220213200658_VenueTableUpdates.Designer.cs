@@ -10,8 +10,8 @@ using OwlOProjectA.Models;
 namespace OwlOProjectA.Migrations.OwloDB
 {
     [DbContext(typeof(OwloDBContext))]
-    [Migration("20220213190851_VenueTable")]
-    partial class VenueTable
+    [Migration("20220213200658_VenueTableUpdates")]
+    partial class VenueTableUpdates
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -117,19 +117,7 @@ namespace OwlOProjectA.Migrations.OwloDB
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Fri")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Image")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Mon")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -137,23 +125,11 @@ namespace OwlOProjectA.Migrations.OwloDB
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Sat")
+                    b.Property<string>("Weekdays")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Sun")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Thu")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Tue")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Wed")
+                    b.Property<string>("Weekends")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

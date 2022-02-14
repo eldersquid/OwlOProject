@@ -29,7 +29,9 @@ namespace OwlOProjectA.Models
         [Required]
         public string ownerEmail { get; set; }
 
-        public string venueID { get; set; }
+        public int venueID { get; set; }
+
+        public int Published { get; set; }
 
 
     }

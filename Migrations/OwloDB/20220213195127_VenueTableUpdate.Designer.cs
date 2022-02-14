@@ -3,42 +3,23 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OwlOProjectA.Models;
 
 namespace OwlOProjectA.Migrations.OwloDB
 {
     [DbContext(typeof(OwloDBContext))]
-    partial class OwloDBContextModelSnapshot : ModelSnapshot
+    [Migration("20220213195127_VenueTableUpdate")]
+    partial class VenueTableUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.21")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("OwlOProjectA.Models.Booking", b =>
-                {
-                    b.Property<int>("Booking_ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("venueID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("workshopID")
-                        .HasColumnType("int");
-
-                    b.HasKey("Booking_ID");
-
-                    b.ToTable("Bookings");
-                });
 
             modelBuilder.Entity("OwlOProjectA.Models.LuckyDraw", b =>
                 {
@@ -136,6 +117,10 @@ namespace OwlOProjectA.Migrations.OwloDB
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Image")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -220,9 +205,6 @@ namespace OwlOProjectA.Migrations.OwloDB
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Published")
-                        .HasColumnType("int");
-
                     b.Property<string>("Summary")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -231,8 +213,8 @@ namespace OwlOProjectA.Migrations.OwloDB
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("venueID")
-                        .HasColumnType("int");
+                    b.Property<string>("venueID")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Workshop_ID");
 
