@@ -5,3 +5,6 @@ OwlO Project using C#
 
 ## Step 1: Run migrations and copy sql scripts to update databases
 ## Step 2: 
+
+# Features
+### [OWLO PLAN - Nuzul](OwloPlan.md)
