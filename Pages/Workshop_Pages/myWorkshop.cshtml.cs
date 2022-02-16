@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,10 +10,11 @@ using OwlOProjectA.Areas.Identity.Data;
 using OwlOProjectA.Models;
 using OwlOProjectA.Services;
 
-namespace OwlOProjectA.Pages
+namespace OwlOProjectA.Pages.Workshop_Pages
 {
-    public class IndexModel : PageModel
+    public class myWorkshopModel : PageModel
     {
+        private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
 
         [BindProperty]
@@ -21,18 +22,22 @@ namespace OwlOProjectA.Pages
 
         public ApplicationUser currentUser { get; set; }
 
+        private readonly ILogger<myWorkshopModel> _logger;
         private WorkshopService _svc;
-        public IndexModel(WorkshopService service, UserManager<ApplicationUser> userManager)
+        public myWorkshopModel(ILogger<myWorkshopModel> logger, WorkshopService service, UserManager<ApplicationUser> userManager,
+            SignInManager<ApplicationUser> signInManager)
         {
+            _logger = logger;
             _svc = service;
             _userManager = userManager;
+            _signInManager = signInManager;
         }
         public void OnGet()
         {
             currentUser = _userManager.GetUserAsync(User).GetAwaiter().GetResult();
             //Session["CurrentUser"] = _svc.GetAllWorkshopsByUser(currentUser.Email.ToString());
             //allWorkshop = Session["CurrentUser"];
-            allWorkshop = _svc.GetAllWorkshops();
+            allWorkshop = _svc.GetAllWorkshopsByUser(currentUser.Email.ToString());
         }
     }
 }

@@ -1,0 +1,108 @@
+﻿@page
+@model OwlOProjectA.Pages.Workshop_Pages.editWorkshopModel
+@{
+    Layout = "_wsLayout";
+}
+<main class="main">
+    <div class="page-header breadcrumb-wrap">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
+                <span></span> <a asp-page="/Workshop_Pages/myWorkshop">My Workshops</a> <span></span> <a asp-page="/Workshop_Pages/planWorkshop" asp-route-id="@Model.workshop.Workshop_ID">Planning</a> <span></span> <a asp-page="/Workshop_Pages/viewWorkshop" asp-route-id="@Model.workshop.Workshop_ID">View Workshop</a> <span></span> Edit Workshop
+            </div>
+        </div>
+    </div>
+    <div class="page-content pt-150 pb-150">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-8 col-lg-10 col-md-12 m-auto">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-8">
+                            <div class="login_wrap widget-taber-content background-white">
+                                <div class="padding_eight_all bg-white">
+                                    <div class="heading_s1">
+                                        <h1 class="mb-5">Edit Workshop Details</h1>
+                                        <br />
+                                    </div>
+                                    <form method="post">
+
+                                        @*<div class="form-group">
+                                            <input asp-for="voucher.Voucher_CompanyPhoto" type="file" />
+                                            <span asp-validation-for="voucher.Voucher_CompanyPhoto" class="text-danger"></span>
+                                        </div>*@
+                                        <div class="form-group">
+                                            <input asp-for="workshop.Name" placeholder="Voucher Name" />
+                                            <span asp-validation-for="workshop.Name" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <input asp-for="workshop.Description" placeholder="Company issuing voucher" />
+                                            <span asp-validation-for="workshop.Description" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <input asp-for="workshop.Summary" placeholder="Voucher Cost" />
+                                            <span asp-validation-for="workshop.Summary" class="text-danger"></span>
+                                        </div>
+                                        <input id="imgField" type="hidden" asp-for="workshop.Image"/>
+                                        <input  type="hidden" asp-for="workshop.Date"/>
+                                        <input type="hidden" asp-for="workshop.ownerEmail"/>
+                                        <input type="hidden" asp-for="workshop.Workshop_ID"/>
+                                        <div class="form-group">
+                                            <input type="file" id="docUpload" />
+                                        </div>
+
+
+                                        <!-- <div class="login_footer form-group mb-50">
+                                        <div class="chek-form">
+                                            <div class="custome-checkbox">
+                                                <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox12" value="" />
+                                                <label class="form-check-label" for="exampleCheckbox12"><span>I agree to terms &amp; Policy.</span></label>
+                                            </div>
+                                        </div>
+                                        <a href="page-privacy-policy.html"><i class="fi-rs-book-alt mr-5 text-muted"></i>Lean more</a>
+                                    </div> -->
+
+                                        <div class="form-group mb-30">
+                                            <button type="submit" class="btn btn-fill-out btn-block hover-up font-weight-bold">Save Changes</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 pr-30 d-none d-lg-block">
+                            <div class="card-login mt-115">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script type="text/javascript">
+    $("#docUpload").on("change", function () {
+        let doc = $("#docUpload")[0].files[0];
+        let formdata = new FormData();
+        formdata.append("file", doc);
+        $.ajax({
+            url: "/wsimage/upload",
+            type: "POST",
+            data: formdata,
+            contentType: false,
+            processData: false,
+            'success': (data) => {
+                console.log(data);
+                if (data.err) {
+                    console.log("help");
+                    $("#docErr").show();
+                    $("#docErr").text(data.err.message);
+                } else {
+                    console.log("im here");
+                    $("#imgPrev").attr("src", "/WorkshopImages/" + data);
+                    $("#imgField").val("/WorkshopImages/" + data);
+                }
+            },
+        });
+    });
+</script>

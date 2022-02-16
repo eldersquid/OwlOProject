@@ -1,14 +1,14 @@
 ﻿@page
-@model IndexModel
+@model OwlOProjectA.Pages.Workshop_Pages.myWorkshopModel
 @{
-    ViewData["Title"] = "Home page";
+    Layout = "_wsLayout";
 }
 <main class="main">
     <div class="page-header breadcrumb-wrap">
         <div class="container">
             <div class="breadcrumb">
                 <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
-                <span></span> Newest Workshops
+                <span></span> My Workshops
             </div>
         </div>
     </div>
@@ -77,7 +77,7 @@
                                     </div>
                                     <div class="entry-content-2 pl-50">
                                         <h3 class="post-title mb-20">
-                                            <a asp-page="/viewWorkshop" asp-route-id="@workshop.Workshop_ID">@workshop.Name</a>
+                                            <a asp-page="/Workshop_Pages/planWorkshop" asp-route-id="@workshop.Workshop_ID">@workshop.Name</a>
                                         </h3>
                                         <p class="post-exerpt mb-40">@workshop.Summary</p>
                                         <div class="entry-meta meta-1 font-xs color-grey mt-10 pb-10">
@@ -85,8 +85,11 @@
                                                 <span class="post-on">@workshop.Date.ToShortDateString()</span>
                                                 <span class="hit-count has-dot">126k Views</span>
                                             </div>
-                                            <a asp-page="/viewWorkshop" asp-route-id="@workshop.Workshop_ID" class="text-brand font-heading font-weight-bold">Read more <i class="fi-rs-arrow-right"></i></a>
+                                            <a asp-page="/Workshop_Pages/planWorkshop" asp-route-id="@workshop.Workshop_ID" class="text-brand font-heading font-weight-bold">Read more <i class="fi-rs-arrow-right"></i></a>
                                         </div>
+                                    </div>
+                                    <div>
+                                        <a asp-page="/Workshop_Pages/deleteWorkshop" asp-route-id="@workshop.Workshop_ID" class="btn bg-danger">Delete</a>
                                     </div>
                                 </article>
                             }
@@ -109,6 +112,15 @@
                             </nav>
                         </div>
                     </div>
+                    <div class="col-lg-3 primary-sidebar sticky-sidebar">
+                        <div class="widget-area">
+                            <div class="sidebar-widget-2 widget_search mb-50">
+                                
+                                    <a asp-page="/Workshop_Pages/createWorkshop" class="nav-link btn btn-link mb-50 pr-30">Create Workshop</a>
+                                
+                            </div>
+                        </div>
+                    </div>
 
 
                 }
@@ -124,7 +136,10 @@
                         </div>
 
                         <div style="text-align:center">
-                            <h2><strong>It looks like there aren't any workshops yet...</strong></h2>
+                            <h2><strong>It looks like you don't have any workshops yet...</strong></h2>
+                            <a asp-page="/Workshop_Pages/createWorkshop" class="nav-link btn btn-link mb-50 pr-30">Create Workshop</a>
+
+
                         </div>
                     </div>
 

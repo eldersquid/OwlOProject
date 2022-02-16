@@ -1,0 +1,98 @@
+﻿@page
+@model OwlOProjectA.Pages.Workshop_Pages.bookVenueModel
+@{Layout = "_wsLayout";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript">
+
+    var superCB = document.querySelector("#superCB");
+    var discount = document.querySelector("#discount");
+
+    function changeVisible() {
+        if ($('#superCB').is(":checked"))
+            $("#discount").show();
+        else
+            $("#discount").hide();
+    }
+
+    $(document).ready(function () {
+        $('#booking_Date').datepicker({
+            format: "dd/mm/yyyy",
+            autoclose: true,
+            startDate: '+1d'
+        });
+    });
+
+
+</script>
+<main class="main">
+    <div class="page-header breadcrumb-wrap">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
+                <span></span> <a asp-page="/Workshop_Pages/myWorkshop">My Workshops</a> <span></span> <a asp-page="/Workshop_Pages/planWorkshop" asp-route-id="@Model.workshop.Workshop_ID">Planning</a> <span></span> <a asp-page="/Workshop_Pages/viewWorkshop" asp-route-id="@Model.workshop.Workshop_ID">View Workshop</a> <span></span> Edit Workshop
+            </div>
+        </div>
+    </div>
+    <div class="page-content pt-150 pb-150">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-8 col-lg-10 col-md-12 m-auto">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-8">
+                            <div class="login_wrap widget-taber-content background-white">
+                                <div class="padding_eight_all bg-white">
+                                    <div class="heading_s1">
+                                        <h1 class="mb-5">Booking Details</h1>
+                                        <br />
+                                    </div>
+                                    <form method="post">
+
+                                        @*<div class="form-group">
+            <input asp-for="voucher.Voucher_CompanyPhoto" type="file" />
+            <span asp-validation-for="voucher.Voucher_CompanyPhoto" class="text-danger"></span>
+        </div>*@
+                                        <div class="form-group">
+                                            <p>Venue: @Model.venue.Name</p>
+                                        </div>
+                                        <div class="form-group">
+                                            <p>Workshop: @Model.workshop.Name</p>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label" for="date">Date</label>
+                                            <input asp-for="booking.Date" class="form-control" data-provide="datepicker" type="text" />
+                                            
+                                        </div>
+                                        <input type="hidden" asp-for="workshop.Workshop_ID" />
+                                        <input type="hidden" asp-for="venue.Venue_ID" />
+                                        <!-- <div class="login_footer form-group mb-50">
+        <div class="chek-form">
+            <div class="custome-checkbox">
+                <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox12" value="" />
+                <label class="form-check-label" for="exampleCheckbox12"><span>I agree to terms &amp; Policy.</span></label>
+            </div>
+        </div>
+        <a href="page-privacy-policy.html"><i class="fi-rs-book-alt mr-5 text-muted"></i>Lean more</a>
+    </div> -->
+
+                                        <div class="form-group mb-30">
+                                            <button type="submit" class="btn btn-fill-out btn-block hover-up font-weight-bold">Save Changes</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 pr-30 d-none d-lg-block">
+                            <div class="card-login mt-115">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
