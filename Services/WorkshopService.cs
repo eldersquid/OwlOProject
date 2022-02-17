@@ -18,7 +18,7 @@ namespace OwlOProjectA.Services
         {
             List<Workshop> AllWorkshops = new List<Workshop>();
             //AllWorkshops = _context.Workshop.Where(e => e.Published == 1).ToList();
-            AllWorkshops = _context.Workshop.ToList();
+            AllWorkshops = _context.Workshop.Where(e => e.Published == 1).ToList();
             return AllWorkshops;
         }
         public List<Workshop> GetAllWorkshopsByUser(string email)
