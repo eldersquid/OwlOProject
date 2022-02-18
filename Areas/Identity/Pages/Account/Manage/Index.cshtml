@@ -1,0 +1,59 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Profile";
+    ViewData["ActivePage"] = ManageNavPages.Index;
+}
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - OwloAdmin</title>
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="~/assets/images/favicon.ico">
+
+    <!-- Bootstrap Css -->
+    <link href="~/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Icons Css -->
+    <link href="~/assets/css/icons.min.css" rel="stylesheet" />
+    <!-- App Css-->
+    <link href="~/assets/css/app.min.css" rel="stylesheet" />
+
+</head>
+<h4>@ViewData["Title"]</h4>
+<partial name="_StatusMessage" model="Model.StatusMessage" />
+<div class="row">
+    <div class="col-md-6">
+        <form id="profile-form" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Username"></label>
+                <input asp-for="Username" class="form-control" disabled />
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.PhoneNumber"></label>
+                <input asp-for="Input.PhoneNumber" class="form-control" />
+                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+            </div>
+            <button id="update-profile-button" type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+</div>
+<!-- JAVASCRIPT -->
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script src="~/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/assets/libs/metismenu/metisMenu.min.js"></script>
+<script src="~/assets/libs/simplebar/simplebar.min.js"></script>
+<script src="~/assets/libs/node-waves/waves.min.js"></script>
+
+
+<!-- owl.carousel js -->
+<script src="~/assets/libs/owl.carousel/owl.carousel.min.js"></script>
+<!-- auth-2-carousel init -->
+<script src="~/assets/js/pages/auth-2-carousel.init.js"></script>
+<!-- two-step-verification js -->
+<script src="~/assets/js/pages/two-step-verification.init.js"></script>
+<!-- App js -->
+<script src="~/assets/js/app.js"></script>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

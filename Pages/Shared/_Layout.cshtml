@@ -1,33 +1,71 @@
-﻿<!DOCTYPE html>
+﻿@*<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>@ViewData["Title"] - Chat.Web</title>
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
+        <link rel="stylesheet" href="~/css/site.css" />
+    </head>
+    <body>
+        <div class="container vh-100">
+            @RenderBody()
+        </div>
+
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+        @RenderSection("Scripts", required: false)
+    </body>
+    </html>
+*@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - OwlOProjectA</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <title>@ViewData["Title"] - OwloAdmin</title>
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="~/assets/images/favicon.ico">
+
+    <!-- Bootstrap Css -->
+    <link href="~/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Icons Css -->
+    <link href="~/assets/css/icons.min.css" rel="stylesheet" />
+    <!-- App Css-->
+    <link href="~/assets/css/app.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">OwlOProjectA</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                    </ul>
+    @*<header>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">OwloAdmin</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            </li>
+                        </ul>
+                        <partial name="/Views/Shared/_LoginPartial.cshtml" />
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
+        </header>*@
+    <header id="page-topbar">
+        <div class="navbar-header">
+            <partial name="/Pages/Shared/_LoginPartial.cshtml" />
+        </div>
     </header>
     <div class="container">
         <main role="main" class="pb-3">
@@ -35,16 +73,27 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - OwlOProjectA - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
-    </footer>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <!-- JAVASCRIPT -->
+    <script src="~/assets/libs/jquery/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assets/libs/metismenu/metisMenu.min.js"></script>
+    <script src="~/assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="~/assets/libs/node-waves/waves.min.js"></script>
+    <script src="~/lib/qrcode.js"></script>
 
-    @RenderSection("Scripts", required: false)
+
+    <!-- owl.carousel js -->
+    <script src="~/assets/libs/owl.carousel/owl.carousel.min.js"></script>
+    <!-- auth-2-carousel init -->
+    <script src="~/assets/js/pages/auth-2-carousel.init.js"></script>
+    <!-- two-step-verification js -->
+    <script src="~/assets/js/pages/two-step-verification.init.js"></script>
+
+    @RenderSection("scripts", required: false)
+    <!-- App js -->
+    <script src="~/assets/js/app.js"></script>
 </body>
 </html>
+
