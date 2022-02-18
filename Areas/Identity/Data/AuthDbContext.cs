@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Chat.Web.Areas.Identity;
-using Chat.Web.Models;
+using OwlProjectA.Areas.Identity;
+using OwlProjectA.Models;
 
-namespace Chat.Web.Data
+namespace OwlProjectA.Data
 {
     public class AuthDbContext : IdentityDbContext<ApplicationUser>
     {

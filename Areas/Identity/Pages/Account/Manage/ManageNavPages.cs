@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace Chat.Web.Areas.Identity.Pages.Account.Manage
+namespace OwlProjectA.Areas.Identity.Pages.Account.Manage
 {
     public static class ManageNavPages
     {

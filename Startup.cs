@@ -8,15 +8,15 @@ using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
-using Chat.Web.Data;
+using OwlProjectA.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Chat.Web.Hubs;
-using Chat.Web.Models;
+using OwlProjectA.Hubs;
+using OwlProjectA.Models;
 using AutoMapper;
 
-namespace Chat.Web
+namespace OwlProjectA
 {
     public class Startup
     {

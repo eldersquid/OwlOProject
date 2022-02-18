@@ -8,10 +8,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using Chat.Web.Areas.Identity;
-using Chat.Web.Models;
+using OwlProjectA.Areas.Identity;
+using OwlProjectA.Models;
 
-namespace Chat.Web.Areas.Identity.Pages.Account
+namespace OwlProjectA.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
     public class LoginWith2faModel : PageModel

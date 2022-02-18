@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ayy\\OneDrive\\Documents\\WebAPI-SignalR-ChatApplication-main\\WEBAPIProject_CE093\\WEBAPI-SignalR-Chat\\Chat.Web\\Chat.Web.csproj": {}
+    "C:\\Users\\Wonyoung\\source\\repos\\OwlOProject\\Chat.Web.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ayy\\OneDrive\\Documents\\WebAPI-SignalR-ChatApplication-main\\WEBAPIProject_CE093\\WEBAPI-SignalR-Chat\\Chat.Web\\Chat.Web.csproj": {
+    "C:\\Users\\Wonyoung\\source\\repos\\OwlOProject\\Chat.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ayy\\OneDrive\\Documents\\WebAPI-SignalR-ChatApplication-main\\WEBAPIProject_CE093\\WEBAPI-SignalR-Chat\\Chat.Web\\Chat.Web.csproj",
+        "projectUniqueName": "C:\\Users\\Wonyoung\\source\\repos\\OwlOProject\\Chat.Web.csproj",
         "projectName": "Chat.Web",
-        "projectPath": "C:\\Users\\ayy\\OneDrive\\Documents\\WebAPI-SignalR-ChatApplication-main\\WEBAPIProject_CE093\\WEBAPI-SignalR-Chat\\Chat.Web\\Chat.Web.csproj",
-        "packagesPath": "C:\\Users\\ayy\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ayy\\OneDrive\\Documents\\WebAPI-SignalR-ChatApplication-main\\WEBAPIProject_CE093\\WEBAPI-SignalR-Chat\\Chat.Web\\obj\\",
+        "projectPath": "C:\\Users\\Wonyoung\\source\\repos\\OwlOProject\\Chat.Web.csproj",
+        "packagesPath": "C:\\Users\\Wonyoung\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Wonyoung\\source\\repos\\OwlOProject\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ayy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Wonyoung\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -87,6 +87,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.10, 3.1.10]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[3.1.22, 3.1.22]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[3.1.0, 3.1.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[3.1.0, 3.1.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -95,7 +113,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
         }
       }
     }

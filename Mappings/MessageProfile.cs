@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
-using Chat.Web.Helpers;
-using Chat.Web.Models;
-using Chat.Web.ViewModels;
+using OwlProjectA.Helpers;
+using OwlProjectA.Models;
+using OwlProjectA.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Chat.Web.Mappings
+namespace OwlProjectA.Mappings
 {
     public class MessageProfile : Profile
     {

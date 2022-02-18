@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Chat.Web.Data.Migrations
+namespace OwlProjectA.Data.Migrations
 {
     public partial class Initial : Migration
     {

@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Chat.Web.ViewModels
+namespace OwlProjectA.ViewModels
 {
     public class UploadViewModel
     {

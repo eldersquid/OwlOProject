@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
-using Chat.Web.Models;
+using OwlProjectA.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace Chat.Web.Data
+namespace OwlProjectA.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {

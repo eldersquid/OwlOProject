@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Chat.Web.Pages
+namespace OwlProjectA.Pages
 {
     public class EcommerceCustomersModel : Controller
     {

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using Chat.Web.Data;
-using Chat.Web.Models;
-using Chat.Web.ViewModels;
+using OwlProjectA.Data;
+using OwlProjectA.Models;
+using OwlProjectA.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace Chat.Web.Hubs
+namespace OwlProjectA.Hubs
 {
     [Authorize]
     public class ChatHub : Hub

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Chat.Web.Areas.Identity;
-using Chat.Web.Models;
+using OwlProjectA.Areas.Identity;
+using OwlProjectA.Models;
 
-namespace Chat.Web.Areas.Identity.Pages.Account.Manage
+namespace OwlProjectA.Areas.Identity.Pages.Account.Manage
 {
     public partial class IndexModel : PageModel
     {

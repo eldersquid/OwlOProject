@@ -5,17 +5,17 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using AutoMapper;
-using Chat.Web.Data;
-using Chat.Web.Hubs;
-using Chat.Web.Models;
-using Chat.Web.ViewModels;
+using OwlProjectA.Data;
+using OwlProjectA.Hubs;
+using OwlProjectA.Models;
+using OwlProjectA.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Configuration;
 
-namespace Chat.Web.Controllers
+namespace OwlProjectA.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

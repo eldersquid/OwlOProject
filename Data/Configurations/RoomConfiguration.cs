@@ -1,4 +1,4 @@
-﻿using Chat.Web.Models;
+﻿using OwlProjectA.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Chat.Web.Data.Configurations
+namespace OwlProjectA.Data.Configurations
 {
     public class RoomConfiguration : IEntityTypeConfiguration<Room>
     {
