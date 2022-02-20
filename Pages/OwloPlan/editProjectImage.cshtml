@@ -1,0 +1,62 @@
+﻿@page "{id}"
+@model OwlOProjectA.Pages.OwloPlan.editProjectImageModel
+@{
+}
+
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">Edit Project Image</h4>
+    </div>
+    <div class="card-body">
+        <div class="basic-form">
+            <form method="post">
+                <input asp-for="Project.Project_ID" value="@Model.Project.Project_ID" type="hidden" />
+                <input asp-for="Project.Title" value="@Model.Project.Title" type="hidden" />
+                <input asp-for="Project.Published" value="@Model.Project.Published" type="hidden" />
+                <input asp-for="Project.Owner" value="@Model.Project.Owner" type="hidden" />
+                <input asp-for="Project.Description" value="@Model.Project.Description" type="hidden" />
+
+                <input asp-for="Project.Members" value="@Model.Project.Members" type="hidden" />
+
+                <input id="imgField" type="hidden" asp-for="Project.Image" />
+
+                <div class="form-group">
+                    <input type="file" id="docUpload" accept="image/png, image/gif, image/jpeg" />
+                </div>
+                <div class="d-flex align-items-end flex-column">
+                    <button type="submit" onkeydown="return event.key != 'Enter'" ; class="btn btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts {
+
+    <script type="text/javascript">
+        $("#docUpload").on("change", function () {
+            let doc = $("#docUpload")[0].files[0];
+            let formdata = new FormData();
+            formdata.append("file", doc);
+            $.ajax({
+                url: "/planupload/upload",
+                type: "POST",
+                data: formdata,
+                contentType: false,
+                processData: false,
+                'success': (data) => {
+                    console.log(data);
+                    if (data.err) {
+                        console.log("help");
+                        $("#docErr").show();
+                        $("#docErr").text(data.err.message);
+                    } else {
+                        console.log("im here");
+                        $("#imgPrev").attr("src", "/PlanImages/" + data);
+                        $("#imgField").val("/PlanImages/" + data);
+                    }
+                },
+            });
+        });
+    </script>
+}
+

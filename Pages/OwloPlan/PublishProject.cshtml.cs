@@ -35,22 +35,50 @@ namespace owlo_plan.Pages
             _projectSvc = projectservice;
             _resourceService = resourceService;
         }
-        public void OnGet(string id)
+        public async Task<IActionResult> OnGetAsync(string id)
         {
-            //validate if project is valid, else return to project page
-            if (id != null)
-            {
-                MyProject = _projectSvc.GetProjectById(id);
-                AllProjectResources = _resourceService.GetAllResources(id);
-                AllTeamMembers = _projectSvc.GetAllTeamMembers(id);
-                AllTasks = _projectSvc.GetAllTask(id);
-                AllMeetings = _projectSvc.GetAllMeetings(id);
-
-                AllSkills = _projectSvc.GetAllSkills(id);
-                AllCauses = _projectSvc.GetAllCauses(id);
-                AllCommunityPartners = _projectSvc.GetAllCommunityPartners(id);
-            }
+            MyProject = _projectSvc.GetProjectById(id);
+            AllProjectResources =  _resourceService.GetAllResources(id);
+            AllTeamMembers = _projectSvc.GetAllTeamMembers(id);
+            AllTasks = _projectSvc.GetAllTask(id);
+            AllMeetings = _projectSvc.GetAllMeetings(id);
+            AllCommunityPartners = _projectSvc.GetAllCommunityPartners(id);
+            AllSkills = _projectSvc.GetAllSkills(id);
+            AllCauses = _projectSvc.GetAllCauses(id);
+            return Page();
         }
+        //public void OnGet(string id)
+        //{
+        //    MyProject = new Projects();
+        //    //validate if project is valid, else return to project page
+        //    Console.WriteLine("this is id on get", id);
+        //        MyProject = _projectSvc.GetProjectById(id);
+        //        AllProjectResources = _resourceService.GetAllResources(id);
+        //        AllTeamMembers = _projectSvc.GetAllTeamMembers(id);
+        //        AllTasks = _projectSvc.GetAllTask(id);
+        //        AllMeetings = _projectSvc.GetAllMeetings(id);
+        //        AllCommunityPartners = _projectSvc.GetAllCommunityPartners(id);
+        //        AllSkills = _projectSvc.GetAllSkills(id);
+        //        AllCauses = _projectSvc.GetAllCauses(id);
+
+        //}
+        //public IActionResult OnGet(int id)
+        //{
+        //    MyProject = new Projects();
+        //    //validate if project is valid, else return to project page
+        //    Console.WriteLine("this is id on get", id);
+        //    MyProject = _projectSvc.GetProjectById(id.ToString());
+        //    AllProjectResources = _resourceService.GetAllResources(id.ToString());
+        //    AllTeamMembers = _projectSvc.GetAllTeamMembers(id.ToString());
+        //    AllTasks = _projectSvc.GetAllTask(id.ToString());
+        //    AllMeetings = _projectSvc.GetAllMeetings(id.ToString());
+
+        //    AllSkills = _projectSvc.GetAllSkills(id.ToString());
+        //    AllCauses = _projectSvc.GetAllCauses(id.ToString());
+        //    AllCommunityPartners = _projectSvc.GetAllCommunityPartners(id.ToString());
+            
+        //    return Page();
+        //}
         public IActionResult OnPostPublish(string projectid)
         {
             _projectSvc.publishproject(projectid);

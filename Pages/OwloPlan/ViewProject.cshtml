@@ -14,6 +14,7 @@
 {
     <form asp-page-handler="CancelInvitation" asp-route-projectid="@Model.MyProject.Project_ID" method="post">
         <input asp-for="projectID" type="hidden" value="@Model.MyProject.Project_ID"/>
+        <input asp-for="userEmail" type="hidden" value="@Model.userEmail">
         <div class="d-flex align-items-center mb-4 flex-wrap">
             <h3 class="fs-20 font-w600  me-auto">@Model.MyProject.Title</h3>
             <div>
@@ -46,12 +47,21 @@ else
                 <div class="post-details">
                     @*<h3 class="mb-2 text-black">@Model.MyProject.Title</h3>*@
                     @*<br />*@
+                @if (Model.MyProject.Image == "" || Model.MyProject.Image == null)
+                {
                     <img src="/jobick_assets/images/profile/8.jpg" alt="" class="img-fluid mb-3 w-100 rounded">
-                    <div class="d-flex align-items-center mb-4 flex-wrap">
-                        <h4 class="text-primary me-auto">Description</h4>
-                    </div>
-                    <p>@Model.MyProject.Description</p>
+
+                }
+                else
+                {
+                    <img src="@Model.MyProject.Image" alt="" class="img-fluid mb-3 w-100 rounded">
+
+                }
+                <div class="d-flex align-items-center mb-4 flex-wrap">
+                    <h4 class="text-primary me-auto">Description</h4>
                 </div>
+                <p>@Model.MyProject.Description</p>
+            </div>
             </div>
         </div>
     </div>

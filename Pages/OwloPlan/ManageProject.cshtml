@@ -96,9 +96,9 @@
                                             <h4 class="mb-1">@task.Title</h4>
                                         </div>
                                         <div class="dropdown">
-                                            <button type="submit" class="btn btn-outline-primary light sharp">
+                                            <a asp-page="/OwloPlan/editMeeting" asp-route-id="@task.Meeting_ID"class="btn btn-outline-primary light sharp">
                                                 <i class="fas fa-pen"></i>
-                                            </button>
+                                            </a>
                                             <a target="_blank" href="@task.platform_link" class="btn btn-primary light sharp">Join</a>
                                         </div>
                                     </div>
@@ -144,7 +144,7 @@
                                         </div>
                                     </a>
                                     <div class="text-center">
-                                        <a asp-page="/OwloPlan/UpdateResources" asp-route-id="@Model.MyProject.Project_ID" asp-route-resourceid="@resource.Resource_id" class="btn btn-outline-primary me-3 btn-sm"><i class="fas fa-pen"></i></a>
+                                        <a asp-page="/OwloPlan/UpdateResources" asp-route-id="@Model.MyProject.Project_ID" asp-route-resourceid="@resource.Resource_id" class="btn btn-outline-primary me-3 btn-sm"><i class="fas fa-pen m-0"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -208,8 +208,15 @@
                                                 <div class="text-center">
                                                     <h4 class="mb-0">@resource.UserName</h4>
                                                     <p class="mb-0">@resource.role</p>
-
                                                 </div>
+                                                <form asp-page-handler="DeleteTeamMember" asp-route-projectid="@resource.Project_ID" asp-route-id="@resource.TeamMember_ID" method="post">
+                                                    <div class="text-center">
+                                                        <button type="submit" class="btn btn-primary light sharp">
+                                                            <i class="fa fa-times m-0"></i>
+                                                        </button>
+                                                    </div>
+                                                </form>
+
                                             </div>
                                         </div>
                                     </div>
@@ -218,7 +225,7 @@
                             }
                             else
                             {
-                                <p class="text-center">Create a resource so your members can easily access them!</p>
+                                <p class="text-center">Invite new team members by going to explore volunteers!</p>
                             }
                         </div>
                     </div><div class="owl-nav"><div class="owl-prev disabled"></div><div class="owl-next"></div></div><div class="owl-dots"><div class="owl-dot active"><span></span></div><div class="owl-dot"><span></span></div><div class="owl-dot"><span></span></div><div class="owl-dot"><span></span></div><div class="owl-dot"><span></span></div></div>

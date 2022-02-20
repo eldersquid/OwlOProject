@@ -2,10 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using owlo_plan.Models;
 using owlo_plan.Services;
+using OwlOProjectA.Areas.Identity.Data;
 
 namespace owlo_plan.Pages
 {
@@ -36,12 +38,18 @@ namespace owlo_plan.Pages
 
         private ResourceService _resourceService;
         private ProjectService _projectSvc;
-        public ViewProjectModel(ProjectService projectservice, ResourceService resourceService)
+        [BindProperty]
+        public string userEmail { get; set; }
+        private readonly UserManager<ApplicationUser> _userManager;
+
+        public ViewProjectModel(ProjectService projectservice, ResourceService resourceService, UserManager<ApplicationUser> userManager)
         {
             _projectSvc = projectservice;
             _resourceService = resourceService;
+            _userManager = userManager;
+
         }
-        public void OnGet(string id)
+        public async Task<IActionResult> OnGetAsync(string id)
         {
             //validate if project is valid, else return to project page
             if (id != null)
@@ -55,14 +63,17 @@ namespace owlo_plan.Pages
                 AllSkills = _projectSvc.GetAllSkills(id);
                 AllCauses = _projectSvc.GetAllCauses(id);
                 AllCommunityPartners = _projectSvc.GetAllCommunityPartners(id);
+                userEmail = _userManager.GetUserAsync(User).GetAwaiter().GetResult().Email;
+
 
                 //check whether join request exist
-                joinRequestExist = _projectSvc.checkJoinRequest("nuzul5567@gmail.com", MyProject.Project_ID);
+                joinRequestExist = _projectSvc.checkJoinRequest(userEmail, MyProject.Project_ID);
             }
+            return Page();
         }
         public IActionResult OnPostCancelInvitation() 
         {
-            _projectSvc.CancelInvitaiton("nuzul5567@gmail.com", projectID);
+            _projectSvc.CancelInvitaiton(userEmail, projectID);
             return Redirect("/OwloPlan/ViewProject/" + projectID);
             
         }

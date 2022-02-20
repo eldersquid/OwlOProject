@@ -32,5 +32,17 @@ namespace owlo_plan.Services
             _context.SaveChanges();
             return true;
         }
+        public Meetings GetMeeting(string id) {
+            return _context.Meetings.Where(b => b.Meeting_ID == id).First();
+        }
+        public void UpdateMeeting(Meetings meetings) {
+            _context.Update(meetings);
+            _context.SaveChanges();
+        }
+
+        public void DeleteMeeting(string id) {
+            _context.Remove(_context.Meetings.Where(b=> b.Meeting_ID == id).First());
+            _context.SaveChanges();
+        }
     }
 }
