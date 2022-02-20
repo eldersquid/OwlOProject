@@ -50,6 +50,13 @@ namespace OwlOProjectA
             services.AddTransient<ResourceService>();
             services.AddTransient<MeetingService>();
 
+
+            //Jing kai
+            services.AddTransient<WorkshopService>();
+            services.AddTransient<VenueService>();
+
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
