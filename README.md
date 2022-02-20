@@ -21,7 +21,7 @@ dotnet ef migrations owlodb --context owlodbcontext
 dotnet ef database update --context --owlodbcontext
 ```
 ### Step 2: Copy sql scripts to update and populate databases
-
+Download the SQL scripts located in the other resources section below.
 
 # Features
 ---
@@ -36,5 +36,5 @@ Since OWLO is a big application with many application it is unwise to fit all of
 | --- | ----------- |
 | Project Report | [link](https://docs.google.com/document/d/10XgJhgCkWqU_6sObHvtWeG16Jk_LCDH-JvEjIPYs0r8/edit?usp=sharing) |
 | Presentation Slides | [link](https://docs.google.com/presentation/d/110JlaGVKrxqfZmyVvUeThdp4HaXcDSFu_lNzs2SYXNg/edit?usp=sharing) |
-| SQL Scripts| [link](https://docs.google.com/presentation/d/110JlaGVKrxqfZmyVvUeThdp4HaXcDSFu_lNzs2SYXNg/edit?usp=sharing) |
+| SQL Scripts| [link](/ImagesForMarkdown/Run_This_After_Migrations.sql) |
 
