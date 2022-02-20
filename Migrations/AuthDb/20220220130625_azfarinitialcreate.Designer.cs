@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace OwlOProjectA.Migrations
+namespace OwlOProjectA.Migrations.AuthDb
 {
     [DbContext(typeof(AuthDbContext))]
-    [Migration("20220212143721_Inital-Create")]
-    partial class InitalCreate
+    [Migration("20220220130625_azfarinitialcreate")]
+    partial class azfarinitialcreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -164,9 +164,6 @@ namespace OwlOProjectA.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<int>("Age")
-                        .HasColumnType("int");
-
                     b.Property<string>("Bio")
                         .HasColumnType("nvarchar(MAX)")
                         .HasMaxLength(3000);
@@ -181,7 +178,7 @@ namespace OwlOProjectA.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(100)")
+                        .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
 
                     b.Property<bool>("EmailConfirmed")
@@ -192,18 +189,11 @@ namespace OwlOProjectA.Migrations
                         .HasColumnType("nchar(1)")
                         .HasMaxLength(1);
 
-                    b.Property<string>("Inventory_ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(MAX)");
-
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("Mentor_Email")
-                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("NRIC")
                         .IsRequired()
@@ -224,11 +214,6 @@ namespace OwlOProjectA.Migrations
 
                     b.Property<int>("Owl_Points")
                         .HasColumnType("int");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(100);
 
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");

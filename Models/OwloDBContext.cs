@@ -42,5 +42,13 @@ namespace OwlOProjectA.Models
         public DbSet<Workshop> Workshop { get; set; }
         public DbSet<Booking> Bookings { get; set; }
         public DbSet<Venue> Venues { get; set; }
+
+        public DbSet<Community> Communities { get; set; }
+
+        public DbSet<CommunityPost> CommunityPosts { get; set; }
+
+        public DbSet<Comment> Comments { get; set; }
+
+
     }
 }

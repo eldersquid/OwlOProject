@@ -39,11 +39,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Migrations\" />
-    <Folder Include="Migrations\OwloDB\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="wwwroot\jobick_assets\css\style.css.map" />
     <None Include="wwwroot\jobick_assets\icons\avasta\fonts\avasta.svg" />
     <None Include="wwwroot\jobick_assets\icons\avasta\fonts\avasta.woff2" />
@@ -5771,6 +5766,10 @@
     <None Include="wwwroot\jobick_assets\vendor\swiper\js\swiper-bundle.min.js" />
     <None Include="wwwroot\jobick_assets\vendor\toastr\js\toastr.min.js" />
     <None Include="wwwroot\jobick_assets\vendor\wnumb\wNumb.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\OwloDB\" />
   </ItemGroup>
 
 </Project>

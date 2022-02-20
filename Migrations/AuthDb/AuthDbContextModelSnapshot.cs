@@ -4,16 +4,14 @@ using AuthSystem.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace OwlOProjectA.Migrations
+namespace OwlOProjectA.Migrations.AuthDb
 {
     [DbContext(typeof(AuthDbContext))]
-    [Migration("20220213075946_FirstTry")]
-    partial class FirstTry
+    partial class AuthDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -164,9 +162,6 @@ namespace OwlOProjectA.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<int>("Age")
-                        .HasColumnType("int");
-
                     b.Property<string>("Bio")
                         .HasColumnType("nvarchar(MAX)")
                         .HasMaxLength(3000);
@@ -192,18 +187,11 @@ namespace OwlOProjectA.Migrations
                         .HasColumnType("nchar(1)")
                         .HasMaxLength(1);
 
-                    b.Property<string>("Inventory_ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(MAX)");
-
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("Mentor_Email")
-                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("NRIC")
                         .IsRequired()

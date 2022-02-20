@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace OwlOProjectA.Migrations
+namespace OwlOProjectA.Migrations.AuthDb
 {
-    public partial class InitalCreate : Migration
+    public partial class azfarinitialcreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -28,6 +28,7 @@ namespace OwlOProjectA.Migrations
                     Id = table.Column<string>(nullable: false),
                     UserName = table.Column<string>(maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(maxLength: 256, nullable: true),
+                    Email = table.Column<string>(maxLength: 256, nullable: true),
                     NormalizedEmail = table.Column<string>(maxLength: 256, nullable: true),
                     EmailConfirmed = table.Column<bool>(nullable: false),
                     PasswordHash = table.Column<string>(nullable: true),
@@ -39,17 +40,12 @@ namespace OwlOProjectA.Migrations
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(100)", maxLength: 256, nullable: true),
                     NRIC = table.Column<string>(type: "nvarchar(MAX)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 25, nullable: false),
                     Gender = table.Column<string>(type: "nchar(1)", maxLength: 1, nullable: false),
                     Owl_Points = table.Column<int>(type: "int", nullable: false),
-                    Age = table.Column<int>(type: "int", nullable: false),
                     Bio = table.Column<string>(type: "nvarchar(MAX)", maxLength: 3000, nullable: true),
-                    Citizenship = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Inventory_ID = table.Column<string>(type: "nvarchar(MAX)", nullable: true),
-                    Mentor_Email = table.Column<string>(type: "nvarchar(100)", nullable: true),
-                    Password = table.Column<string>(type: "nvarchar(50)", maxLength: 100, nullable: false)
+                    Citizenship = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {

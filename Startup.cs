@@ -55,8 +55,11 @@ namespace OwlOProjectA
             services.AddTransient<WorkshopService>();
             services.AddTransient<VenueService>();
 
+            ////AAzfarz
+            services.AddTransient<CommunityService>();
 
-
+            services.AddTransient<CommunityPostService>();
+            services.AddTransient<CommentService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
