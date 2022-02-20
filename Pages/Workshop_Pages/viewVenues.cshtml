@@ -1,0 +1,68 @@
+﻿@page
+@model OwlOProjectA.Pages.Workshop_Pages.viewVenuesModel
+@{
+    Layout = "_wsLayout";
+}
+<main class="main">
+    <div class="page-header breadcrumb-wrap">
+        <div class="container">
+            <div class="breadcrumb">
+                <a asp-page="/Index" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
+                <span></span> <a asp-page="/Workshop_Pages/myWorkshop">My Workshops</a> <span></span> <a asp-page="/Workshop_Pages/planWorkshop" asp-route-id="@Model.workshop.Workshop_ID">Planning</a> <span></span> <a asp-page="/Workshop_Pages/browseVenues" asp-route-id="@Model.workshop.Workshop_ID">Browse Venues</a> <span></span> View Venues
+            </div>
+        </div>
+    </div>
+    <div class="page-content mb-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-11 col-lg-12 m-auto">
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <div class="single-page pt-50 pr-30">
+                                <div class="single-header style-2">
+                                    <div class="row">
+                                        <div class="col-xl-10 col-lg-12 m-auto">
+                                            <h2 class="mb-10">@Model.venue.Name</h2>
+                                            <div class="single-header-meta">
+                                                <div class="social-icons single-share">
+                                                    <ul class="text-grey-5 d-inline-block">
+                                                        <li class="mr-5">
+                                                            <a href="#"><img src="assets/imgs/theme/icons/icon-bookmark.svg" alt="" /></a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#"><img src="assets/imgs/theme/icons/icon-heart-2.svg" alt="" /></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <figure class="single-thumbnail">
+                                    <img src="@Model.venue.Image" alt="" width="990px" />
+                                </figure>
+                                
+                                                
+                            </div>
+                        </div>
+                        <div class="col-lg-3 primary-sidebar sticky-sidebar pt-50">
+                            <div class="sidebar-widget widget-category-2 mb-50">
+                                <h5 class="section-title style-1 mb-30">Venue Details</h5>
+                                <div>
+                                    <p><strong>Address</strong>: @Model.venue.Address</p>
+                                    <p><strong>Opening Hours</strong>:</p>
+                                    <p><strong>Weekdays</strong>- @Model.venue.Weekdays</p>
+                                    <p><strong>Weekends</strong>- @Model.venue.Weekends</p>
+                                    <a asp-page="/Workshop_Pages/bookVenue" asp-route-wsid="@Model.workshop.Workshop_ID" asp-route-venid="@Model.venue.Venue_ID" class="nav-link btn btn-link">Book Venue</a>
+                                </div>
+                            </div>
+                            
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</main>

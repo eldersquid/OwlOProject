@@ -1,0 +1,32 @@
+﻿@page
+@model owlo_plan.Pages.ExploreProjectCategoriesModel
+@{
+    ViewData["Title"] = $"OWLO Plan - Categories";
+    ViewData["Page"] = "Explore Categories";
+
+
+}
+
+<div class="tab-content">
+    <div class="tab-pane fade show active" id="Boxed" role="tabpanel">
+        <div class="row">
+            @foreach (var task in Model.availableCause)
+            {
+            <div class="col-xl-3 col-xxl-4 col-md-4 col-sm-6">
+                <a asp-page="/OwloPlan/ExploreProjects" asp-route-cause="@task">
+
+                    <div class="card">
+                        <div class="jobs2 card-body">
+                            <div class="text-center">
+                                <h4 class="fs-20 mb-0">@task</h4>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+            }
+        </div>
+    </div>
+
+</div>

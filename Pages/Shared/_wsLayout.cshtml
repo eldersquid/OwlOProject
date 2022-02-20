@@ -1,0 +1,324 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using OwlOProjectA.Areas.Identity.Data
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - EDP_Project</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta property="og:title" content="" />
+    <meta property="og:type" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="" />
+    <!-- Favicon -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="~/nest_assets/imgs/theme/favicon.svg" />
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="/nest_assets/custom_css/chat.css">
+    <link rel="stylesheet" href="/nest_assets/custom_css/chatBot.css">
+    <link rel="stylesheet" href="/nest_assets/css/main.css?v=4.0" />
+
+</head>
+
+
+<body>
+    <!-- Chat Bot -->
+    <div class="container">
+        <div class="chatbox">
+            <div class="chatbox__support" style="display:none;">
+                <div class="chatbox__header">
+                    <div class="chatbox__image--header">
+                        <img src="/images/EuQiL7lU4AQOCS1.jpg" class="rounded-circle z-depth-2" style="width:auto;height:auto" alt="image">
+                    </div>
+                    <div class="chatbox__content--header">
+                        <h4 class="chatbox__heading--header">Dani Bot</h4>
+                        <p class="chatbox__description--header">Ask questions and get redirected! Powered by Dialogflow.</p>
+                    </div>
+                </div>
+                <div class="chatbox__messages" id="ChatBot_message">
+                    <div id="ChatBot_messages">
+                        <div class="messages__item messages__item--visitor">
+                            I'm Dani Bot, the volunteering bot to help you navigate through the websites and answer your questions!
+                        </div>
+                    </div>
+                </div>
+                <div class="chatbox__footer" id="ChatBot_Footer">
+                    <input type="text" id="textbox" placeholder="Write a message...">
+                    <button id="sendBtn" type="button" class="btn btn-primary">Send</button>
+
+                </div>
+            </div>
+            <div class="chatbox__button">
+                <button>button</button>
+            </div>
+        </div>
+    </div>
+    <!-- End Chat Bot -->
+
+
+    <header class="header-area header-style-1 header-height-2">
+        <div class="mobile-promotion">
+            <span>Grand opening, <strong>up to 15%</strong> off all items. Only <strong>3 days</strong> left</span>
+        </div>
+        <div class="header-middle header-middle-ptb-1 d-none d-lg-block">
+            <div class="container">
+                <div class="header-wrap">
+                    <div class="logo logo-width-1">
+                        <a href="index.html"><img src="~/WorkshopImages/Asset 48.png" alt="logo" /></a>
+                    </div>
+                    <div class="header-right">
+                        
+                        <div class="header-action-right offset-8">
+                            <div class="header-action-2">
+
+                                <div class="header-action-icon-2">
+                                    <a href="page-account.html">
+                                        <img class="svgInject" alt="Nest" src="~/nest_assets/imgs/theme/icons/icon-heart.svg" />
+                                    </a>
+                                    <a href="page-account.html"><span class="lable ml-0">FAQ</span></a>
+                                    <div class="cart-dropdown-wrap cart-dropdown-hm2 account-dropdown">
+                                        <ul>
+                                            <li><a asp-page="/Danish/ViewIntents"><i class="fi fi-rs-user mr-10"></i>Chat Bot Intents</a></li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="header-action-icon-2">
+                                    <a asp-page="/OwlShop">
+                                        <img class="svgInject" alt="Nest" src="~/nest_assets/imgs/theme/icons/icon-heart.svg" />
+                                        <span class="pro-count blue">6</span>
+                                    </a>
+                                    <a asp-page="/Danish/OwlShop"><span class="lable">Owl Shop</span></a>
+                                </div>
+                                @if (SignInManager.IsSignedIn(User))
+                                {
+                                    <div class="header-action-icon-2">
+                                        <a class="mini-cart-icon" href="shop-cart.html">
+                                            <img alt="Nest" src="~/nest_assets/imgs/theme/icons/icon-cart.svg" />
+                                            <span class="pro-count blue">2</span>
+                                        </a>
+                                        <a href="shop-cart.html"><span class="lable">Cart</span></a>
+                                        <div class="cart-dropdown-wrap cart-dropdown-hm2">
+                                            <ul>
+                                                <li>
+                                                    <div class="shopping-cart-img">
+                                                        <a href="shop-product-right.html"><img alt="Nest" src="~/nest_assets/imgs/shop/thumbnail-3.jpg" /></a>
+                                                    </div>
+                                                    <div class="shopping-cart-title">
+                                                        <h4><a href="shop-product-right.html">Daisy Casual Bag</a></h4>
+                                                        <h4><span>1 × </span>$800.00</h4>
+                                                    </div>
+                                                    <div class="shopping-cart-delete">
+                                                        <a href="#"><i class="fi-rs-cross-small"></i></a>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="shopping-cart-img">
+                                                        <a href="shop-product-right.html"><img alt="Nest" src="~/nest_assets/imgs/shop/thumbnail-2.jpg" /></a>
+                                                    </div>
+                                                    <div class="shopping-cart-title">
+                                                        <h4><a href="shop-product-right.html">Corduroy Shirts</a></h4>
+                                                        <h4><span>1 × </span>$3200.00</h4>
+                                                    </div>
+                                                    <div class="shopping-cart-delete">
+                                                        <a href="#"><i class="fi-rs-cross-small"></i></a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            <div class="shopping-cart-footer">
+                                                <div class="shopping-cart-total">
+                                                    <h4>Total <span>$4000.00</span></h4>
+                                                </div>
+                                                <div class="shopping-cart-button">
+                                                    <a href="shop-cart.html" class="outline">View cart</a>
+                                                    <a href="shop-checkout.html">Checkout</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="header-action-icon-2">
+
+                                        <a href="page-account.html">
+                                            <img class="svgInject" alt="Nest" src="~/nest_assets/imgs/theme/icons/icon-user.svg" />
+                                        </a>
+                                        <a href="page-account.html"><span class="lable ml-0">Account</span></a>
+                                        <div class="cart-dropdown-wrap cart-dropdown-hm2 account-dropdown">
+                                            <ul>
+                                                <li><a id="manage" asp-area="Identity" asp-page="/Account/Manage/Index" title="manage"><i class="fi fi-rs-user mr-10"></i>Hello @UserManager.GetUserName(User)!</a></li>
+                                                <li><a href="page-account.html"><i class="fi fi-rs-location-alt mr-10"></i>List of Owlees</a></li>
+                                                <li><a href="page-account.html"><i class="fi fi-rs-label mr-10"></i>My Voucher</a></li>
+                                                <li><a href="shop-wishlist.html"><i class="fi fi-rs-heart mr-10"></i>My Wishlist</a></li>
+                                                <li><a asp-page="/Workshop/myWorkshop"><i class="fi fi-rs-graduation-cap mr-10"></i>My Workshop</a></li>
+                                                <li><a href="page-account.html"><i class="fi fi-rs-settings-sliders mr-10"></i>Setting</a></li>
+                                                <li>
+                                                    <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Index", new { area = "" })">
+                                                        <button id="logout" type="submit" class="nav-link btn btn-link text-dark"><i class="fi fi-rs-sign-out mr-10"></i>Logout</button>
+                                                    </form>
+
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+
+
+
+                                }
+
+
+
+
+
+                                else
+                                {
+
+                            <div class="header-action-icon-2">
+
+                                <a href="page-account.html">
+                                    <img class="svgInject" alt="Nest" src="~/nest_assets/imgs/theme/icons/icon-user.svg" />
+                                </a>
+                               
+                                <a href="page-account.html"><span class="lable ml-0">Account</span></a>
+                                <div class="cart-dropdown-wrap cart-dropdown-hm2 account-dropdown">
+                                    <ul>
+                                        <li><a asp-page="/Account/Register" asp-area="Identity"><i class="fi fi-rs-user mr-10"></i>Register</a></li>
+                                        <li><a asp-area="Identity" asp-page="/Account/Login"><i class="fi fi-rs-user mr-10"></i>Log In</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                                    
+                                }
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-bottom header-bottom-bg-color sticky-bar">
+            <div class="container">
+                <div class="header-wrap header-space-between position-relative">
+                    <div class="logo logo-width-1 d-block d-lg-none">
+                        <a href="index.html"><img src="~/nest_assets/imgs/theme/logo.svg" alt="logo" /></a>
+                    </div>
+
+
+                    <div class="header-action-icon-2 d-block d-lg-none">
+                        <div class="burger-icon burger-icon-white">
+                            <span class="burger-icon-top"></span>
+                            <span class="burger-icon-mid"></span>
+                            <span class="burger-icon-bottom"></span>
+                        </div>
+                    </div>
+                    <div class="header-action-right d-block d-lg-none">
+                        <div class="header-action-2">
+                            <div class="header-action-icon-2">
+                                <a href="shop-wishlist.html">
+                                    <img alt="Nest" src="~/nest_assets/imgs/theme/icons/icon-heart.svg" />
+                                    <span class="pro-count white">4</span>
+                                </a>
+                            </div>
+                            <div class="header-action-icon-2">
+                                <a class="mini-cart-icon" href="shop-cart.html">
+                                    <img alt="Nest" src="~/nest_assets/imgs/theme/icons/icon-cart.svg" />
+                                    <span class="pro-count white">2</span>
+                                </a>
+                                <div class="cart-dropdown-wrap cart-dropdown-hm2">
+                                    <ul>
+                                        <li>
+                                            <div class="shopping-cart-img">
+                                                <a href="shop-product-right.html"><img alt="Nest" src="~/nest_assets/imgs/shop/thumbnail-3.jpg" /></a>
+                                            </div>
+                                            <div class="shopping-cart-title">
+                                                <h4><a href="shop-product-right.html">Plain Striola Shirts</a></h4>
+                                                <h3><span>1 × </span>$800.00</h3>
+                                            </div>
+                                            <div class="shopping-cart-delete">
+                                                <a href="#"><i class="fi-rs-cross-small"></i></a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="shopping-cart-img">
+                                                <a href="shop-product-right.html"><img alt="Nest" src="~/nest_assets/imgs/shop/thumbnail-4.jpg" /></a>
+                                            </div>
+                                            <div class="shopping-cart-title">
+                                                <h4><a href="shop-product-right.html">Macbook Pro 2022</a></h4>
+                                                <h3><span>1 × </span>$3500.00</h3>
+                                            </div>
+                                            <div class="shopping-cart-delete">
+                                                <a href="#"><i class="fi-rs-cross-small"></i></a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div class="shopping-cart-footer">
+                                        <div class="shopping-cart-total">
+                                            <h4>Total <span>$383.00</span></h4>
+                                        </div>
+                                        <div class="shopping-cart-button">
+                                            <a href="shop-cart.html">View cart</a>
+                                            <a href="shop-checkout.html">Checkout</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!--End header-->
+    <main class="main">
+        @RenderBody()
+    </main>
+
+    <!-- Preloader Start -->
+    @*<div id="preloader-active">
+            <div class="preloader d-flex align-items-center justify-content-center">
+                <div class="preloader-inner position-relative">
+                    <div class="text-center">
+                        <img src="/nest_assets/imgs/theme/loading.gif" alt="" />
+                    </div>
+                </div>
+            </div>
+        </div>*@
+    <!-- Vendor JS-->
+
+    <script src="~/nest_assets/"></script>
+    <script src="~/nest_assets/js/vendor/jquery-migrate-3.3.0.min.js"></script>
+    <script src="~/nest_assets/js/vendor/bootstrap.bundle.min.js"></script>
+    <script src="~/nest_assets/js/plugins/slick.js"></script>
+    <script src="~/nest_assets/js/plugins/jquery.syotimer.min.js"></script>
+    <script src="~/nest_assets/js/plugins/wow.js"></script>
+    <script src="~/nest_assets/js/plugins/perfect-scrollbar.js"></script>
+    <script src="~/nest_assets/js/plugins/magnific-popup.js"></script>
+    <script src="~/nest_assets/js/plugins/select2.min.js"></script>
+    <script src="~/nest_assets/js/plugins/waypoints.js"></script>
+    <script src="~/nest_assets/js/plugins/counterup.js"></script>
+    <script src="~/nest_assets/js/plugins/jquery.countdown.min.js"></script>
+    <script src="~/nest_assets/js/plugins/images-loaded.js"></script>
+    <script src="~/nest_assets/js/plugins/isotope.js"></script>
+
+    <script src="~/nest_assets/js/plugins/jquery.vticker-min.js"></script>
+    <script src="~/nest_assets/js/plugins/jquery.theia.sticky.js"></script>
+    <script src="~/nest_assets/js/plugins/jquery.elevatezoom.js"></script>
+    <!-- Template  JS -->
+    <script src="~/nest_assets/js/main.js?v=4.0"></script>
+    <script src="~/nest_assets/js/shop.js?v=4.0"></script>
+    <!-- Own  JS -->
+    <script src="/nest_assets/custom_js/Chat.js"></script>
+    <script src="/nest_assets/custom_js/chatActivate.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

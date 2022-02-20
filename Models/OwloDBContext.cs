@@ -33,10 +33,14 @@ namespace OwlOProjectA.Models
 
         public DbSet<Voucher> Vouchers { get; set; }
 
-        public DbSet<Community> Communities { get; set; }
-        
-        public DbSet<CommunityPost> CommunityPosts { get; set; }
-      
-        public DbSet<Comment> Comments { get; set; }
+        public DbSet<LuckyDraw> LuckyDraws { get; set; }
+
+        public DbSet<FAQ> FAQs { get; set; }
+
+        public DbSet<VoucherDistribution> VoucherDistributions { get; set; }
+
+        public DbSet<Workshop> Workshop { get; set; }
+        public DbSet<Booking> Bookings { get; set; }
+        public DbSet<Venue> Venues { get; set; }
     }
 }

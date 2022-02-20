@@ -1,0 +1,777 @@
+﻿@page
+@model OwlOProjectA.Pages.OwlShopModel
+@{
+}
+@using Microsoft.AspNetCore.Identity
+@using OwlOProjectA.Areas.Identity.Data
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+﻿
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Nest - Multipurpose eCommerce HTML Template</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta property="og:title" content="" />
+    <meta property="og:type" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="" />
+    <script type="text/javascript">
+
+
+
+    </script>
+</head>
+
+<body>
+    <main class="main">
+        @*<div class="section-title">
+            <h3 class="">Owl Shop</h3>
+            <ul class="nav nav-tabs links" id="myTab-2" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a asp-page="/VoucherCreate" class="nav-link" type="button" aria-selected="false">Create Voucher</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a asp-page="/OwlShop" class="nav-link active" type="button" aria-selected="true">Shop</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="nav-tab-two-1" data-bs-toggle="tab" data-bs-target="#tab-two-1" type="button" role="tab" aria-controls="tab-two" aria-selected="false">Achievements</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="nav-tab-three-1" data-bs-toggle="tab" data-bs-target="#tab-three-1" type="button" role="tab" aria-controls="tab-three" aria-selected="false">Points : 10301</button>
+                </li>
+            </ul>
+        </div>*@
+
+
+        
+
+            
+
+
+
+      
+        
+
+
+
+
+        <div class="page-header mb-50">
+            <div class="container">
+                <div class="archive-header">
+                    <div class="row align-items-center">
+                        <div class="col-xl-3">
+                            <h1 class="mb-15">Owl Shop</h1>
+                            <div class="breadcrumb">
+                                <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
+                                <span></span> Owl Shop
+                            </div>
+                        </div>
+                        <div class="col-xl-9 text-end d-none d-xl-block">
+
+                            <ul class="tags-list">
+                                <li class="hover-up">
+                                    <a asp-page="/Danish/VoucherCreate">Create Voucher</a>
+                                </li>
+                                <li class="hover-up">
+                                    <a asp-page="/Danish/LuckyDrawCreate">Create Lucky Draw Chance</a>
+                                </li>
+                                <li class="hover-up active">
+                                    <a asp-page="/Danish/OwlShop">Shop</a>
+                                </li>
+                                @if (Model.currentUser != null)
+                                {
+                                    
+                                    <li class="hover-up">
+                                        <a>Points : @Model.currentUser.Owl_Points</a>
+                                    </li>
+                                }
+                                else
+                                {
+
+                                }
+
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="home-slider position-relative mb-30 m-4">
+            <div class="home-slide-cover">
+                <div class="hero-slider-1 style-4 dot-style-1 dot-style-1-position-1">
+                    <div class="single-hero-slider rectangle single-animation-wrap" style="background-image: url(/nest_assets/imgs/slider/slider-5.png)">
+                        <div class="slider-content">
+                            <h1 class="display-2 mb-40">
+                                FEATURED<br />
+                                OWL DEALS
+                            </h1>
+                            <p class="mb-65">Redeem exciting rewards and vouchers!</p>
+                            <form class="form-subcriber d-flex">
+                                <input type="email" placeholder="Your emaill address" />
+                                <button class="btn" type="submit">Subscribe</button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="slider-arrow hero-slider-1-arrow"></div>
+            </div>
+        </section>
+        <!--End hero-->
+
+
+
+        <section class="section-padding pb-5 m-4">
+            <div class="section-title">
+                <h3 class="">Owl Super Deals</h3>
+                <a class="show-all" href="shop-grid-right.html">
+                    All Deals
+                    <i class="fi-rs-angle-right"></i>
+                </a>
+            </div>
+            <div class="row">
+
+                <!-- Special Discount Vouchers with expiry  -->
+                
+                    @{ if (Model.allVouchers != null)
+                        {
+                            @foreach (var voucher in Model.allVouchers)
+                            {
+                                Double new_price = voucher.Voucher_Cost * ((100 - voucher.DiscountDeal_Percentage) / 100);
+                                string expire = voucher.Voucher_Expiry.ToString("yyyy/MM/dd") + " 00:00:00";
+                                if (voucher.Super_Deal == true)
+                                {<div class="col-xl-3 col-lg-4 col-md-6">
+    <div class="modal fade" id="purchaseModal@(voucher.Vouchers_ID)" tabindex="-1" aria-labelledby="#purchaseModal@(voucher.Vouchers_ID)" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to buy this?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a class="btn btn-primary" asp-route-id="@voucher.Vouchers_ID" asp-page="/Danish/VoucherPurchase">Buy</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="product-cart-wrap style-2">
+        <div class="product-badges product-badges-position product-badges-mrg">
+            <span class="hot">@voucher.DiscountDeal_Percentage % off</span>
+        </div>
+        <div class="product-img-action-wrap">
+            <div class="product-img">
+                <a>
+                    <img src="/nest_assets/imgs/banner/banner-5.png" alt="" />
+                </a>
+            </div>
+        </div>
+        <div class="product-content-wrap">
+            <div class="deals-countdown-wrap">
+                <div class="deals-countdown" data-countdown="@expire"></div>
+            </div>
+            <div class="deals-content">
+                <h2 class="shop-item-title"><a>@voucher.Voucher_Name</a></h2>
+                <div class="product-rate-cover">
+                    <div class="product-rate d-inline-block">
+                        <div class="product-rating" style="width: 90%"></div>
+                    </div>
+                    <span class="font-small ml-5 text-muted"> (4.0)</span>
+                </div>
+                <div>
+                    <span class="font-small text-muted">By <a href="vendor-details-1.html">@voucher.Voucher_Company</a></span>
+                </div>
+                <div class="product-card-bottom">
+                    <div class="product-price">
+                        <span class="shop-item-price">@new_price<span> OP</span></span>
+                        <span class="old-price">@voucher.Voucher_Cost OP</span>
+                    </div>
+                    <div class="add-cart">
+
+                        <a class="add" data-bs-toggle="modal" data-bs-target="#purchaseModal@(voucher.Vouchers_ID)"><i class="fi-rs-shopping-cart mr-5"></i>Redeem</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                                }
+
+
+
+                            }
+
+                        }
+                        else
+                        {
+                            <div class="banner-img wow fadeIn mb-lg-0 animated d-lg-block d-none">
+                                <img src="/nest_assets/imgs/banner/banner-11.png" alt="" />
+                                <div class="banner-text">
+                                    <span>Oganic</span>
+                                    <h4>
+                                        No <span class="text-brand">SUPER DEALS</span> found. Try again <br />
+                                        Come back later.<br />
+
+                                    </h4>
+                                </div>
+                            </div>
+                        }
+                    }
+
+
+
+              
+
+
+
+
+      
+            </div>
+        </section>
+        <!--End Deals-->
+
+        <section class="section-padding pb-5 m-4">
+            <div class="container">
+                <div class="section-title wow animate__animated animate__fadeIn">
+                    <h3 class="">Lucky Draws</h3>
+                    <ul class="nav nav-tabs links" id="myTab-2" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="nav-tab-one-1" data-bs-toggle="tab" data-bs-target="#tab-one-1" type="button" role="tab" aria-controls="tab-one" aria-selected="true">Featured</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="nav-tab-two-1" data-bs-toggle="tab" data-bs-target="#tab-two-1" type="button" role="tab" aria-controls="tab-two" aria-selected="false">Popular</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="nav-tab-three-1" data-bs-toggle="tab" data-bs-target="#tab-three-1" type="button" role="tab" aria-controls="tab-three" aria-selected="false">New added</button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 d-none d-lg-flex wow animate__animated animate__fadeIn">
+                        <div class="banner-img style-2">
+                            <div class="banner-text">
+
+                                <h4>
+                                    Lucky Draws<br />
+                                    for <span class="text-brand">PURCHASE</span><br />
+
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 col-md-12 wow animate__animated animate__fadeIn" data-wow-delay=".4s">
+                        <div class="tab-content" id="myTabContent-1">
+                            <div class="tab-pane fade show active" id="tab-one-1" role="tabpanel" aria-labelledby="tab-one-1">
+                                <div class="carausel-3-columns-cover arrow-center position-relative">
+                                    <div class="slider-arrow slider-arrow-2 carausel-4-columns-arrow" id="carausel-3-columns-arrows"></div>
+                                    <div class="carausel-4-columns carausel-arrow-center" id="carausel-3-columns">
+
+                                        @if (Model.allLuckyDraws != null && Model.allLuckyDraws.Count() > 0)
+                                        {
+
+                                            foreach (var luckyDraw in Model.allLuckyDraws)
+                                            {
+
+
+                                                int quantity_percentage = (luckyDraw.LuckyDraw_Quantity / luckyDraw.LuckyDraw_OriginalQuantity) * 100;
+
+                                                <div class="product-cart-wrap">
+                                                    <div class="product-img-action-wrap">
+                                                        <div class="product-img product-img-zoom">
+                                                            <a href="shop-product-right.html">
+                                                                <img class="default-img" src="/nest_assets/imgs/shop/product-4-1.jpg" alt="" />
+                                                                <img class="hover-img" src="/nest_assets/imgs/shop/product-4-2.jpg" alt="" />
+                                                            </a>
+                                                        </div>
+                                                        <div class="product-action-1">
+                                                            <a aria-label="Edit" class="action-btn small hover-up" asp-route-id="@luckyDraw.LuckyDraw_ID" asp-page="/Danish/LuckyDrawEdit"> <i class="fi fi-rs-edit"></i></a>
+                                                            <a aria-label="Delete" class="action-btn small hover-up" asp-route-id="@luckyDraw.LuckyDraw_ID" asp-page="/Danish/LuckyDrawDelete"><i class="fi-rs-trash"></i></a>
+                                                            
+                                                        </div>
+                                                        <div class="product-badges product-badges-position product-badges-mrg">
+                                                            <span class="hot">Save 15%</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-content-wrap">
+                                                        <div class="product-category">
+                                                            <a href="shop-grid-right.html">@luckyDraw.LuckyDraw_Company</a>
+                                                        </div>
+                                                        <h2 class="shop-item-title"><a>@luckyDraw.LuckyDraw_Name</a></h2>
+                                                        <div class="product-rate d-inline-block">
+                                                            <div class="product-rating" style="width: 80%"></div>
+                                                        </div>
+                                                        <div class="product-price mt-10">
+                                                            <span class="shop-item-price">@luckyDraw.LuckyDraw_Cost <span> OP</span></span>
+
+                                                        </div>
+                                                        
+
+                                                        <div class="sold mt-15 mb-15">
+                                                            <div class="progress mb-5">
+                                                                <div class="progress-bar" role="progressbar" style="width:@quantity_percentage%" aria-valuemin="0" aria-valuemax="100"></div>
+                                                            </div>
+                                                            <span class="font-xs text-heading"> Left: @luckyDraw.LuckyDraw_Quantity / @luckyDraw.LuckyDraw_OriginalQuantity</span>
+                                                        </div>
+
+                                                        <a class="btn w-100 hover-up" asp-route-id="@luckyDraw.LuckyDraw_ID" asp-page="/Danish/VoucherEdit"><i class="fi-rs-shopping-cart mr-5"></i>Redeem</a>
+
+                                                    </div>
+                                                </div>
+                                                <!--End product Wrap-->
+                                    
+
+
+
+
+
+
+                                            }
+
+
+
+
+
+                                        }
+                                        else
+                                        {
+
+
+                                            <div class="banner-text">
+
+                                                <h4>
+                                                    <span class="text-brand">NO </span>
+                                                    Lucky Draws found
+
+
+                                                </h4>
+                                            </div>
+
+
+
+
+                                        }
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <!--End tab-content-->
+                    </div>
+                    <!--End Col-lg-9-->
+                </div>
+            </div>
+        </section>
+        <!--End Best Sales-->
+
+
+
+
+
+
+        <div class="container mb-30">
+            <div class="row flex-row-reverse">
+                <div class="col-lg-4-5">
+                    <div class="shop-product-fillter">
+                        @{ if (Model.allVouchers != null)
+                            {
+                                if (@Model.allVouchers.Count() == 1)
+                                {
+                                    <div class="totall-product">
+                                        <p>Only<strong class="text-brand">@Model.allVouchers.Count()</strong> item found??!</p>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="totall-product">
+                                        <p>We found <strong class="text-brand">@Model.allVouchers.Count()</strong> items for you!</p>
+                                    </div>
+                                }
+
+                            }
+                            else
+                            {
+                                <div class="totall-product">
+                                    <p>Empty store!</p>
+                                </div>
+                            }
+                        }
+                        <div class="sort-by-product-area">
+                            <div class="sort-by-cover mr-10">
+                                <div class="sort-by-product-wrap">
+                                    <div class="sort-by">
+                                        <span><i class="fi-rs-apps"></i>Show:</span>
+                                    </div>
+                                    <div class="sort-by-dropdown-wrap">
+                                        <span> 50 <i class="fi-rs-angle-small-down"></i></span>
+                                    </div>
+                                </div>
+                                <div class="sort-by-dropdown">
+                                    <ul>
+                                        <li><a class="active" href="#">50</a></li>
+                                        <li><a href="#">100</a></li>
+                                        <li><a href="#">150</a></li>
+                                        <li><a href="#">200</a></li>
+                                        <li><a href="#">All</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="sort-by-cover mr-10">
+                                <div class="sort-by-product-wrap">
+                                    <div class="sort-by">
+                                        <span><i class="fi-rs-apps-sort"></i>Sort by:</span>
+                                    </div>
+                                    <div class="sort-by-dropdown-wrap">
+                                        <span> Featured <i class="fi-rs-angle-small-down"></i></span>
+                                    </div>
+                                </div>
+                                <div class="sort-by-dropdown">
+                                    <ul>
+                                        <li><a class="active" href="#">Featured</a></li>
+                                        <li><a href="#">Price: Low to High</a></li>
+                                        <li><a href="#">Price: High to Low</a></li>
+                                        <li><a href="#">Release Date</a></li>
+                                        <li><a href="#">Avg. Rating</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="sort-by-cover mr-10">
+                                <div class="sort-by-product-wrap">
+                                    <div class="sort-by">
+                                        <span><i class="fi-rs-apps-sort"></i>Sort by:</span>
+                                    </div>
+                                    <div class="sort-by-dropdown-wrap">
+                                        <span> Featured <i class="fi-rs-angle-small-down"></i></span>
+                                    </div>
+                                </div>
+                                <div class="sort-by-dropdown">
+                                    <ul>
+                                        <li><a class="active" href="#">Featured</a></li>
+                                        <li><a href="#">Price: Low to High</a></li>
+                                        <li><a href="#">Price: High to Low</a></li>
+                                        <li><a href="#">Release Date</a></li>
+                                        <li><a href="#">Avg. Rating</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="sort-by-cover mr-10">
+                                <div class="sort-by-product-wrap">
+                                    <div class="sort-by">
+                                        <span><i class="fi-rs-apps-sort"></i>Sort by:</span>
+                                    </div>
+                                    <div class="sort-by-dropdown-wrap">
+                                        <span> Featured <i class="fi-rs-angle-small-down"></i></span>
+                                    </div>
+                                </div>
+                                <div class="sort-by-dropdown">
+                                    <ul>
+                                        <li><a class="active" href="#">Featured</a></li>
+                                        <li><a href="#">Price: Low to High</a></li>
+                                        <li><a href="#">Price: High to Low</a></li>
+                                        <li><a href="#">Release Date</a></li>
+                                        <li><a href="#">Avg. Rating</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="sort-by-cover mr-10">
+                                <div class="sort-by-product-wrap">
+                                    <div class="sort-by">
+                                        <span><i class="fi-rs-apps-sort"></i>Sort by:</span>
+                                    </div>
+                                    <div class="sort-by-dropdown-wrap">
+                                        <span> Featured <i class="fi-rs-angle-small-down"></i></span>
+                                    </div>
+                                </div>
+                                <div class="sort-by-dropdown">
+                                    <ul>
+                                        <li><a class="active" href="#">Featured</a></li>
+                                        <li><a href="#">Price: Low to High</a></li>
+                                        <li><a href="#">Price: High to Low</a></li>
+                                        <li><a href="#">Release Date</a></li>
+                                        <li><a href="#">Avg. Rating</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Products -->
+                    <div class="row product-grid">
+                        @{ if (Model.allVouchers != null)
+                            {
+                                @foreach (var voucher in Model.allVouchers)
+                                {
+                                    if (voucher.Super_Deal == true)
+                                    {
+                                        <div class="modal fade" id="purchaseModal@(voucher.Vouchers_ID)" tabindex="-1" aria-labelledby="#purchaseModal@(voucher.Vouchers_ID)" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Are you sure you want to buy this?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        <a class="btn btn-primary" asp-route-id="@voucher.Vouchers_ID" asp-page="/Danish/VoucherEdit">Buy</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        Double new_price = voucher.Voucher_Cost * ((100 - voucher.DiscountDeal_Percentage) / 100);
+                                        <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
+                                            <div class="product-cart-wrap mb-30">
+                                                <div class="product-img-action-wrap">
+                                                    <div class="product-img product-img-zoom">
+                                                        <a href="shop-product-right.html">
+                                                            <img class="default-img" src="/nest_assets/imgs/shop/product-1-1.jpg" alt="" />
+                                                            <img class="hover-img" src="/nest_assets/imgs/shop/product-1-2.jpg" alt="" />
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-action-1">
+                                                        <a aria-label="Delete" class="action-btn" asp-route-id="@voucher.Vouchers_ID" asp-page="/Danish/VoucherDelete/"><i class="fi-rs-trash"></i></a>
+
+                                                        <a aria-label="Edit" asp-route-id="@voucher.Vouchers_ID" asp-page="/Danish/VoucherEdit" class="action-btn"><i class="fi fi-rs-edit"></i></a>
+                                                    </div>
+
+                                                    <div class="product-badges product-badges-position product-badges-mrg">
+                                                        <span class="hot">@voucher.DiscountDeal_Percentage % off</span>
+                                                    </div>
+                                                </div>
+                                                <div class="product-content-wrap">
+                                                    <div class="product-category">
+                                                        <a href="shop-grid-right.html">Voucher</a>
+                                                    </div>
+                                                    <h2 class="shop-item-title"><a>@voucher.Voucher_Name</a></h2>
+                                                    <div class="product-rate-cover">
+                                                        <div class="product-rate d-inline-block">
+                                                            <div class="product-rating" style="width: 90%"></div>
+                                                        </div>
+                                                        <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                                    </div>
+                                                    <div>
+                                                        <span class="font-small text-muted">By <a href="vendor-details-1.html">@voucher.Voucher_Company</a></span>
+                                                    </div>
+                                                    <div>
+                                                        <span class="font-small text-muted">@voucher.Voucher_Description</span>
+                                                    </div>
+                                                    <div class="product-card-bottom">
+                                                        <div class="product-price">
+                                                            <span class="shop-item-price">@new_price</span><span> OP</span>
+                                                            <span class="old-price">@voucher.Voucher_Cost OP</span>
+                                                        </div>
+                                                        <div class="add-cart">
+                                                            <a class="add" data-bs-toggle="modal" data-bs-target="#purchaseModal@(voucher.Vouchers_ID)"><i class="fi-rs-shopping-cart mr-5"></i>Redeem</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--end product card-->
+                                    }
+                                    else
+                                    {
+                                        <div class="modal fade" id="purchaseModal@(voucher.Vouchers_ID)" tabindex="-1" aria-labelledby="#purchaseModal@(voucher.Vouchers_ID)" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Are you sure you want to buy this?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        <a class="add" data-bs-toggle="modal" data-bs-target="#purchaseModal@(voucher.Vouchers_ID)"><i class="fi-rs-shopping-cart mr-5"></i>Redeem</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
+                                            <div class="product-cart-wrap mb-30">
+                                                <div class="product-img-action-wrap">
+                                                    <div class="product-img product-img-zoom">
+                                                        <a href="shop-product-right.html">
+                                                            <img class="default-img" src="/nest_assets/imgs/shop/product-1-1.jpg" alt="" />
+                                                            <img class="hover-img" src="/nest_assets/imgs/shop/product-1-2.jpg" alt="" />
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-action-1">
+                                                        <a aria-label="Delete" class="action-btn" asp-route-id="@voucher.Vouchers_ID" asp-page="/Danish/VoucherDelete"><i class="fi-rs-trash"></i></a>
+
+                                                        <a aria-label="Edit" asp-route-id="@voucher.Vouchers_ID" asp-page="/Danish/VoucherEdit" class="action-btn"><i class="fi fi-rs-edit"></i></a>
+                                                    </div>
+                                                    <div class="product-badges product-badges-position product-badges-mrg">
+                                                        <span class="hot">Hot</span>
+                                                    </div>
+
+                                                </div>
+                                                <div class="product-content-wrap">
+                                                    <div class="product-category">
+                                                        <a href="shop-grid-right.html">Voucher</a>
+                                                    </div>
+                                                    <h2><a href="shop-product-right.html">@voucher.Voucher_Name</a></h2>
+                                                    <div class="product-rate-cover">
+                                                        <div class="product-rate d-inline-block">
+                                                            <div class="product-rating" style="width: 90%"></div>
+                                                        </div>
+                                                        <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                                    </div>
+                                                    <div>
+                                                        <span class="font-small text-muted">@voucher.Voucher_Description</span>
+                                                    </div>
+                                                    <div>
+                                                        <span class="font-small text-muted">By <a href="vendor-details-1.html">@voucher.Voucher_Company</a></span>
+                                                    </div>
+                                                    <div class="product-card-bottom">
+                                                        <div class="product-price">
+                                                            <span>@voucher.Voucher_Cost OP</span>
+
+                                                        </div>
+                                                        <div class="add-cart">
+                                                            <a class="add" data-bs-toggle="modal" data-bs-target="#purchaseModal@(voucher.Vouchers_ID)"><i class="fi-rs-shopping-cart mr-5"></i>Redeem</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--end product card-->
+                                    }
+                                }
+
+                            }
+                            else
+                            {
+                                <div class="banner-img wow fadeIn mb-lg-0 animated d-lg-block d-none">
+                                    <img src="/nest_assets/imgs/banner/banner-11.png" alt="" />
+                                    <div class="banner-text">
+                                        <span>Oganic</span>
+                                        <h4>
+                                            No <span class="text-brand">Vouchers</span> found. <br />
+                                            Come back later.<br />
+
+                                        </h4>
+                                    </div>
+                                </div>
+
+                            }
+
+
+
+
+                        }
+                    </div>
+                    <!--product grid-->
+                    <div class="pagination-area mt-20 mb-20">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-start">
+                                <li class="page-item">
+                                    <a class="page-link" href="#"><i class="fi-rs-arrow-small-left"></i></a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link dot" href="#">...</a></li>
+                                <li class="page-item"><a class="page-link" href="#">6</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#"><i class="fi-rs-arrow-small-right"></i></a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                </div>
+                <div class="col-lg-1-5 primary-sidebar sticky-sidebar">
+                    <div class="sidebar-widget widget-category-2 mb-30">
+                        <h5 class="section-title style-1 mb-30">Category</h5>
+                        <ul>
+                            <li>
+                                <a href="shop-grid-right.html"> <img src="/nest_assets/imgs/theme/icons/category-1.svg" alt="" />Milks & Dairies</a><span class="count">30</span>
+                            </li>
+                            <li>
+                                <a href="shop-grid-right.html"> <img src="/nest_assets/imgs/theme/icons/category-2.svg" alt="" />Clothing</a><span class="count">35</span>
+                            </li>
+                            <li>
+                                <a href="shop-grid-right.html"> <img src="/nest_assets/imgs/theme/icons/category-3.svg" alt="" />Pet Foods </a><span class="count">42</span>
+                            </li>
+                            <li>
+                                <a href="shop-grid-right.html"> <img src="/nest_assets/imgs/theme/icons/category-4.svg" alt="" />Baking material</a><span class="count">68</span>
+                            </li>
+                            <li>
+                                <a href="shop-grid-right.html"> <img src="/nest_assets/imgs/theme/icons/category-5.svg" alt="" />Fresh Fruit</a><span class="count">87</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Fillter By Price -->
+                    <div class="sidebar-widget price_range range mb-30">
+                        <h5 class="section-title style-1 mb-30">Fill by price</h5>
+                        <div class="price-filter">
+                            <div class="price-filter-inner">
+                                <div id="slider-range" class="mb-20"></div>
+                                <div class="d-flex justify-content-between">
+                                    <div class="caption">From: <strong id="slider-range-value1" class="text-brand"></strong></div>
+                                    <div class="caption">To: <strong id="slider-range-value2" class="text-brand"></strong></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-group">
+                            <div class="list-group-item mb-10 mt-10">
+                                <label class="fw-900">Color</label>
+                                <div class="custome-checkbox">
+                                    <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox1" value="" />
+                                    <label class="form-check-label" for="exampleCheckbox1"><span>Red (56)</span></label>
+                                    <br />
+                                    <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox2" value="" />
+                                    <label class="form-check-label" for="exampleCheckbox2"><span>Green (78)</span></label>
+                                    <br />
+                                    <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox3" value="" />
+                                    <label class="form-check-label" for="exampleCheckbox3"><span>Blue (54)</span></label>
+                                </div>
+                                <label class="fw-900 mt-15">Item Condition</label>
+                                <div class="custome-checkbox">
+                                    <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox11" value="" />
+                                    <label class="form-check-label" for="exampleCheckbox11"><span>New (1506)</span></label>
+                                    <br />
+                                    <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox21" value="" />
+                                    <label class="form-check-label" for="exampleCheckbox21"><span>Refurbished (27)</span></label>
+                                    <br />
+                                    <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox31" value="" />
+                                    <label class="form-check-label" for="exampleCheckbox31"><span>Used (45)</span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="shop-grid-right.html" class="btn btn-sm btn-default"><i class="fi-rs-filter mr-5"></i> Fillter</a>
+                    </div>
+                    <!-- Product sidebar Widget -->
+
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,52 @@
+﻿@page "{id}/{resourceid}"
+@model owlo_plan.Pages.UpdateResourcesModel
+@{
+    ViewData["Title"] = $"OWLO Plan - Update Resources";
+    ViewData["Page"] = "Update Resource";
+}
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">Update Resource</h4>
+    </div>
+    <div class="card-body">
+        <div class="basic-form">
+            <form id="form2" asp-page-handler="deleteresource" asp-route-projectid="@Model.resource.project_id" asp-route-resourceid="@Model.resource.Resource_id">
+            </form>
+            <form id="form1" method="post">
+                <input asp-for="resource.project_id" value="@Model.resource.project_id" type="hidden" />
+                <input asp-for="resource.Resource_id" value="@Model.resource.Resource_id" type="hidden" />
+
+                <div class="mb-3 row">
+                    <div class="col-sm-9">
+                        <h2 class="text-danger col-sm-3 col-form-label">@Model.ErrorMessage</h2>
+                        <div asp-validation-summary="All"></div>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label class="col-sm-3 col-form-label">Title</label>
+                    <div class="col-sm-9">
+                        <input type="text" asp-for="resource.title" value="@Model.resource.title" class="form-control" placeholder="Type a Title for the resource">
+                        <span asp-validation-for="resource.title" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label class="col-sm-3 col-form-label">Link</label>
+                    <div class="col-sm-9">
+                        <input type="text" asp-for="resource.link" value="@Model.resource.link" class="form-control" placeholder="Enter the link to the resource">
+                        <span asp-validation-for="resource.link" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="d-flex align-items-end flex-column">
+                    <h4 class="fs-20 mb-3"></h4>
+                    <div>
+
+                        <button form="form2" type="submit" class="btn btn-outline-primary">Delete</button>
+                        <button form="form1" type="submit" onkeydown="return event.key != 'Enter'" ; class="btn btn-primary">Update</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

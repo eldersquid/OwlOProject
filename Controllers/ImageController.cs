@@ -10,15 +10,17 @@ namespace OwlOProjectA.Controllers
 {
     public class ImageController : Controller
     {
+
         [HttpPost]
         public string upload(IFormFile file)
         {
+            Console.WriteLine(file);
             string filename = "";
-            var directory = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Azfar_Images/");
+            var directory = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/");
             Console.WriteLine("This is the : " + file);
             if (file != null)
             {
-                filename = Guid.NewGuid().ToString() + "" + Path.GetExtension(file.FileName);
+                filename = Guid.NewGuid().ToString() + "_" + Path.GetExtension(file.FileName);
                 string filepath = Path.Combine(directory, filename);
                 using (var stream = new FileStream(filepath, FileMode.Create))
                 {

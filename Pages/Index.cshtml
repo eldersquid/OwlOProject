@@ -1,42 +1,134 @@
 ﻿@page
 @model IndexModel
-@{ ViewData["Title"] = "Home page"; }
+@{
+    ViewData["Title"] = "Home page";
+}
+<main class="main">
+    <div class="page-header breadcrumb-wrap">
+        <div class="container">
+            <div class="breadcrumb">
+                <i class="fi-rs-home mr-5"></i>Home
+            </div>
+        </div>
+    </div>
+    <div class="page-content mb-50">
+        <div class="container">
+            <div class="row">
 
-
-<div>
-    <p>
-        <a asp-page="OwleeRegister">Create New Owlee</a>
-    </p>
-
-    <h5>List of Owlees</h5>
-</div>
-<table class="table">
-    <thead>
-        <tr>
-            <th>@Html.DisplayNameFor(model => model.allOwlees[0].Email)</th>
-            <th>@Html.DisplayNameFor(model => model.allOwlees[0].Name)</th>
-            <th>@Html.DisplayNameFor(model => model.allOwlees[0].Inventory_ID)</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @{ if (Model.allOwlees != null)
-            {
-
-                @foreach (var item in Model.allOwlees)
+                @if (Model.allWorkshop != null && Model.allWorkshop.Count != 0)
                 {
-                    <tr>
-                        <td>@item.Email</td>
-                        <td>@item.Name</td>
-                        <td>@item.Inventory_ID</td>
-                        <td>
-                            <a asp-page="/Detail" asp-route-id="@item.Email">View</a>
-                            <a asp-page="/Edit" asp-route-id="@item.Email">|Edit</a>
-                            <a asp-page="/OwleeDelete" asp-route-id="@item.Email">|Delete</a>
-                        </td>
-                    </tr>
+                    <div class="col-lg-9">
+                        <div class="shop-product-fillter mb-50 pr-30">
+                            <div class="totall-product">
+                                <h2>
+                                    <img class="w-36px mr-10" src="assets/imgs/theme/icons/category-1.svg" alt="" />
+                                    New Workshops
+                                </h2>
+                            </div>
+                            <div class="sort-by-product-area">
+                                <div class="sort-by-cover mr-10">
+                                    <div class="sort-by-product-wrap">
+                                        <div class="sort-by">
+                                            <span><i class="fi-rs-apps"></i>Show:</span>
+                                        </div>
+                                        <div class="sort-by-dropdown-wrap">
+                                            <span> 50 <i class="fi-rs-angle-small-down"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="sort-by-dropdown">
+                                        <ul>
+                                            <li><a class="active" href="#">50</a></li>
+                                            <li><a href="#">100</a></li>
+                                            <li><a href="#">150</a></li>
+                                            <li><a href="#">200</a></li>
+                                            <li><a href="#">All</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="sort-by-cover">
+                                    <div class="sort-by-product-wrap">
+                                        <div class="sort-by">
+                                            <span><i class="fi-rs-apps-sort"></i>Sort:</span>
+                                        </div>
+                                        <div class="sort-by-dropdown-wrap">
+                                            <span>Featured <i class="fi-rs-angle-small-down"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="sort-by-dropdown">
+                                        <ul>
+                                            <li><a class="active" href="#">Featured</a></li>
+                                            <li><a href="#">Newest</a></li>
+                                            <li><a href="#">Most comments</a></li>
+                                            <li><a href="#">Release Date</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="loop-grid loop-list pr-30 mb-50">
+                            @foreach (var workshop in Model.allWorkshop)
+                            {
+                                <article class="wow fadeIn animated hover-up mb-30 animated">
+                                    <div class="post-thumb" style="background-image: url(@workshop.Image)">
+                                        <div class="entry-meta">
+                                            <a class="entry-meta meta-2" href="blog-category-grid.html"><i class="fi-rs-play-alt"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="entry-content-2 pl-50">
+                                        <h3 class="post-title mb-20">
+                                            <a asp-page="/viewWorkshop" asp-route-id="@workshop.Workshop_ID">@workshop.Name</a>
+                                        </h3>
+                                        <p class="post-exerpt mb-40">@workshop.Summary</p>
+                                        <div class="entry-meta meta-1 font-xs color-grey mt-10 pb-10">
+                                            <div>
+                                                <span class="post-on">@workshop.Date.ToShortDateString()</span>
+                                                <span class="hit-count has-dot">126k Views</span>
+                                            </div>
+                                            <a asp-page="/viewWorkshop" asp-route-id="@workshop.Workshop_ID" class="text-brand font-heading font-weight-bold">Read more <i class="fi-rs-arrow-right"></i></a>
+                                        </div>
+                                    </div>
+                                </article>
+                            }
+                        </div>
+                        <div class="pagination-area mt-15 mb-sm-5 mb-lg-0">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination justify-content-start">
+                                    <li class="page-item">
+                                        <a class="page-link" href="#"><i class="fi-rs-arrow-small-left"></i></a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link dot" href="#">...</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">6</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#"><i class="fi-rs-arrow-small-right"></i></a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+
+
                 }
-            }
-        }
-    </tbody>
-</table>
+                else
+                {
+                    <div class="col-lg-12">
+                        <div class="shop-product-fillter mb-50 pr-30">
+                            <div class="totall-product">
+                                <h2>
+                                    My Workshops
+                                </h2>
+                            </div>
+                        </div>
+
+                        <div style="text-align:center">
+                            <h2><strong>It looks like there aren't any workshops yet...</strong></h2>
+                        </div>
+                    </div>
+
+                }
+            </div>
+        </div>
+    </div>
+</main>

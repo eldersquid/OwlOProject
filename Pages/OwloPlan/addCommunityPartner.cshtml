@@ -1,0 +1,38 @@
+﻿
+@page "{id}"
+@model owlo_plan.Pages.addCommunityPartnerModel
+@{
+    ViewData["Title"] = $"OWLO Plan - Add Community Partner";
+    ViewData["Page"] = "Add Community Partner";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">Add Causes</h4>
+    </div>
+    <div class="card-body">
+        <div class="basic-form">
+            <form method="post">
+                <input asp-for="CommunityPartner.Project_ID" value="@Model.CommunityPartner.Project_ID" type="hidden" />
+                <div class="mb-3 row">
+                    <div class="col-sm-9">
+                        <h2 class="text-danger col-sm-3 col-form-label">@Model.ErrorMessage</h2>
+                        <div asp-validation-summary="All"></div>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label class="col-sm-3 col-form-label">Community Partner</label>
+                    <div class="col-sm-9">
+                        <input type="text" asp-for="CommunityPartner.CommunityPartner" class="form-control" placeholder="Type a community partner">
+                        <span asp-validation-for="CommunityPartner.CommunityPartner" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="d-flex align-items-end flex-column">
+                    <button type="submit" onkeydown="return event.key != 'Enter'" ; class="btn btn-primary">Add Task</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
