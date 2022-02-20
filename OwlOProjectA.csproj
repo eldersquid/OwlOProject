@@ -5769,6 +5769,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Migrations\AuthDb\" />
     <Folder Include="Migrations\OwloDB\" />
   </ItemGroup>
 

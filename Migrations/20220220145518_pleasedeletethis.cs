@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace OwlOProjectA.Migrations.AuthDb
+namespace OwlOProjectA.Migrations
 {
-    public partial class azfarinitialcreate : Migration
+    public partial class pleasedeletethis : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

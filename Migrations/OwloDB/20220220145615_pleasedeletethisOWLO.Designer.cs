@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OwlOProjectA.Models;
 
-namespace OwlOProjectA.Migrations
+namespace OwlOProjectA.Migrations.OwloDB
 {
     [DbContext(typeof(OwloDBContext))]
-    partial class OwloDBContextModelSnapshot : ModelSnapshot
+    [Migration("20220220145615_pleasedeletethisOWLO")]
+    partial class pleasedeletethisOWLO
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

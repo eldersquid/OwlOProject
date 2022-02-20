@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace OwlOProjectA.Migrations
+namespace OwlOProjectA.Migrations.OwloDB
 {
-    public partial class azfarinitialcreateOWLO : Migration
+    public partial class pleasedeletethisOWLO : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
