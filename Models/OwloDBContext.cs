@@ -37,5 +37,6 @@ namespace OwlOProjectA.Models
         
         public DbSet<CommunityPost> CommunityPosts { get; set; }
       
+        public DbSet<Comment> Comments { get; set; }
     }
 }

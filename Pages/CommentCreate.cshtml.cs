@@ -8,12 +8,12 @@ using OwlOProjectA.Models;
 
 namespace OwlOProjectA.Pages
 {
-    public class ComPostCreateModel : PageModel
+    public class CommentCreateModel : PageModel
     {
         [BindProperty]
-        public CommunityPost MyCommunityPost { get; set; }
-        private readonly Services.CommunityPostService _svc;
-        public ComPostCreateModel(Services.CommunityPostService service)
+        public Comment MyComment { get; set; }
+        private readonly Services.CommentService _svc;
+        public CommentCreateModel(Services.CommentService service)
         {
             _svc = service;
         }
@@ -23,7 +23,7 @@ namespace OwlOProjectA.Pages
         public IActionResult OnPost()
         {
 
-            if (_svc.AddCommunityPost(MyCommunityPost))
+            if (_svc.AddComment(MyComment))
             {
                 return RedirectToPage("CommunityPost");
             }

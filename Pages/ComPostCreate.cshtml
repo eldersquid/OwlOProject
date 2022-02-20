@@ -13,12 +13,10 @@
         <div class="page-header breadcrumb-wrap">
             <div class="container row">
                 <div class="breadcrumb col-9">
-                    <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
-                    <span></span> Create A Community
+                    <a href="CommunityPost" rel="nofollow"><i class="fi-rs-home mr-5"></i>Back</a>
+                    <span></span> Create A Post
                 </div>
-                <div class="totall-product col-3">
-                    <a href="Community" class="btn btn-xs">Communities<i class="fi-rs-arrow-small-right"></i></a>
-                </div>
+                
             </div>
         </div>
         <div class="page-content pt-150 pb-150">
@@ -30,26 +28,29 @@
                                 <div class="login_wrap widget-taber-content background-white">
                                     <div class="padding_eight_all bg-white">
                                         <div class="heading_s1">
-                                            <h1 class="mb-5">Create A Community</h1>
+                                            <h1 class="mb-5">Create A Post</h1>
+                                            <br />
 
                                         </div>
                                         <form method="post">
 
 
                                             <div class="form-group">
-                                                <input type="hidden" id="MyCommunity_Image" asp-for="MyCommunityPost.Image" />
+                                                <input type="hidden" id="MyCommunityPost_Image" asp-for="MyCommunityPost.Image" />
                                                 <input type="file" id="docUpload" name="docUpload" />
                                             </div>
 
                                             <div class="form-group">
-                                                <input asp-for="MyCommunityPost.Id" placeholder="Id" />
-                                                <span asp-validation-for="MyCommunityPost.Id" class="text-danger"></span>
-                                            </div>
-                                            <div class="form-group">
-                                                <input asp-for="MyCommunityPost.PostCaption" placeholder="Community Name" />
+                                                <input asp-for="MyCommunityPost.PostCaption" placeholder="Post Caption" />
                                                 <span asp-validation-for="MyCommunityPost.PostCaption" class="text-danger"></span>
                                             </div>
-                                            
+
+                                            <div class="form-group">
+                                                <input asp-for="MyCommunityPost.Id" placeholder="" />
+                                                <span asp-validation-for="MyCommunityPost.Id" class="text-danger"></span>
+                                            </div>
+                                           
+
 
 
 
@@ -118,7 +119,7 @@
                     $("#docErr").show();
                     $("#docErr").text(data.err.message);
                 } else {
-                    $("#MyCommunity_Image").val("/Azfar_Images/" + data)
+                    $("#MyCommunityPost_Image").val("/Azfar_Images/" + data)
                     $("#docErr").show();
                 }
             },

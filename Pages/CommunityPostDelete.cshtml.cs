@@ -29,7 +29,7 @@ namespace OwlOProjectA.Pages
             else
             {
                 _svc.DeleteCommunityPost(MyCommunityPost);
-                return RedirectToPage("CommunityPost");
+                return RedirectToPage("AdminPost");
             }
         }
     }

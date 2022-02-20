@@ -1,0 +1,41 @@
+﻿@page
+@model OwlOProjectA.Pages.AdminPostModel
+@{
+}
+
+
+<div>
+    <p>
+        <a asp-page="CommunityPost">Back To Community Posts</a>
+    </p>
+
+    <h5>List of Community Posts</h5>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.allCommunityPosts[0].Id)</th>
+            <th>Post Caption</th>
+            <th>Image</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ if (Model.allCommunityPosts != null)
+            {
+
+                @foreach (var item in Model.allCommunityPosts)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.PostCaption</td>
+                        <td>@item.Image</td>
+                        <td>
+                            <a asp-page="/Community" asp-route-id="@item.Id">View</a>
+                            <a asp-page="/CommunityPostEdit" asp-route-id="@item.Id">|Edit</a>
+                            <a asp-page="/CommunityPostDelete" asp-route-id="@item.Id">|Delete</a>
+                        </td>
+                    </tr>
+           } } }
+    </tbody>
+</table>

@@ -1,5 +1,5 @@
 ﻿@page
-@model OwlOProjectA.Pages.CommunityRegisterModel
+@model OwlOProjectA.Pages.CommentCreateModel
 @{
 }
 
@@ -15,7 +15,7 @@
             <div class="container row">
                 <div class="breadcrumb col-9">
                     <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
-                    <span></span> Create A Community
+                    <span></span> Create a comment
                     <br />
                 </div>
                 <div class="totall-product col-3">
@@ -32,27 +32,25 @@
                                 <div class="login_wrap widget-taber-content background-white">
                                     <div class="padding_eight_all bg-white">
                                         <div class="heading_s1">
-                                            <h1 class="mb-5">Create A Community</h1>
-                                            
+                                            <h1 class="mb-5">Comment</h1>
+
                                         </div>
                                         <form method="post">
-                                            
-                                            <div class="form-group">
-                                            <input type="hidden" id="MyCommunity_Image" asp-for="MyCommunity.Image"/>
-                                            <input type="file" id="docUpload" name="docUpload"/>
-                                            </div>
+
+                                
+               
 
                                             <div class="form-group">
-                                                <input asp-for="MyCommunity.Id" placeholder="" />
-                                                <span asp-validation-for="MyCommunity.Id" class="text-danger"></span>
+                                                <input asp-for="MyComment.Id" placeholder="" />
+                                                <span asp-validation-for="MyComment.Id" class="text-danger"></span>
                                             </div>
                                             <div class="form-group">
-                                                <input asp-for="MyCommunity.ComName" placeholder="Community Name" />
-                                                <span asp-validation-for="MyCommunity.ComName" class="text-danger"></span>
+                                                <input asp-for="MyComment.Name" placeholder="Name" />
+                                                <span asp-validation-for="MyComment.Name" class="text-danger"></span>
                                             </div>
                                             <div class="form-group">
-                                                <input asp-for="MyCommunity.ComDescp" placeholder="Community Description" />
-                                                <span asp-validation-for="MyCommunity.ComDescp" class="text-danger"></span>
+                                                <input asp-for="MyComment.User_Comment" placeholder="Type Comment Here" />
+                                                <span asp-validation-for="MyComment.User_Comment" class="text-danger"></span>
                                             </div>
 
 
@@ -60,36 +58,36 @@
 
                                             <!-- For captcha -->
                                             <!-- <div class="login_footer form-group">
-        <div class="chek-form">
-            <input type="text" required="" name="email" placeholder="Security code *" />
-        </div>
-        <span class="security-code">
-            <b class="text-new">8</b>
-            <b class="text-hot">6</b>
-            <b class="text-sale">7</b>
-            <b class="text-best">5</b>
-        </span>
-    </div> -->
+                                                <div class="chek-form">
+                                                    <input type="text" required="" name="email" placeholder="Security code *" />
+                                                </div>
+                                                <span class="security-code">
+                                                    <b class="text-new">8</b>
+                                                    <b class="text-hot">6</b>
+                                                    <b class="text-sale">7</b>
+                                                    <b class="text-best">5</b>
+                                                </span>
+                                            </div> -->
                                             <!-- radio button -->
                                             <!-- <div class="login_footer form-group mb-50">
-        <div class="chek-form">
-            <div class="custome-checkbox">
-                <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox12" value="" />
-                <label class="form-check-label" for="exampleCheckbox12"><span>I agree to terms &amp; Policy.</span></label>
-            </div>
-        </div>
-        <a href="page-privacy-policy.html"><i class="fi-rs-book-alt mr-5 text-muted"></i>Lean more</a>
-    </div> -->
+                                                <div class="chek-form">
+                                                    <div class="custome-checkbox">
+                                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox12" value="" />
+                                                        <label class="form-check-label" for="exampleCheckbox12"><span>I agree to terms &amp; Policy.</span></label>
+                                                    </div>
+                                                </div>
+                                                <a href="page-privacy-policy.html"><i class="fi-rs-book-alt mr-5 text-muted"></i>Lean more</a>
+                                            </div> -->
 
                                             <div class="form-group mb-30">
-                                                <button type="submit" id="create" class="btn btn-fill-out btn-block hover-up font-weight-bold" name="login">Submit &amp; Register</button>
+                                                <button type="submit" id="create" class="btn btn-fill-out btn-block hover-up font-weight-bold" name="login">Submit</button>
                                             </div>
 
                                         </form>
                                     </div>
                                 </div>
                             </div>
-                          
+
                         </div>
                     </div>
                 </div>
@@ -130,3 +128,4 @@
         });
     });
 </script>
+

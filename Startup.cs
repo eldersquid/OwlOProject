@@ -31,6 +31,7 @@ namespace OwlOProjectA
             services.AddTransient<VoucherService>();
             services.AddTransient<CommunityService>();
             services.AddTransient<CommunityPostService>();
+            services.AddTransient<CommentService>();
             services.Configure<IISServerOptions>(options =>
             {
                 options.AllowSynchronousIO = true;
