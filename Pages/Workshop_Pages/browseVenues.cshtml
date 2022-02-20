@@ -7,8 +7,9 @@
     <div class="page-header breadcrumb-wrap">
         <div class="container">
             <div class="breadcrumb">
-                <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
-                <span></span> My Workshops
+                <a asp-page="/Index" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
+                <span></span> <a asp-page="/Workshop_Pages/myWorkshop">My Workshops</a> <span></span> <a asp-page="/Workshop_Pages/planWorkshop" asp-route-id="@Model.workshop.Workshop_ID">Planning</a> <span></span> Browse Venues
+
             </div>
         </div>
     </div>

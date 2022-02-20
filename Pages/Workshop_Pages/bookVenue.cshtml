@@ -31,8 +31,8 @@
     <div class="page-header breadcrumb-wrap">
         <div class="container">
             <div class="breadcrumb">
-                <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
-                <span></span> <a asp-page="/Workshop_Pages/myWorkshop">My Workshops</a> <span></span> <a asp-page="/Workshop_Pages/planWorkshop" asp-route-id="@Model.workshop.Workshop_ID">Planning</a> <span></span> <a asp-page="/Workshop_Pages/viewWorkshop" asp-route-id="@Model.workshop.Workshop_ID">View Workshop</a> <span></span> Edit Workshop
+                <a asp-page="/Index" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
+                <span></span> <a asp-page="/Workshop_Pages/myWorkshop">My Workshops</a> <span></span> <a asp-page="/Workshop_Pages/planWorkshop" asp-route-id="@Model.workshop.Workshop_ID">Planning</a> <span></span> <a asp-page="/Workshop_Pages/browseVenues" asp-route-id="@Model.workshop.Workshop_ID">Browse Venues</a> <span></span> <a asp-page="/Workshop_Pages/viewVenues" asp-route-wsid="@Model.workshop.Workshop_ID" asp-route-venid="@Model.workshop.Workshop_ID">View Venues</a> <span></span> Book Venue
             </div>
         </div>
     </div>
