@@ -29,7 +29,15 @@ namespace OwlOProjectA
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRazorPages();
+            //nuzul
+            services.AddDbContext<OwloPlanDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MyConn")));
+            services.AddTransient<ProjectService>();
+            services.AddTransient<ResourceService>();
+            services.AddTransient<MeetingService>();
+            services.AddTransient<WorkshopService>();
+            services.AddTransient<VenueService>();
+
+
             services.AddTransient<OwleeService>();
             services.AddDbContext<OwloDBContext>();
             services.AddTransient<VoucherService>();
@@ -38,17 +46,15 @@ namespace OwlOProjectA
             services.AddTransient<VoucherDistributionService>();
             services.AddTransient<Controllers.IntentController>();
             services.AddTransient<Controllers.AdministrationController>();
+
             services.Configure<IISServerOptions>(options =>
             {
                 options.AllowSynchronousIO = true;
             });
 
-            //nuzul
-            services.AddDbContext<OwloPlanDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MyConn")));
+
             services.AddRazorPages();
-            services.AddTransient<ProjectService>();
-            services.AddTransient<ResourceService>();
-            services.AddTransient<MeetingService>();
+
 
         }
 
@@ -82,6 +88,7 @@ namespace OwlOProjectA
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}"
                 );
+
             });
         }
     }

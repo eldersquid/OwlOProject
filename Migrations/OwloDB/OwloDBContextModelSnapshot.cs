@@ -19,6 +19,27 @@ namespace OwlOProjectA.Migrations.OwloDB
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("OwlOProjectA.Models.Booking", b =>
+                {
+                    b.Property<int>("Booking_ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("venueID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("workshopID")
+                        .HasColumnType("int");
+
+                    b.HasKey("Booking_ID");
+
+                    b.ToTable("Bookings");
+                });
+
             modelBuilder.Entity("OwlOProjectA.Models.FAQ", b =>
                 {
                     b.Property<string>("FAQ_ID")
@@ -94,9 +115,6 @@ namespace OwlOProjectA.Migrations.OwloDB
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("Age")
-                        .HasColumnType("int");
-
                     b.Property<string>("Bio")
                         .HasColumnType("nvarchar(3000)")
                         .HasMaxLength(3000);
@@ -111,13 +129,6 @@ namespace OwlOProjectA.Migrations.OwloDB
                         .HasColumnType("nvarchar(1)")
                         .HasMaxLength(1);
 
-                    b.Property<string>("Inventory_ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Mentor_Email")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("NRIC")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -130,14 +141,41 @@ namespace OwlOProjectA.Migrations.OwloDB
                     b.Property<int>("Owl_Points")
                         .HasColumnType("int");
 
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
-
                     b.HasKey("Email");
 
                     b.ToTable("Owlees");
+                });
+
+            modelBuilder.Entity("OwlOProjectA.Models.Venue", b =>
+                {
+                    b.Property<int>("Venue_ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Weekdays")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Weekends")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Venue_ID");
+
+                    b.ToTable("Venues");
                 });
 
             modelBuilder.Entity("OwlOProjectA.Models.Voucher", b =>
@@ -171,6 +209,9 @@ namespace OwlOProjectA.Migrations.OwloDB
                     b.Property<DateTime>("Voucher_Expiry")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Voucher_ImagePath")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Voucher_Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(100)")
@@ -179,6 +220,85 @@ namespace OwlOProjectA.Migrations.OwloDB
                     b.HasKey("Vouchers_ID");
 
                     b.ToTable("Vouchers");
+                });
+
+            modelBuilder.Entity("OwlOProjectA.Models.VoucherDistribution", b =>
+                {
+                    b.Property<string>("VoucherDistribution_ID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("VoucherDistribution_OwnerEmail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("VoucherDistribution_VoucherCompany")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
+                    b.Property<int>("VoucherDistribution_VoucherCost")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("VoucherDistribution_VoucherExpiry")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("VoucherDistribution_VoucherID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
+
+                    b.Property<string>("VoucherDistribution_VoucherName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
+
+                    b.Property<bool>("VoucherDistribution_VoucherSuperDeal")
+                        .HasColumnType("bit");
+
+                    b.HasKey("VoucherDistribution_ID");
+
+                    b.ToTable("VoucherDistributions");
+                });
+
+            modelBuilder.Entity("OwlOProjectA.Models.Workshop", b =>
+                {
+                    b.Property<int>("Workshop_ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Published")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Summary")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ownerEmail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("venueID")
+                        .HasColumnType("int");
+
+                    b.HasKey("Workshop_ID");
+
+                    b.ToTable("Workshop");
                 });
 #pragma warning restore 612, 618
         }

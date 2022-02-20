@@ -41,6 +41,7 @@
   <ItemGroup>
     <Folder Include="Migrations\" />
     <Folder Include="Migrations\OwloDB\" />
+    <Folder Include="wwwroot\PlanImages\" />
   </ItemGroup>
 
   <ItemGroup>

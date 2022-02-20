@@ -13,6 +13,7 @@ namespace owlo_plan.Services
             _context = context;
         }
         public Projects GetProjectById(string id) {
+            Console.WriteLine("This is get projec tby id", id);
             //\https://stackoverflow.com/questions/10344915/convert-iqueryable-to-custom-class
             Projects project =  _context.Projects.Where(b => b.Project_ID == id).First();
             return project;
@@ -52,7 +53,25 @@ namespace owlo_plan.Services
         public void deleteproject(string projectid) {
             Projects project = _context.Projects.Where(b => b.Project_ID == projectid).First();
             _context.Remove(project);
+            //remove everything associate to the project
+            List<Causes> causes = _context.Causes.Where(b => b.Project_ID == projectid).ToList();
+            _context.Causes.RemoveRange(causes);
+            List<CommunityPartners> coms = _context.CommunityPartners.Where(b => b.Project_ID == projectid).ToList();
+            _context.CommunityPartners.RemoveRange(coms);
+            List<JoinRequests> j = _context.JoinRequests.Where(b => b.Project_ID == projectid).ToList();
+            _context.JoinRequests.RemoveRange(j);
+            List<Resources> r = _context.Resources.Where(b => b.project_id == projectid).ToList();
+            _context.Resources.RemoveRange(r);
+            List<ProjectTasks> pt = _context.ProjectTasks.Where(b => b.Project_ID == projectid).ToList();
+            _context.ProjectTasks.RemoveRange(pt);
+            List<TeamMembers> tm = _context.TeamMembers.Where(b => b.Project_ID == projectid).ToList();
+            _context.TeamMembers.RemoveRange(tm);
+            List<Meetings> m = _context.Meetings.Where(b => b.Project_ID == projectid).ToList();
+            _context.Meetings.RemoveRange(m);
+            List<SkillsNeeded> s = _context.SkillsNeeded.Where(b => b.Project_ID == projectid).ToList();
+            _context.SkillsNeeded.RemoveRange(s);
             _context.SaveChanges();
+
         }
         public List<TeamMembers> GetAllTeamMembers(string project_id)
         {
@@ -373,5 +392,11 @@ namespace owlo_plan.Services
         //    }
 
         //}
+
+        public void deleteteammember(string id)
+        {
+            _context.Remove(_context.TeamMembers.Where(b => b.TeamMember_ID == id).FirstOrDefault());
+            _context.SaveChanges();
+        }
     }
 }

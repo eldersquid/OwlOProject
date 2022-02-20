@@ -28,7 +28,19 @@ namespace owlo_plan.Pages
             _projectSvc = projectservice;
             _resourceService = resourceService;
         }
-        public void OnGet(string id)
+        //public async Task<IActionResult> OnGetAsync(string id)
+        //{
+        //    MyProject = _projectSvc.GetProjectById(id);
+        //    AllProjectResources = _resourceService.GetAllResources(id);
+        //    AllTeamMembers = _projectSvc.GetAllTeamMembers(id);
+        //    AllTasks = _projectSvc.GetAllTask(id);
+        //    AllMeetings = _projectSvc.GetAllMeetings(id);
+        //    AllCommunityPartners = _projectSvc.GetAllCommunityPartners(id);
+        //    AllSkills = _projectSvc.GetAllSkills(id);
+        //    AllCauses = _projectSvc.GetAllCauses(id);
+        //    return Page();
+        //}
+        public async Task<IActionResult> OnGetAsync(string id)
         {
             //validate if project is valid, else return to project page
 
@@ -36,6 +48,7 @@ namespace owlo_plan.Pages
             userSkills = _projectSvc.GetAllUserSkills(id);
             userInterests = _projectSvc.GetAllUserInterests(id);
             AllMyProjects = _projectSvc.GetProjectsWithAttributeById(id);
+            return Page();
 
         }
 

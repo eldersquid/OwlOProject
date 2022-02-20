@@ -10,7 +10,7 @@
     <link href="~/jobick_assets/vendor/fullcalendar/css/main.min.css" rel="stylesheet">
 
 }
-    @if (Model.MyProject.Published == null || Model.MyProject.Published == false)
+    @if (Model.MyProject.Published == false)
     {
     <form asp-page-handler="Publish" asp-route-projectid="@Model.MyProject.Project_ID" method="post">
         <div class="d-flex align-items-center mb-4 flex-wrap">
@@ -54,11 +54,20 @@
                     <div class="d-flex align-items-center mb-4 flex-wrap">
                         <h4 class="text-primary me-auto">Project Image</h4>
                         <div>
-                            <a class="btn btn-primary btn-sm" asp-page="/OwloPlan/editImage" asp-route-id="@Model.MyProject.Project_ID"><i class="fas fa-edit me-auto"></i></a>
+                            <a class="btn btn-primary btn-sm" asp-page="/OwloPlan/editProjectImage" asp-route-id="@Model.MyProject.Project_ID"><i class="fas fa-edit me-auto"></i></a>
 
                         </div>
                     </div>
-                    <img src="/jobick_assets/images/profile/8.jpg" alt="" class="img-fluid mb-3 w-100 rounded">
+                    @if (Model.MyProject.Image == "" || Model.MyProject.Image == null)
+                    {
+                        <img src="/jobick_assets/images/profile/8.jpg" alt="" class="img-fluid mb-3 w-100 rounded">
+
+                    }
+                    else
+                    {
+                        <img src="@Model.MyProject.Image" alt="" class="img-fluid mb-3 w-100 rounded">
+
+                    }
                     <div class="d-flex align-items-center mb-4 flex-wrap">
                         <h4 class="text-primary me-auto">Description</h4>
                         <div>
@@ -213,9 +222,6 @@
 @section Scripts {
     <script src="~/vendor/owl-carousel/owl.carousel.js"></script>
     <!-- Required vendors -->
-
-    <script src="~/jobick_assetsvendor/fullcalendar/js/main.min.js"></script>
-    <script src="~/jobick_assetsjs/plugins-init/fullcalendar-init.js"></script>
     <script type="text/javascript">
         function deleteTask(id) {
             var task = document.getElementById(id)

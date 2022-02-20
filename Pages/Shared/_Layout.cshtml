@@ -72,7 +72,7 @@
             <div class="container">
                 <div class="header-wrap">
                     <div class="logo logo-width-1">
-                        <a href="index.html"><img src="~/nest_assets/imgs/theme/OWLO_Library.png" alt="logo" /></a>
+                        <a ><img src="~/nest_assets/imgs/theme/OWLO_Library.png" alt="logo" /></a>
                     </div>
                     <div class="header-right">
 
@@ -132,10 +132,12 @@
                                         <div class="cart-dropdown-wrap cart-dropdown-hm2 account-dropdown">
                                             <ul>
                                                 <li><a id="manage" asp-area="Identity" asp-page="/Account/Manage/Index" title="manage"><i class="fi fi-rs-user mr-10"></i>Hey @UserManager.GetUserAsync(User).GetAwaiter().GetResult().Name!</a></li>
-                                                <li><a ><i class="fi fi-rs-location-alt mr-10"></i>List of Owlees</a></li>
+                                                <li><a><i class="fi fi-rs-location-alt mr-10"></i>List of Owlees</a></li>
                                                 <li><a asp-page="/Danish/VouchersOwned" asp-route-id="@UserManager.GetUserAsync(User).GetAwaiter().GetResult().Email"><i class="fi fi-rs-label mr-10"></i>My Vouchers</a></li>
                                                 <li><a href="shop-wishlist.html"><i class="fi fi-rs-heart mr-10"></i>My Wishlist</a></li>
-                                                <li><a ><i class="fi fi-rs-settings-sliders mr-10"></i>Setting</a></li>
+                                                <li><a asp-page="/Workshop_Pages/myWorkshop"><i class="fi fi-rs-graduation-cap mr-10"></i>My Workshop</a></li>
+
+                                                <li><a><i class="fi fi-rs-settings-sliders mr-10"></i>Setting</a></li>
                                                 <li>
                                                     <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Index", new { area = "" })">
                                                         <button id="logout" type="submit" class="nav-link btn btn-link text-dark"><i class="fi fi-rs-sign-out mr-10"></i>Logout</button>
@@ -186,7 +188,7 @@
             <div class="container">
                 <div class="header-wrap header-space-between position-relative">
                     <div class="logo logo-width-1 d-block d-lg-none">
-                        <a href="index.html"><img src="~/nest_assets/imgs/theme/logo.svg" alt="logo" /></a>
+                        <a ><img src="~/nest_assets/imgs/theme/logo.svg" alt="logo" /></a>
                     </div>
 
 
@@ -233,7 +235,9 @@
 
     <!--End header-->
     <main class="main">
-        @RenderBody()
+        <div class="container fluid">
+            @RenderBody()
+        </div>
     </main>
 
     <!-- Preloader Start -->

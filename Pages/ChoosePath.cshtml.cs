@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace OwlOProjectA.Pages.Danish
+namespace OwlOProjectA.Pages
 {
-    public class OwleeLogin2Model : PageModel
+    public class ChoosePathModel : PageModel
     {
         public void OnGet()
         {

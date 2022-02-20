@@ -64,5 +64,11 @@ namespace owlo_plan.Pages
             _projectSvc.denyJoinRequest(id);
             return Redirect($"/OwloPlan/ManageProject/{projectid}");
         }
+
+        public IActionResult OnPostDeleteTeamMember(string projectid, string id) {
+            _projectSvc.deleteteammember(id);
+            return Redirect($"/OwloPlan/ManageProject/{projectid}");
+
+        }
     }
 }
