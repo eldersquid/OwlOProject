@@ -10,8 +10,8 @@ OWLO is an ambitious project that is put together by, Azfar, Danish, Gabriel, Ji
 ---
 In order to succesfully run our application, please do the following. 
 
-## Step 1: Run migrations  
-## Step 2: Copy sql scripts to update databases
+#### Step 1: Run migrations  
+#### Step 2: Copy sql scripts to update databases
 
 
 # Features
