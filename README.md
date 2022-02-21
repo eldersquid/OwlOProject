@@ -18,7 +18,7 @@ dotnet ef migrations authdb --context authdbcontext
 dotnet ef database update --context authdbcontext
 
 dotnet ef migrations owlodb --context owlodbcontext
-dotnet ef database update --context --owlodbcontext
+dotnet ef database update --context owlodbcontext
 ```
 ### Step 2: Copy sql scripts to update and populate databases
 Download the SQL scripts located in the other resources section below.
