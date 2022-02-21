@@ -29,6 +29,8 @@ Since OWLO is a big application with many features it is unwise to fit all of th
 
 ### [OWLO PLAN - Nuzul](OwloPlan.md)
 
+### [OWLO LIBRARY - Danish](OwlOLibraryReadme.md)
+
 
 # Other Resources
 
