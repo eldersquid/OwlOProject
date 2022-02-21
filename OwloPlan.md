@@ -65,16 +65,66 @@ An existing project member may find that they have friends or family that is sui
 
 
 # 3. Step-by-Step Guide on Remote-Demo
+
+
+## 1. Getting Started 
+---
+In order to access OWLO Plan, a user will need to be logged in from OWLO Library. After successful login, the user will be prompted to choose a platform they would like to navigate to. If the user is unable to access the change platform link in the owlo library navigation bar, the user can logout and login again and be prompted the choose a platform again and this time be able to select OWLO Plan.
+
+### Step 0: Register an account in OWLO library
+Register and Login to your account
+
+### Step 1: Create an entry in the OWLERS Table
+Because the login system were implemented late during the development stage, some of the logic and process had to be hard coded. Hence, when a user registers an account in the owlo library it doesnt add an entry directly into OWLER, hence the admin will need to verify the user before they can access the OWLO Plan platform. To replicate this process, Just add an email, username and bio that you used to register an account in owlo library into the Owlers table inside the OwloDB
+
+### Step 2: Change to OWLO Plan
+Choose OWLO Plan in the ChoosePath page
+If entry is correct, you will be able to access OWLO Plan with the same email you login and entry without having any errors
+
+##
+
+### Step 2: My Project
+In **My Projects** Page, create a project, add a title and short description. You can ignore the team members section. Add an image (if it does not work, you can edit the image later on). When succesful, the user will be directed back to the my project page where they can find their newly created project.
+
+## 2. Project Management
 ---
 
-### Step 0: Login
-Register and Login to your account
-### Step 1: Change to OWLO Plan
-Choose OWLO Plan in the ChoosePath page
-### Step 2: My Project
-In **My Projects** Page, create a project, add a title and short description. You can ignore the team members section. Add an image (if it does not work, you can edit the image later on)
+### Step 0: Manage a Project
+In the My Project Page, click on the manage button
+
+### Step 1: Add a Task
+
+### Step 2: Add a Meeting
+
+### Step 3: Add a Resource
 
 
+## 3. Publish Project
+---
+### Step 0: Publish a project
+If you are in the my project page, click on Publish. If you are the manage project, navigate to publish.
+### Step 1: Edit Project Image
+### Step 2: Edit Description
+### Step 3: Add Skills Needed
+### Step 4: Add Causes
+### Step 5: Community Partner
+
+## 4. Explore Projects
+---
+### Step 0: Go to Explore Projects
+### Step 1: Select a cause
+### Step 2: Browse and select a project
+### Step 3: Join a project
+
+## **As an organizer**
+You can go back to view the project you just join and accept the request to join
+
+
+## 5. Invite Volunteers
+---
+### Step 0: Go to Explore Volunteers
+### Step 1: Browse and select a volunteer
+### Step 2: Invite and select a project
 
 
 
