@@ -66,3 +66,13 @@ An existing project member may find that they have friends or family that is sui
 
 # 3. Step-by-Step Guide on Remote-Demo
 ---
+
+### Step 0: Login
+Register and Login to your account
+### Step 1: Change to OWLO Plan
+Choose OWLO Plan in the ChoosePath page
+### Step 2: My Project
+In **My Projects** Page, create a project, add a title and short description. You can ignore the team members section. Add an image (if it does not work, you can edit the image later on)
+
+
+
