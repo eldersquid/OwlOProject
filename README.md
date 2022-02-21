@@ -57,11 +57,11 @@ Download the SQL scripts located in the [other resources](#other-resources) sect
 # Features
 Since OWLO is a big application with many features it is unwise to fit all of them in 1 single readme. Hence, we have split our instructions into seperate readme so that you can run the demo with ease.
 
-##[Owlo Plan - Nuzul](OwloPlan.md)##
+**Owlo Plan - Nuzul](OwloPlan.md)**
 
-##[Owlo Library - Danish](OwlOLibraryReadme.md)##
+**Owlo Library - Danish](OwlOLibraryReadme.md**
 
-##[Owlo Workshop - Danish](OwlOLibraryReadme.md)##
+**Owlo Workshop - Danish](OwlOLibraryReadme.md**
 
 
 # Other Resources
