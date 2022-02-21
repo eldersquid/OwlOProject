@@ -10,9 +10,42 @@ OWLO is an ambitious project that is put together by, Azfar, Danish, Gabriel, Ji
 ---
 In order to succesfully run our application, please do the following. 
 
-### Step 0: Delete existing migrations
+### Step 0: Delete existing migrations & database
 Please delete the existing migrations and/or model snapshot
-### Step 1: Run migrations  
+***IF** it exists, delete OwloDB and OwleeDB in server object explorer
+### Step 1: Manage Packages
+
+#### Note:
+>The below packages are required to build and run our code. 
+Continuing without ensuring the mentioned packages are installed, the following steps will not work.
+
+To run Identity, using Microsoft.AspNetCore (All version 3.1.21):
+```
+Identity.EntityFrameworkCore 
+Identity.UI
+Session
+```
+
+To run Application, using Microsoft.EntityFrameworkCore (All version 3.1.21, Microsoft.EntityFrameworkCore included):
+```
+Sqlite
+Sqlite.Core
+SqlServer
+Tools
+```
+
+To run additional APIs and features:
+```
+CsvHelper (27.2.1)
+Google.Apis.Dialogflow.v3beta1 (1.55.0.2556)
+Google.Cloud.Dialogflow.V2 (3.8.0)
+Google.Cloud.Language.V1 (2.3.0)
+Google.Cloud.Vision.V1 (2.4.0)
+IronOcr (2021.12.0)
+```
+
+
+### Step 2: Run migrations  
 ```sh
 dotnet ef migrations add authdb --context authdbcontext
 dotnet ef database update --context authdbcontext
@@ -20,8 +53,8 @@ dotnet ef database update --context authdbcontext
 dotnet ef migrations add owlodb --context owlodbcontext
 dotnet ef database update --context owlodbcontext
 ```
-### Step 2: Copy sql scripts to update and populate databases
-Download the SQL scripts located in the other resources section below.
+### Step 3: Copy sql scripts to update and populate databases
+Download the SQL scripts located in the [other resources](#other-resources) section below.
 
 # Features
 ---
