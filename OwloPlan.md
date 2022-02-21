@@ -145,19 +145,38 @@ If you are in the my project page, click on Publish. If you are the manage proje
 ## 4. Explore Projects
 ---
 ### Step 0: Go to Explore Projects
+![This is an image](/ImagesForMarkdown/images/Add Community Partner.jpg)
+
 ### Step 1: Select a cause
+![This is an image](/ImagesForMarkdown/images/Explore Categories.jpg)
+
 ### Step 2: Browse and select a project
+![This is an image](/ImagesForMarkdown/images/browseexploreprojects.jpg)
+![This is an image](/ImagesForMarkdown/images/viewproject.jpg)
+
 ### Step 3: Join a project
+![This is an image](/ImagesForMarkdown/images/Join project.jpg)
+
 
 ## **As an organizer**
-You can go back to view the project you just join and accept the request to join
+You can go back to view the project that the person had just join and accept the request to join in the Applications section
+![This is an image](/ImagesForMarkdown/images/Applications.jpg)
+![This is an image](/ImagesForMarkdown/images/Accept join request.jpg)
+
 
 
 ## 5. Invite Volunteers
 ---
 ### Step 0: Go to Explore Volunteers
+
 ### Step 1: Browse and select a volunteer
+![This is an image](/ImagesForMarkdown/images/Explore volunteers.jpg)
+![This is an image](/ImagesForMarkdown/images/View Profile.jpg)
+
+
 ### Step 2: Invite and select a project
+![This is an image](/ImagesForMarkdown/images/Select project to invite user.jpg)
+![This is an image](/ImagesForMarkdown/images/User is now inside.jpg)
 
 
 
