@@ -142,6 +142,11 @@ If you are in the my project page, click on Publish. If you are the manage proje
 ### Step 5: Community Partner
 ![This is an image](/ImagesForMarkdown/images/AddCommunityPartner.jpg)
 
+
+### Step 6: Publish it
+![This is an image](/ImagesForMarkdown/images/publishproject.jpg
+)
+
 ## 4. Explore Projects
 ---
 ### Step 0: Go to Explore Projects
@@ -168,7 +173,7 @@ You can go back to view the project that the person had just join and accept the
 ## 5. Invite Volunteers
 ---
 ### Step 0: Go to Explore Volunteers
-![This is an image](/ImagesForMarkdown/images/navexplorevolunteers.jpg)
+![This is an image](/ImagesForMarkdown/images/naveplorevolunteers.jpg)
 
 ### Step 1: Browse and select a volunteer
 ![This is an image](/ImagesForMarkdown/images/Explorevolunteers.jpg)
