@@ -113,7 +113,7 @@ In the My Project Page, click on the manage button
 
 
 ### Step 2: Add a Meeting
-![This is an image](/ImagesForMarkdown/images/add meeting.jpg)
+![This is an image](/ImagesForMarkdown/images/addmeeting.jpg)
 
 ### Step 3: Add a Resource
 ![This is an image](/ImagesForMarkdown/images/addresource.jpg)
@@ -145,7 +145,7 @@ If you are in the my project page, click on Publish. If you are the manage proje
 ## 4. Explore Projects
 ---
 ### Step 0: Go to Explore Projects
-![This is an image](/ImagesForMarkdown/images/AddCommunityPartner.jpg)
+![This is an image](/ImagesForMarkdown/images/navexploreprojects.jpg)
 
 ### Step 1: Select a cause
 ![This is an image](/ImagesForMarkdown/images/ExploreCategories.jpg)
@@ -168,6 +168,7 @@ You can go back to view the project that the person had just join and accept the
 ## 5. Invite Volunteers
 ---
 ### Step 0: Go to Explore Volunteers
+![This is an image](/ImagesForMarkdown/images/navexplorevolunteers.jpg)
 
 ### Step 1: Browse and select a volunteer
 ![This is an image](/ImagesForMarkdown/images/Explorevolunteers.jpg)
