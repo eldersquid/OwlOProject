@@ -71,7 +71,7 @@ INSERT INTO [dbo].[Owlers] ([Email], [username], [bio]) VALUES (N'nuzul5567@gmai
 INSERT INTO [dbo].[Owlers] ([Email], [username], [bio]) VALUES (N'randy@mail.com', N'Rayden ', N'I am happy in life because I know I am doing what is in my heart. When you volunteer you give back in so many ways.')
 CREATE TABLE [dbo].[Projects] (
     [Project_ID]  NVARCHAR (50) NOT NULL,
-    [Title]       NVARCHAR (50) NULL,
+    [Title]       TEXT NULL,
     [Description] TEXT          NULL,
     [Members]     TEXT          NULL,
     [Image]       NVARCHAR (50) NULL,
