@@ -14,10 +14,10 @@ In order to succesfully run our application, please do the following.
 Please delete the existing migrations and/or model snapshot
 ### Step 1: Run migrations  
 ```sh
-dotnet ef migrations authdb --context authdbcontext
+dotnet ef migrations add authdb --context authdbcontext
 dotnet ef database update --context authdbcontext
 
-dotnet ef migrations owlodb --context owlodbcontext
+dotnet ef migrations add owlodb --context owlodbcontext
 dotnet ef database update --context owlodbcontext
 ```
 ### Step 2: Copy sql scripts to update and populate databases
