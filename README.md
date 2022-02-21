@@ -61,7 +61,7 @@ Since OWLO is a big application with many features it is unwise to fit all of th
 
 **[Owlo Library - Danish](OwlOLibraryReadme.md)**
 
-**[Owlo Workshop - Danish](OwlOLibraryReadme.md)**
+**[Owlo Workshop - Jing Kai](OwlOWorkshop.md)**
 
 
 # Other Resources
