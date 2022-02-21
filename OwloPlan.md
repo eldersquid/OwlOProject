@@ -96,15 +96,15 @@ In **My Projects** Page, create a project, add a title and short description. Yo
 
 ![This is an image](/ImagesForMarkdown/images/createnewproject.jpg)
 
-![This is an image](/ImagesForMarkdown/images/Create a project.jpg)
-![This is an image](/ImagesForMarkdown/images/After creation.jpg)
+![This is an image](/ImagesForMarkdown/images/Createaproject.jpg)
+![This is an image](/ImagesForMarkdown/images/Aftercreation.jpg)
 
 ## 2. Project Management
 ---
 ### Step 0: Manage a Project
 In the My Project Page, click on the manage button
 
-![This is an image](/ImagesForMarkdown/images/Project management.jpg)
+![This is an image](/ImagesForMarkdown/images/Projectmanagement.jpg)
 
 
 ### Step 1: Add a Task
@@ -126,13 +126,13 @@ In the My Project Page, click on the manage button
 If you are in the my project page, click on Publish. If you are the manage project, navigate to publish.
 
 ### Step 1: Edit Project Image
-![This is an image](/ImagesForMarkdown/images/edit project image.jpg)
+![This is an image](/ImagesForMarkdown/images/editprojectimage.jpg)
 
 ### Step 2: Edit Description
 ![This is an image](/ImagesForMarkdown/images/editdescription.jpg)
 
 ### Step 3: Add Skills Needed
-![This is an image](/ImagesForMarkdown/images/Add Skill.jpg)
+![This is an image](/ImagesForMarkdown/images/AddSkill.jpg)
 
 ### Step 4: Add Causes
 
@@ -140,28 +140,28 @@ If you are in the my project page, click on Publish. If you are the manage proje
 ![This is an image](/ImagesForMarkdown/images/addcause.jpg)
 
 ### Step 5: Community Partner
-![This is an image](/ImagesForMarkdown/images/Add Community Partner.jpg)
+![This is an image](/ImagesForMarkdown/images/AddCommunityPartner.jpg)
 
 ## 4. Explore Projects
 ---
 ### Step 0: Go to Explore Projects
-![This is an image](/ImagesForMarkdown/images/Add Community Partner.jpg)
+![This is an image](/ImagesForMarkdown/images/AddCommunityPartner.jpg)
 
 ### Step 1: Select a cause
-![This is an image](/ImagesForMarkdown/images/Explore Categories.jpg)
+![This is an image](/ImagesForMarkdown/images/ExploreCategories.jpg)
 
 ### Step 2: Browse and select a project
 ![This is an image](/ImagesForMarkdown/images/browseexploreprojects.jpg)
 ![This is an image](/ImagesForMarkdown/images/viewproject.jpg)
 
 ### Step 3: Join a project
-![This is an image](/ImagesForMarkdown/images/Join project.jpg)
+![This is an image](/ImagesForMarkdown/images/Joinproject.jpg)
 
 
 ## **As an organizer**
 You can go back to view the project that the person had just join and accept the request to join in the Applications section
 ![This is an image](/ImagesForMarkdown/images/Applications.jpg)
-![This is an image](/ImagesForMarkdown/images/Accept join request.jpg)
+![This is an image](/ImagesForMarkdown/images/Acceptjoinrequest.jpg)
 
 
 
@@ -170,13 +170,13 @@ You can go back to view the project that the person had just join and accept the
 ### Step 0: Go to Explore Volunteers
 
 ### Step 1: Browse and select a volunteer
-![This is an image](/ImagesForMarkdown/images/Explore volunteers.jpg)
-![This is an image](/ImagesForMarkdown/images/View Profile.jpg)
+![This is an image](/ImagesForMarkdown/images/Explorevolunteers.jpg)
+![This is an image](/ImagesForMarkdown/images/ViewProfile.jpg)
 
 
 ### Step 2: Invite and select a project
-![This is an image](/ImagesForMarkdown/images/Select project to invite user.jpg)
-![This is an image](/ImagesForMarkdown/images/User is now inside.jpg)
+![This is an image](/ImagesForMarkdown/images/Selectprojecttoinviteuser.jpg)
+![This is an image](/ImagesForMarkdown/images/Userisnowinside.jpg)
 
 
 
