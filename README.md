@@ -25,7 +25,7 @@ Download the SQL scripts located in the other resources section below.
 
 # Features
 ---
-Since OWLO is a big application with many features it is unwise to fit all of them in 1 single readme. Hence, we have split our the instructions into seperate readme so that you can run the demo with ease.
+Since OWLO is a big application with many features it is unwise to fit all of them in 1 single readme. Hence, we have split our instructions into seperate readme so that you can run the demo with ease.
 
 ### [OWLO PLAN - Nuzul](OwloPlan.md)
 
