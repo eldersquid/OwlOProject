@@ -74,40 +74,73 @@ In order to access OWLO Plan, a user will need to be logged in from OWLO Library
 ### Step 0: Register an account in OWLO library
 Register and Login to your account
 
+![This is an image](/ImagesForMarkdown/images/registerandlogin.jpg)
+
+
+
 ### Step 1: Create an entry in the OWLERS Table
 Because the login system were implemented late during the development stage, some of the logic and process had to be hard coded. Hence, when a user registers an account in the owlo library it doesnt add an entry directly into OWLER, hence the admin will need to verify the user before they can access the OWLO Plan platform. To replicate this process, Just add an email, username and bio that you used to register an account in owlo library into the Owlers table inside the OwloDB
 
+![This is an image](/ImagesForMarkdown/images/loginsameemail.jpg)
+
+![This is an image](/ImagesForMarkdown/images/addowlerentry.jpg)
+
 ### Step 2: Change to OWLO Plan
-Choose OWLO Plan in the ChoosePath page
+After logging in, choose OWLO Plan in the ChoosePath page
 If entry is correct, you will be able to access OWLO Plan with the same email you login and entry without having any errors
+![This is an image](/ImagesForMarkdown/images/choosepath.jpg)
 
-##
 
-### Step 2: My Project
+### Step 3: My Project
 In **My Projects** Page, create a project, add a title and short description. You can ignore the team members section. Add an image (if it does not work, you can edit the image later on). When succesful, the user will be directed back to the my project page where they can find their newly created project.
+
+![This is an image](/ImagesForMarkdown/images/createnewproject.jpg)
+
+![This is an image](/ImagesForMarkdown/images/Create a project.jpg)
+![This is an image](/ImagesForMarkdown/images/After creation.jpg)
 
 ## 2. Project Management
 ---
-
 ### Step 0: Manage a Project
 In the My Project Page, click on the manage button
 
+![This is an image](/ImagesForMarkdown/images/Project management.jpg)
+
+
 ### Step 1: Add a Task
 
+![This is an image](/ImagesForMarkdown/images/addtask.jpg)
+
+
 ### Step 2: Add a Meeting
+![This is an image](/ImagesForMarkdown/images/add meeting.jpg)
 
 ### Step 3: Add a Resource
+![This is an image](/ImagesForMarkdown/images/addresource.jpg)
+
 
 
 ## 3. Publish Project
 ---
 ### Step 0: Publish a project
 If you are in the my project page, click on Publish. If you are the manage project, navigate to publish.
+
 ### Step 1: Edit Project Image
+![This is an image](/ImagesForMarkdown/images/edit project image.jpg)
+
 ### Step 2: Edit Description
+![This is an image](/ImagesForMarkdown/images/editdescription.jpg)
+
 ### Step 3: Add Skills Needed
+![This is an image](/ImagesForMarkdown/images/Add Skill.jpg)
+
 ### Step 4: Add Causes
+
+**please make sure it is all lowercase so that it will appear in the explore project in the category of the same name**
+![This is an image](/ImagesForMarkdown/images/addcause.jpg)
+
 ### Step 5: Community Partner
+![This is an image](/ImagesForMarkdown/images/Add Community Partner.jpg)
 
 ## 4. Explore Projects
 ---
