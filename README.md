@@ -2,12 +2,10 @@
 ![This is an image](/ImagesForMarkdown/owlopic.png) 
 
 # Introductions
----
 Welcome to our github repository, here you will find our source code, some simple instructions and brief description of each of the team members features.
 OWLO is an ambitious project that is put together by, Azfar, Danish, Gabriel, Jing Kai and Nuzul. You may find more elaboration on the project through our slides, project report or even the demo markdown for each of our parts.
 
 # Getting Started
----
 In order to succesfully run our application, please do the following. 
 
 ### Step 0: Delete existing migrations & database
@@ -57,12 +55,13 @@ dotnet ef database update --context owlodbcontext
 Download the SQL scripts located in the [other resources](#other-resources) section below.
 
 # Features
----
 Since OWLO is a big application with many features it is unwise to fit all of them in 1 single readme. Hence, we have split our instructions into seperate readme so that you can run the demo with ease.
 
-### [OWLO PLAN - Nuzul](OwloPlan.md)
+##[Owlo Plan - Nuzul](OwloPlan.md)##
 
-### [OWLO LIBRARY - Danish](OwlOLibraryReadme.md)
+##[Owlo Library - Danish](OwlOLibraryReadme.md)##
+
+##[Owlo Workshop - Danish](OwlOLibraryReadme.md)##
 
 
 # Other Resources
